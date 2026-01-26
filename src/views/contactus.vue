@@ -42,13 +42,6 @@
                 </div>
                 <span class="text-[#3D0075] text-base xl:text-lg">bmolina@impulse.ky</span>
               </div>
-              <div class="flex flex-col">
-                <div class="flex items-center gap-x-1">
-                  <img src="../assets/images/phone-icon.svg" class="h-4 xl:h-6" alt="">
-                  <span class="text-[#3D0075] font-bold text-base xl:text-lg">Phone Number</span>
-                </div>
-                <span class="text-[#3D0075] text-base xl:text-lg">+1-945-308-6915</span>
-              </div>
             </div>
             <iframe class="w-full"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.661216594637!2d-80.31563478839387!3d25.78175137724465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b9a4624d7415%3A0x2b97adf5452981a2!2s1150%20NW%2072nd%20Ave%2C%20Miami%2C%20FL%2033126%2C%20EE.%20UU.!5e0!3m2!1ses!2shn!4v1720445516886!5m2!1ses!2shn"
@@ -87,7 +80,6 @@ import Button from "@/components/Button";
 import Textarea from "@/components/Textarea";
 import contact from "@/assets/images/contact.webp"
 import { useField, useForm } from "vee-validate";
-import emailjs from '@emailjs/browser';
 import * as yup from "yup";
 import { ref, inject, onMounted } from 'vue';
 import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
@@ -105,20 +97,7 @@ export default {
   mounted() {
     this.$store.themeSettingsStore.bringAllSections(document.querySelectorAll('.l-section'))
   },
-  methods: {
-    onSubmit() {
-      const vm = this;
-      this.handleSubmit(() => {
-        emailjs.sendForm('service_x8zg0jn', 'template_egrdfgl', vm.$refs.form, '37pInE6bRBPRhMI6-')
-          .then((response) => {
-            console.log('SUCCESS!', response.status, response.text);
-          }, (err) => {
-            console.log('FAILED...', err);
-          });
-      })
-      // console.warn(values.email);
-    },
-  },
+  methods: {},
   setup() {
     const swal = inject('$swal')
     const form = ref(null);
@@ -163,29 +142,47 @@ export default {
 
 
 
-    const onSubmit = handleSubmit(() => {
-
-
-      emailjs.sendForm('service_x8zg0jn', 'template_egrdfgl', form.value, '37pInE6bRBPRhMI6-')
-        .then((response) => {
-          //  console.log('SUCCESS!', response.status, response.text);
-          if (response.status == 200) {
-            swal.fire({
-              title: 'Thanks!',
-              text: 'Your request have been sent!',
-              icon: 'success',
-              background: "#1e293b",
-              showConfirmButton: false,
-              timer: 1000,
-            });
-            email.value = "";
-            name.value = "";
-            text.value = "";
-            phone.value = "";
-          }
-        }, (err) => {
-          console.log('FAILED...', err);
+    const onSubmit = handleSubmit(async () => {
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+            message: text.value,
+          }),
         });
+
+        if (response.ok) {
+          swal.fire({
+            title: 'Thanks!',
+            text: 'Your request have been sent!',
+            icon: 'success',
+            background: "#1e293b",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          email.value = "";
+          name.value = "";
+          text.value = "";
+          phone.value = "";
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (err) {
+        console.log('FAILED...', err);
+        swal.fire({
+          title: 'Error',
+          text: 'Failed to send your message. Please try again.',
+          icon: 'error',
+          background: "#1e293b",
+          showConfirmButton: true,
+        });
+      }
     })
 
     return {

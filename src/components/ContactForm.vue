@@ -73,9 +73,8 @@
   import Card from "@/components/Card/index.vue"
   import Button from "@/components/Button";
   import Textarea from "@/components/Textarea";
-  import contact from "@/assets/images/contact.webp" 
+  import contact from "@/assets/images/contact.webp"
   import { useField, useForm } from "vee-validate";
-  import emailjs from '@emailjs/browser';
 import * as yup from "yup";
 import { ref ,inject, onMounted} from 'vue';
 import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
@@ -90,20 +89,7 @@ import axios from "axios"
         reffered:this.refer
     }
     },
-    methods:{
-      onSubmit(){
-        const vm=this;
-       this.handleSubmit(()=>{
-        emailjs.sendForm('service_x8zg0jn', 'template_egrdfgl',vm.$refs.form, '37pInE6bRBPRhMI6-')
-      .then((response) => {
-	   console.log('SUCCESS!', response.status, response.text);
-	}, (err) => {
-	   console.log('FAILED...', err);
-	});
-       })
-      // console.warn(values.email);
-    },
-    },
+    methods:{},
     setup() {
       const swal = inject('$swal')
       const form = ref(null);
@@ -147,30 +133,48 @@ import axios from "axios"
  
 
 
-    const onSubmit=handleSubmit(()=>{
-      
-      
-        emailjs.sendForm('service_x8zg0jn', 'template_egrdfgl',form.value, '37pInE6bRBPRhMI6-')
-      .then((response) => {
-	  //  console.log('SUCCESS!', response.status, response.text);
-     if(response.status==200){
-      swal.fire({
-        title: 'Thanks!',
-        text: 'Your request have been sent!',
-        icon: 'success',
+    const onSubmit = handleSubmit(async () => {
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+            message: text.value,
+          }),
+        });
+
+        if (response.ok) {
+          swal.fire({
+            title: 'Thanks!',
+            text: 'Your request have been sent!',
+            icon: 'success',
+            background: "#1e293b",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          email.value = "";
+          name.value = "";
+          text.value = "";
+          phone.value = "";
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (err) {
+        console.log('FAILED...', err);
+        swal.fire({
+          title: 'Error',
+          text: 'Failed to send your message. Please try again.',
+          icon: 'error',
           background: "#1e293b",
-        showConfirmButton: false,
-        timer: 1000,
-      });
-      email.value="";
-      name.value="";
-      text.value="";
-      phone.value="";
-     }
-	}, (err) => {
-	   console.log('FAILED...', err);
-	}); 
-})
+          showConfirmButton: true,
+        });
+      }
+    })
 
     return {
       form,
