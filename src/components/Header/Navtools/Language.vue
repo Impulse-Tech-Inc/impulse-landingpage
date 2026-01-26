@@ -1,21 +1,25 @@
 <template>
   <div>
+    <!-- Preload images (hidden) -->
+    <div class="hidden">
+      <img v-for="item in months" :key="item.name" :src="item.image" alt="" />
+    </div>
+
     <Listbox v-model="selectLanguage">
       <div class="relative z-[22]">
         <ListboxButton
-          class="relative w-full flex items-center cursor-pointer space-x-[6px] rtl:space-x-reverse"
+          class="relative flex items-center cursor-pointer space-x-2 rtl:space-x-reverse"
         >
-        <Icon icon="material-symbols:language" class="text-2xl" />
-          <!-- <span class="inline-block md:h-6 md:w-6 w-4 h-4 rounded-full"
-            ><img
+          <span class="inline-block w-6 h-6 rounded-full overflow-hidden border-2 border-white shadow-md">
+            <img
               :src="selectLanguage.image"
               alt=""
-              class="h-full w-full object-cover rounded-full"
-          /></span>
-          <span
-            class="text-sm md:block hidden font-medium text-slate-600 dark:text-slate-300"
-            >{{ selectLanguage.name }}</span
-          > -->
+              class="h-full w-full object-cover"
+            />
+          </span>
+          <span class="text-sm font-semibold text-[#3D0075] dark:text-slate-300 uppercase">
+            {{ selectLanguage.name }}
+          </span>
         </ListboxButton>
 
         <Transition
@@ -27,7 +31,7 @@
             class="absolute min-w-[100px] ltr:right-0 rtl:left-0 md:top-[30px] top-[20px] w-auto max-h-60 overflow-auto border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-800 mt-1"
           >
             <ListboxOption
-              v-slot="{ active }"
+              v-slot="{ active, selected }"
               v-for="item in months"
               :key="item.name"
               :value="item"
@@ -35,9 +39,9 @@
             >
               <li
                 :class="[
-                  active
-                    ? 'bg-[#662ebb] dark:bg-slate-700 dark:bg-opacity-70 bg-opacity-50 dark:text-white '
-                    : 'text-slate-600 dark:text-slate-300',
+                  active || selected
+                    ? 'bg-[#662ebb]'
+                    : '',
                   'w-full border-b border-b-gray-500 border-opacity-10 px-2 py-2 last:border-none last:mb-0 cursor-pointer first:rounded-t last:rounded-b',
                 ]"
                 @click="selectLang(item.name)"
@@ -54,7 +58,10 @@
                       />
                     </span>
                   </span>
-                  <span class="flex-1 lg:text-sm text-sm capitalize">
+                  <span
+                    class="flex-1 lg:text-sm text-sm capitalize"
+                    :class="active || selected ? 'text-white' : 'lang-option-text'"
+                  >
                     {{ item.title }}</span
                   >
                 </div>
@@ -71,7 +78,6 @@
 import langImg1 from "@/assets/images/flags/En.png"
 import langImg2 from "@/assets/images/flags/Es.png"
 import { ref,onMounted } from "vue";
-import Icon from "@/components/Icon";
 import {
   Listbox,
   ListboxButton,
@@ -89,7 +95,6 @@ const months = [
 const selectLanguage = ref(months[0]);
 onMounted(() => {
   if (localStorage.getItem("enLang")){
-
     selectLang(localStorage.getItem('enLang'))
   }else{
     selectLang("En")
@@ -114,3 +119,13 @@ const selectLang=(lang)=>{
  }
 
 </script>
+
+<style scoped>
+.lang-option-text {
+  color: #000000 !important;
+}
+
+li:hover .lang-option-text {
+  color: #ffffff !important;
+}
+</style>

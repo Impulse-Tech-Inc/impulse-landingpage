@@ -14,7 +14,8 @@
       <a
         v-if="!item.child && !item.megamenu && item.link.startsWith('http')"
         :href="item.link"
-        class="menu-link"
+        class="menu-link external-link"
+        target="_blank"
       >
         <div class="flex flex-1 items-center space-x-[8px] rtl:space-x-reverse">
           <span class="icon-box" v-if="item.icon">
@@ -147,7 +148,7 @@ export default {
       > .menu-link {
         @apply relative flex capitalize items-start text-sm font-medium leading-6 text-slate-600 dark:text-slate-300 2xl:px-6 xl:px-5 py-6 transition-all duration-150;
         .icon-box {
-          @apply text-slate-500 dark:text-slate-300 transition-all duration-150 text-lg;
+          @apply text-slate-600 dark:text-slate-300 transition-all duration-150 text-lg;
         }
       }
       &:hover {
@@ -166,6 +167,31 @@ export default {
 }
 .main-menu > ul > li > .menu-link.router-link-active {
   @apply text-primary-500;
+  .icon-box {
+    @apply text-primary-500;
+  }
+}
+
+.main-menu > ul > li > .menu-link .text-box {
+  @apply text-slate-600 dark:text-slate-300;
+}
+
+.main-menu > ul > li:hover > .menu-link .text-box {
+  @apply text-primary-500;
+}
+
+.main-menu > ul > li > .menu-link.router-link-active .text-box {
+  @apply text-primary-500;
+}
+
+.main-menu > ul > li > a.external-link .text-box,
+.main-menu > ul > li > a.external-link .icon-box {
+  color: #475569 !important;
+}
+
+.main-menu > ul > li:hover > a.external-link .text-box,
+.main-menu > ul > li:hover > a.external-link .icon-box {
+  color: #6366f1 !important;
 }
 
 .main-menu > ul > li.menu-item-has-children > ul.sub-menu,

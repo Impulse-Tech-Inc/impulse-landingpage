@@ -53,7 +53,7 @@
             this.$store.themeSettingsStore.menuLayout === 'horizontal' && window.width > 1024
           "
         />
-        <LanguageVue class="pr-3 pl-2" />
+        <LanguageVue class="pr-3 pl-2 hidden lg:block" />
         <div v-if="window.width > 1024">
           <Button
             :text="$t('indexContactUs')"
@@ -65,7 +65,7 @@
         <div
           class="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse"
         >
-
+          <LanguageVue class="lg:hidden" />
           <handle-mobile-menu
             v-if="window.width <= 1024"
             :class="shouldBeTransparent ? 'text-white' : ''"
@@ -203,20 +203,62 @@ header {
   color: white !important;
 }
 
-.header-transparent :deep(a) {
+.header-transparent :deep(a):not(.menu-link) {
   color: white !important;
   font-weight: 700 !important;
 }
 
-.header-transparent :deep(span),
+.header-transparent :deep(a.menu-link),
+.header-transparent :deep(a.menu-link .text-box),
+.header-transparent :deep(a.menu-link .icon-box) {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.header-transparent :deep(li:hover > a.menu-link),
+.header-transparent :deep(li:hover > a.menu-link .text-box),
+.header-transparent :deep(li:hover > a.menu-link .icon-box),
+.header-transparent :deep(li:hover > a.menu-link .icon-box svg),
+.header-transparent :deep(li:hover > a.menu-link .icon-box .iconify) {
+  color: #6366f1 !important;
+}
+
+.header-transparent :deep(button.btn-outline-white:hover) {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
+}
+
+.header-transparent :deep(span):not(.lang-option-text),
 .header-transparent :deep(p),
 .header-transparent :deep(.nav-link) {
   color: white !important;
   font-weight: 700 !important;
 }
 
+.header-transparent :deep(.lang-option-text) {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+.header-transparent :deep(li:hover .lang-option-text) {
+  color: #ffffff !important;
+}
+
 .header-scrolled .app-header {
   background-color: white !important;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+.header-scrolled :deep(.menu-link) {
+  font-weight: 500 !important;
+}
+
+.header-scrolled :deep(a.menu-link .text-box),
+.header-scrolled :deep(a.menu-link .icon-box) {
+  color: #475569 !important;
+}
+
+.header-scrolled :deep(li:hover > a.menu-link .text-box),
+.header-scrolled :deep(li:hover > a.menu-link .icon-box) {
+  color: #6366f1 !important;
 }
 </style>

@@ -239,10 +239,22 @@ export default {
     @apply text-slate-800 dark:text-slate-300 text-xs font-semibold uppercase mb-4 mt-4;
   }
   > .menu-link {
-    @apply flex text-slate-600 font-medium dark:text-slate-300 text-sm capitalize px-[10px] py-3 rounded-[4px] cursor-pointer;
+    @apply flex text-slate-600 font-medium dark:text-slate-300 text-sm capitalize px-[10px] py-3 rounded-[4px] cursor-pointer transition-all duration-150;
   }
   .menu-icon {
-    @apply icon-box inline-flex items-center text-slate-600 dark:text-slate-300 text-lg ltr:mr-3 rtl:ml-3;
+    @apply icon-box inline-flex items-center text-slate-600 dark:text-slate-300 text-lg ltr:mr-3 rtl:ml-3 transition-all duration-150;
+  }
+  .text-box {
+    @apply transition-all duration-150;
+  }
+  // Hover effect for menu items
+  &:not(.menu-item-active):hover {
+    > .menu-link {
+      .menu-icon,
+      .text-box {
+        @apply text-primary-500;
+      }
+    }
   }
 }
 // menu item has chilren

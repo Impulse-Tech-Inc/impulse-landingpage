@@ -1,9 +1,9 @@
 <template>
   <div
-    :class="`mobile-sidebar bg-black-800  ${
+    :class="`mobile-sidebar bg-white  ${
       this.$store.themeSettingsStore.theme === 'bordered'
-        ? 'border border-black-5002'
-        : 'shadow-base'
+        ? 'border border-slate-200'
+        : 'shadow-lg'
     }   `"
   >
     <div class="logo-segment flex justify-between items-center px-4 py-6">

@@ -4,9 +4,9 @@
             <div class="flex flex-col md:flex-row justify-between items-center px-5 lg:px-20 py-10 md:py-20">
 
                 <!-- Botones -->
-                <div class="flex flex-col px-5">
+                <div class="flex flex-col px-5 gap-2">
                     <span
-                        class="relative text-center px-6 py-3 cursor-pointer border text-sm xl:text-xl font-bold rounded w-full transition-all duration-300"
+                        class="relative text-center px-6 py-3 cursor-pointer border text-sm xl:text-xl font-bold rounded w-full transition-all duration-300 whitespace-nowrap"
                         :class="currentItem == i
                             ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-transparent'
                             : 'bg-[#F2EDED] text-gray-400 border-gray-300'" v-for="(item, i) in items" :key="i" @click="currentItem = i">

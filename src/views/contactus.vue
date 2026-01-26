@@ -33,8 +33,8 @@
             <Button :text="$t('telemetricsForm-8')" btnClass=" block-btn rounded-full text-white text-base xl:text-xl"
               style="background:linear-gradient(224.95deg, #a446f4 -1.95%, #4138f3 104.5%)" />
           </form>
-          <div class="flex flex-col space-y-4">
-            <div class="flex gap-10 flex-wrap">
+          <div class="flex flex-col space-y-4 h-full">
+            <div class="flex gap-6 xl:gap-10 flex-wrap">
               <div class="flex flex-col">
                 <div class="flex items-center gap-x-1">
                   <img src="../assets/images/email-icon.svg" class="h-4 xl:h-6" alt="">
@@ -42,35 +42,31 @@
                 </div>
                 <span class="text-[#3D0075] text-base xl:text-lg">bmolina@impulse.ky</span>
               </div>
+              <div class="flex flex-col">
+                <div class="flex items-center gap-x-1">
+                  <img src="../assets/images/office1-icon.svg" class="h-4 xl:h-6" alt="">
+                  <span class="text-[#3D0075] font-bold text-base xl:text-lg">HQ Address</span>
+                </div>
+                <span class="text-[#3D0075] text-base xl:text-lg">1150 Nw 72nd Ave Tower | Miami, Florida 33126</span>
+              </div>
             </div>
-            <iframe class="w-full"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.661216594637!2d-80.31563478839387!3d25.78175137724465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b9a4624d7415%3A0x2b97adf5452981a2!2s1150%20NW%2072nd%20Ave%2C%20Miami%2C%20FL%2033126%2C%20EE.%20UU.!5e0!3m2!1ses!2shn!4v1720445516886!5m2!1ses!2shn"
-              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-container relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex-grow min-h-[300px]">
+              <div class="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <iframe class="w-full h-full absolute inset-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.661216594637!2d-80.31563478839387!3d25.78175137724465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b9a4624d7415%3A0x2b97adf5452981a2!2s1150%20NW%2072nd%20Ave%2C%20Miami%2C%20FL%2033126%2C%20EE.%20UU.!5e0!3m2!1ses!2shn!4v1720445516886!5m2!1ses!2shn"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div
-      class="bg-[#F6F6F6] shadow-md border flex justify-between flex-wrap gap-4 items-center mx-2 xl:mx-10 my-10 px-10 xl:px-20 py-10">
-
-      <div class="flex flex-col">
-        <div class="flex items-center gap-x-1">
-          <img src="../assets/images/office1-icon.svg" class="h-4 xl:h-6" alt="">
-          <span class="text-[#3D0075] font-bold text-base xl:text-lg">HQ Address</span>
-        </div>
-        <span class="text-[#3D0075] text-base xl:text-lg">1150 Nw 72nd Ave Tower | Miami, Florida 33126</span>
-      </div>
-      <!-- <div class="flex flex-col xl:w-1/3">
-        <div class="flex items-center gap-x-1">
-          <img src="../assets/images/office2-icon.svg" class="h-4 xl:h-6" alt="">
-          <span class="text-[#3D0075] font-bold text-base xl:text-lg">Office Address</span>
-        </div>
-        <span class="text-[#3D0075] text-base xl:text-lg">Nuevos Horizontes Business Center, San Pedro Sula, Honduras
-          13001</span>
-      </div> -->
-    </div>
   </div>
 </template>
 <script>
@@ -81,10 +77,10 @@ import Textarea from "@/components/Textarea";
 import contact from "@/assets/images/contact.webp"
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
-import { ref, inject, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 import axios from "axios"
-import { useI18n } from 'vue-i18n'
+import { useToast } from "vue-toastification"
 
 export default {
   components: {
@@ -99,10 +95,8 @@ export default {
   },
   methods: {},
   setup() {
-    const swal = inject('$swal')
+    const toast = useToast()
     const form = ref(null);
-    const { t } = useI18n()
-
 
     const schema = yup.object({
       email: yup.string().required('Please fill the empty field').email("Please fill the field with a valid email address"),
@@ -111,10 +105,9 @@ export default {
       text: yup.string().required('Please fill the empty field'),
     });
 
-    const { handleSubmit } = useForm({
+    const { handleSubmit, resetForm } = useForm({
       validationSchema: schema,
     });
-
 
     const { value: email, errorMessage: emailError } = useField("email");
     const { value: text, errorMessage: textError } = useField("text");
@@ -158,29 +151,17 @@ export default {
         });
 
         if (response.ok) {
-          swal.fire({
-            title: 'Thanks!',
-            text: 'Your request have been sent!',
-            icon: 'success',
-            background: "#1e293b",
-            showConfirmButton: false,
-            timer: 1000,
+          toast.success('Your request has been sent!', {
+            timeout: 3000,
           });
-          email.value = "";
-          name.value = "";
-          text.value = "";
-          phone.value = "";
+          resetForm();
         } else {
           throw new Error('Failed to send');
         }
       } catch (err) {
         console.log('FAILED...', err);
-        swal.fire({
-          title: 'Error',
-          text: 'Failed to send your message. Please try again.',
-          icon: 'error',
-          background: "#1e293b",
-          showConfirmButton: true,
+        toast.error('Failed to send your message. Please try again.', {
+          timeout: 4000,
         });
       }
     })
@@ -207,6 +188,18 @@ export default {
 <style>
 .changeColor {
   background-color: #3C007C !important;
+}
 
+.inputGroup .m-phone-number-input .m-input-wrapper {
+  background-color: transparent !important;
+  border: 1px solid #8791A1 !important;
+}
+
+.inputGroup .m-phone-number-input input {
+  background-color: transparent !important;
+}
+
+.inputGroup .m-phone-number-input * {
+  border-color: #8791A1 !important;
 }
 </style>

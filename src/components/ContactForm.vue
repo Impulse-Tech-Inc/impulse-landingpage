@@ -76,9 +76,10 @@
   import contact from "@/assets/images/contact.webp"
   import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
-import { ref ,inject, onMounted} from 'vue';
+import { ref, onMounted} from 'vue';
 import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 import axios from "axios"
+import { useToast } from "vue-toastification"
 
   export default {
     props:["refer"],
@@ -91,10 +92,9 @@ import axios from "axios"
     },
     methods:{},
     setup() {
-      const swal = inject('$swal')
+      const toast = useToast()
       const form = ref(null);
-      
- 
+
     const schema = yup.object({
       email: yup.string().required('Please fill the empty field').email("Please fill the field with a valid email address"),
       name: yup.string().required('Please fill the empty field'),
@@ -102,10 +102,9 @@ import axios from "axios"
       text: yup.string().required('Please fill the empty field'),
     });
 
-    const { handleSubmit } = useForm({
+    const { handleSubmit, resetForm } = useForm({
       validationSchema: schema,
     });
- 
 
     const { value: email, errorMessage: emailError } = useField("email");
     const { value: text, errorMessage: textError } =useField("text");
@@ -149,29 +148,17 @@ import axios from "axios"
         });
 
         if (response.ok) {
-          swal.fire({
-            title: 'Thanks!',
-            text: 'Your request have been sent!',
-            icon: 'success',
-            background: "#1e293b",
-            showConfirmButton: false,
-            timer: 1000,
+          toast.success('Your request has been sent!', {
+            timeout: 3000,
           });
-          email.value = "";
-          name.value = "";
-          text.value = "";
-          phone.value = "";
+          resetForm();
         } else {
           throw new Error('Failed to send');
         }
       } catch (err) {
         console.log('FAILED...', err);
-        swal.fire({
-          title: 'Error',
-          text: 'Failed to send your message. Please try again.',
-          icon: 'error',
-          background: "#1e293b",
-          showConfirmButton: true,
+        toast.error('Failed to send your message. Please try again.', {
+          timeout: 4000,
         });
       }
     })

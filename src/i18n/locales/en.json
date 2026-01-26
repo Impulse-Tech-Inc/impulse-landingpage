@@ -1,8 +1,9 @@
 {
     "en":"en",
+    "menu":"Menu",
     "telcoslog": "Telecom Expertise meets SaaS innovation.",
     "titleLanding": "AI Driven Revenue Intelligence & Telco Automation",
-    "subtitleLanding": "The orchestration layer that unifies your data and enables AI and automation to optimize efficiency and workflows - one brain so your network runs itself and reacts in seconds.",
+    "subtitleLanding": "Your OSS/BSS stores data. Impulse acts on it. We unify network telemetry, billing, and customer signals into one AI system that detects, decides, and executes - automatically.",
     "bookDemo": "Book a Demo",
     "indexIncrease1": "Increase Your Telecom",
     "indexIncrease2": "Revenue",

@@ -1,27 +1,27 @@
 <template>
     <div>
-        <section class="relative mt-24 md:mt-32 md:mb-32">
+        <section class="relative mt-24 md:mt-32 md:mb-16">
             <div class="mx-5 md:mx-10 xl:mx-20 animate-fade-up animate-delay-300">
                 <span class="text-[#3D0075] text-2xl md:text-4xl font-bold flex justify-center">{{
                     $t('aboutUsExecutiveTeamTitle')
                 }}</span>
-                <div class="grid xl:grid-cols-2 mt-10 pb-20 md-pb-0 md:mt-20 gap-5">
+                <div class="grid xl:grid-cols-2 mt-10 pb-8 md:pb-0 md:mt-16 gap-5">
                     <article
-                        class="bg-[#F6F6F6] shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl px-6 py-4 flex justify-center items-center"
+                        class="bg-[#F6F6F6] shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden md:h-[240px]"
                         v-for="(team, i) in teams" :key="i">
-                        <div class="flex flex-col md:flex-row justify-center items-center gap-4">
-                            <img :src="team.img" alt="" class="w-96 h-60 rounded object-cover" />
-                            <div class="flex flex-col justify-center gap-2 items-center md:items-start">
+                        <div class="flex flex-col md:flex-row h-full">
+                            <img :src="team.img" alt="" class="w-full md:w-56 lg:w-64 h-48 md:h-full rounded-t-xl md:rounded-l-xl md:rounded-tr-none object-cover flex-shrink-0" />
+                            <div class="flex flex-col justify-start gap-1.5 items-center md:items-start px-4 py-3">
                                 <div class="flex items-center gap-1">
-                                    <span class="text-lg md:text-xl font-bold text-black-500">{{ team.name }}</span>
+                                    <span class="text-base md:text-lg font-bold text-black-500">{{ team.name }}</span>
                                     <a :href="team.linkedin" target="_blank" class="cursor-pointer">
-                                        <Icon icon="skill-icons:linkedin" class="text-lg" />
+                                        <Icon icon="skill-icons:linkedin" class="text-base" />
                                     </a>
 
 
                                 </div>
-                                <span class="text-sm md:text-base text-[#0079D8] font-bold">{{ team.position }}</span>
-                                <p class="text-sm md:text-base max-w-3xl">{{ team.description }}</p>
+                                <span class="text-xs md:text-sm text-[#0079D8] font-bold">{{ team.position }}</span>
+                                <p class="text-xs md:text-sm max-w-3xl leading-relaxed">{{ team.description }}</p>
                             </div>
                         </div>
                     </article>
@@ -37,7 +37,6 @@ import Rob from "@/assets/images/svgs/rob.jpg"
 import Tim from "@/assets/images/svgs/Tim.jpg"
 import { useI18n } from 'vue-i18n'
 import Icon from "@/components/Icon"
-import { ref } from "vue"
 import { computed } from "vue"
 const { t } = useI18n()
 
@@ -54,8 +53,8 @@ const teams = computed(() => [{
     img: Rob,
     linkedin: `https://www.linkedin.com/in/robmcnabb/`
 }, {
-    name: ' Tim Bergmann',
-    position: 'Co-Founder',
+    name: 'Tim Bergmann',
+    position: t('aboutUsExecutiveTeamCOFounderTitle'),
     description: t('aboutUsExecutiveTeamTimDescription'),
     img: Tim,
     linkedin: `https://www.linkedin.com/in/tim-bergmann-9a528b12b/`

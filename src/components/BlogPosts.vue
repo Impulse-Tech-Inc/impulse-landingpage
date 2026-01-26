@@ -14,9 +14,48 @@
         </p>
       </div>
 
-      <!-- Loading State -->
-      <div v-if="loading" class="flex justify-center items-center py-20">
-        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-[#6E4098]"></div>
+      <!-- Loading State - Skeletons -->
+      <div v-if="loading" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="n in 3"
+          :key="n"
+          class="bg-white rounded-2xl border border-[#e0d7f3] overflow-hidden flex flex-col animate-pulse"
+        >
+          <!-- Image Skeleton -->
+          <div class="aspect-[16/9] bg-gradient-to-br from-[#f5f0ff] to-[#e7dcff]"></div>
+
+          <!-- Content Skeleton -->
+          <div class="p-6 flex flex-col flex-grow">
+            <!-- Category Skeleton -->
+            <div class="flex gap-2 mb-3">
+              <div class="h-6 w-20 bg-[#f5f0ff] rounded-full"></div>
+              <div class="h-6 w-16 bg-[#f5f0ff] rounded-full"></div>
+            </div>
+
+            <!-- Title Skeleton -->
+            <div class="h-6 bg-[#e0d7f3] rounded w-full mb-2"></div>
+            <div class="h-6 bg-[#e0d7f3] rounded w-3/4 mb-3"></div>
+
+            <!-- Excerpt Skeleton -->
+            <div class="space-y-2 mb-4">
+              <div class="h-4 bg-[#f5f0ff] rounded w-full"></div>
+              <div class="h-4 bg-[#f5f0ff] rounded w-full"></div>
+              <div class="h-4 bg-[#f5f0ff] rounded w-2/3"></div>
+            </div>
+
+            <!-- Footer Skeleton -->
+            <div class="flex items-center justify-between pt-4 border-t border-[#e0d7f3] mt-auto">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-[#e0d7f3]"></div>
+                <div class="space-y-2">
+                  <div class="h-3 w-24 bg-[#e0d7f3] rounded"></div>
+                  <div class="h-3 w-16 bg-[#f5f0ff] rounded"></div>
+                </div>
+              </div>
+              <div class="w-5 h-5 bg-[#e0d7f3] rounded"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Error State -->
