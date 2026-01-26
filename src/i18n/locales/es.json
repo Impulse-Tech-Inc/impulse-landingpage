@@ -588,6 +588,92 @@
                 "title": "El Blog de Impulse",
                 "description": "IA. Telecomunicaciones. Crecimiento. Descubre cómo los datos, la automatización y la inteligencia están redefiniendo la experiencia del cliente - solo en El Blog de Impulse.",
                 "viewAll": "Ver Todas las Publicaciones"
-              }
-
+              },
+    "privacyPage": {
+        "badge": "Documento Legal",
+        "title": "Política de Privacidad",
+        "subtitle": "Estamos comprometidos a proteger sus datos personales y ser transparentes sobre cómo los utilizamos.",
+        "lastUpdated": "Última actualización: Julio 2023",
+        "readTime": "10 min de lectura",
+        "contents": "Contenido",
+        "questions": "¿Preguntas?",
+        "contactPrivacy": "Contacta a nuestro Oficial de Privacidad",
+        "aboutTitle": "Acerca de Impulse",
+        "aboutText": "Impulse Limited (\"Impulse\") es una empresa global con sede en Grand Cayman que desarrolla, implementa y respalda soluciones de atención al cliente para proveedores de servicios en más de 40 países.",
+        "aboutNote": "Impulse está plenamente comprometida a garantizar la correcta gestión de todos los datos personales que recopila, en conformidad con las leyes de privacidad aplicables, incluyendo GDPR, UK DPA y el Marco de Privacidad de Datos UE-EE.UU.",
+        "contactTitle": "Contactar al Oficial de Privacidad",
+        "contactSubtitle": "Para cualquier pregunta sobre esta política o para ejercer sus derechos",
+        "sendEmail": "Enviar Email",
+        "alsoRead": "También lee",
+        "termsConditions": "Términos y Condiciones"
+    },
+    "termsPage": {
+        "badge": "Documento Legal",
+        "title": "Términos del Servicio",
+        "subtitle": "Por favor lea estos términos cuidadosamente antes de usar nuestros servicios.",
+        "lastUpdated": "Última actualización: Julio 2023",
+        "readTime": "8 min de lectura",
+        "contents": "Contenido",
+        "questions": "¿Preguntas?",
+        "contactSupport": "Contacta a nuestro Equipo de Soporte",
+        "introTitle": "Términos del Servicio",
+        "introText": "Estos Términos del Servicio (o \"TOS\") son parte del Contrato entre usted e Impulse.",
+        "introNote": "Estos TOS incorporan cualquier término adicional contenido en cualquier formulario de pedido en papel o en línea para cualquier Servicio(s), así como cualquier folleto, guías de usuario, y cualquier otro material incorporado por referencia.",
+        "contactTitle": "Contáctenos",
+        "contactSubtitle": "Ponte en contacto con nuestro equipo",
+        "sendEmail": "Enviar Email",
+        "alsoRead": "También lee",
+        "privacyPolicy": "Política de Privacidad",
+        "sections": {
+            "acceptance": {
+                "title": "Aceptación, Inicio y Cambios",
+                "q1": "¿Cómo acepto el Contrato con Impulse y cuándo comienza el Contrato?",
+                "a1": "El Contrato comienza y entra en vigencia una vez que ambas partes hayan firmado el contrato. Al aceptar el Contrato, también está aceptando los términos y condiciones contenidos en cualquier Pedido/Material. Su uso continuado de un Servicio será su aceptación de tales términos y condiciones y estos TOS.",
+                "q2": "¿Quién puede hacer cambios en el Contrato y cómo?",
+                "a2": "Solo Impulse puede hacer cambios en el Contrato. Impulse puede cambiar el Contrato después de cualquier Período de Servicio Fijo dando al menos 30 días de aviso previo al cambio por correo, fax, correo electrónico o poniéndolo a disposición electrónicamente. Quedará vinculado por las versiones revisadas de este Contrato que le enviemos. Su uso continuado de un Servicio será su aceptación de dicho(s) cambio(s).",
+                "q3": "¿Cuánto tiempo dura mi Contrato con Impulse? ¿Cómo se renueva?",
+                "a3": "El término de cualquier Servicio comenzará en la Fecha de Inicio, y expirará al final del Período de Servicio Fijo. Al expirar un Período de Servicio Inicial, el Servicio continuará en un Período de Servicio Mensual a las tarifas entonces aplicables de Impulse a menos que cancele el Servicio aplicable o a menos que Impulse o usted rescinda este Contrato.",
+                "q4": "¿Cómo se termina el Contrato o algún Servicio?",
+                "a4": "Puede terminar el Contrato enviando un correo electrónico a support@impulse.ky",
+                "highlightTitle": "Tarifas por Terminación Anticipada",
+                "highlightText": "Debe pagar una tarifa por terminación anticipada por cualquier Servicio(s) que termine antes del final de cualquier Período de Servicio Fijo. Las tarifas son iguales al 50% del total de los cargos mensuales por cada Servicio terminado anticipadamente, multiplicado por el número de meses restantes en el Período de Servicio Fijo."
+            },
+            "fees": {
+                "title": "Tarifas, Pagos y Sanciones",
+                "q1": "¿Cómo me factura Impulse? ¿Cuándo vencen los pagos?",
+                "a1": "Debe pagar todas las cantidades adeudadas en la fecha de vencimiento indicada en la factura (\"Fecha de Vencimiento\")."
+            },
+            "requirements": {
+                "title": "Requisitos",
+                "q1": "¿Puede Impulse requerir una verificación de crédito, referencias crediticias o un depósito de seguridad?",
+                "a1": "Sí. Impulse puede requerir una verificación de crédito, referencias crediticias y/o un depósito de seguridad antes del inicio del proyecto. Usted acepta que Impulse está autorizado a utilizar su información personalmente identificable en relación con dichas verificaciones de crédito y referencias."
+            },
+            "indemnification": {
+                "title": "Indemnización",
+                "q1": "¿En qué circunstancias debo indemnizar a Impulse?",
+                "a1": "Usted acepta indemnizar, defender y eximir de responsabilidad a Impulse por cualquier y todos los reclamos, demandas, acciones, costos, gastos, daños y responsabilidades (incluidos honorarios y gastos legales razonables) que surjan de alguna manera de su uso y/o recepción de los Servicios y/o Equipos, incluidos pero no limitados a reclamos de difamación e infracción de propiedad intelectual. Su obligación se extiende a Impulse y a sus empresas afiliadas, y a sus accionistas, directores, funcionarios, empleados, agentes y contratistas."
+            },
+            "liability": {
+                "title": "Responsabilidad de Impulse",
+                "text": "Impulse no es responsable de ningún daño sufrido en relación con este Contrato, incluidos los daños que sean directos, indirectos, consecuentes, incidentales, económicos, ejemplares o punitivos. Estos incluyen, pero no se limitan a, daños como pérdida de oportunidades comerciales o pérdida de datos. Impulse no es responsable de ninguna falla del (los) Servicio(s) o Equipo debido a cualquier causa más allá de su control razonable (por ejemplo, actos de guerra, terrorismo, disturbios civiles, sabotaje, dificultades laborales, desastres naturales, cortes de energía, inundación, embargo, catástrofe inevitable, explosión, acto u omisión de una autoridad gubernamental, o acto u omisiones de un proveedor de servicios)."
+            },
+            "general": {
+                "title": "General",
+                "q1": "¿Qué leyes se aplican al Contrato?",
+                "a1": "Las leyes de las Islas Caimán rigen.",
+                "q2": "¿Puede usted y/o Impulse transferir este Contrato?",
+                "a2": "Usted no puede transferir ni asignar este Contrato, su cuenta, los Servicios sin el consentimiento previo por escrito de Impulse. Impulse puede transferir o asignar todo o parte de este Contrato en cualquier momento sin previo aviso o consentimiento.",
+                "q3": "¿Qué sucede si partes de este Contrato se vuelven inaplicables o Impulse no hace valer un derecho?",
+                "a3": "Si alguna parte de este Contrato se vuelve obsoleta, prohibida o inaplicable, los términos restantes seguirán aplicándose. Incluso si Impulse decide no hacer valer alguna parte de este Contrato durante algún período de tiempo, el término aún sigue siendo válido y Impulse puede hacerlo valer en el futuro."
+            }
+        }
+    },
+    "cookieBanner": {
+        "title": "Valoramos tu Privacidad",
+        "description": "Utilizamos cookies para mejorar tu experiencia de navegación, personalizar contenido y analizar nuestro tráfico. Al hacer clic en 'Aceptar Todo', consientes el uso de todas las cookies.",
+        "accept": "Aceptar Todo",
+        "reject": "Rechazar Todo",
+        "learnMore": "Más información en nuestra",
+        "privacyPolicy": "Política de Privacidad"
+    }
 }

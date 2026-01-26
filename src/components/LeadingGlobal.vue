@@ -1,5 +1,5 @@
 <template>
-    <section class="relative -mt-18 md:-mt-22 lg:-mt-22 xl:-mt-32 z-50 px-2 md:px-2 lg:px-2 bg-contain bg-center bg-no-repeat" :style="{ backgroundImage: `url(${rectangleImg})` }" data-header-color="black" data-header-bg="white">
+    <section class="leading-global-section relative z-50 px-2 md:px-2 lg:px-2 bg-contain bg-center bg-no-repeat" :style="{ backgroundImage: `url(${rectangleImg})` }" data-header-color="black" data-header-bg="white">
         <!-- Versión móvil -->
         <div
             class="flex justify-center text-[#3D0075] font-bold text-2xl md:text-3xl xl:text-5xl py-14  mx-auto text-center xl:hidden">
@@ -50,3 +50,41 @@ const benifits = computed(() => [{
     img: benifit3
 }])
 </script>
+
+<style scoped>
+/* Margen negativo por defecto - pantallas con altura suficiente */
+.leading-global-section {
+    margin-top: -4.5rem; /* -mt-18 */
+}
+
+@media (min-width: 768px) {
+    .leading-global-section {
+        margin-top: -5.5rem; /* -mt-22 */
+    }
+}
+
+@media (min-width: 1280px) {
+    .leading-global-section {
+        margin-top: -8rem; /* -mt-32 */
+    }
+}
+
+/* Reducir margen negativo en pantallas con poca altura */
+@media (max-height: 750px) {
+    .leading-global-section {
+        margin-top: -3rem;
+    }
+}
+
+@media (max-height: 650px) {
+    .leading-global-section {
+        margin-top: -2rem;
+    }
+}
+
+@media (max-height: 550px) {
+    .leading-global-section {
+        margin-top: -1rem;
+    }
+}
+</style>

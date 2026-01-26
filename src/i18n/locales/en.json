@@ -536,9 +536,17 @@
             "newsletters-4":"Type your Email",
             "newsletters-5":"Submit",
             "newsletters-6":"I don’t want the most recent Telco Information",
-            "banner-1":"By clicking “Accept All”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.",
+            "banner-1":"By clicking \"Accept All\", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.",
             "banner-2":"ACCEPT ALL",
             "banner-3":"REJECT ALL",
+            "cookieBanner": {
+                "title": "We Value Your Privacy",
+                "description": "We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking \"Accept All\", you consent to our use of cookies.",
+                "accept": "Accept All",
+                "reject": "Reject All",
+                "learnMore": "Learn more in our",
+                "privacyPolicy": "Privacy Policy"
+            },
             "footer-1":"Copyright © 2023 Impulse. All rights reserved.",
             "footer-2":"Privacy Policy",
             "footer-3":"Terms",
@@ -592,5 +600,84 @@
                 "title": "The Impulse Blog",
                 "description": "AI. Telecom. Growth. Discover how data, automation, and intelligence are redefining the customer experience - only on The Impulse Blog.",
                 "viewAll": "View All Posts"
-              }
+              },
+    "privacyPage": {
+        "badge": "Legal Document",
+        "title": "Privacy Policy",
+        "subtitle": "We are committed to protecting your personal data and being transparent about how we use it.",
+        "lastUpdated": "Last updated: July 2023",
+        "readTime": "10 min read",
+        "contents": "Contents",
+        "questions": "Questions?",
+        "contactPrivacy": "Contact our Privacy Officer",
+        "aboutTitle": "About Impulse",
+        "aboutText": "Impulse Limited (\"Impulse\") is a global company with its headquarters in Grand Cayman that develops, implements, and supports proprietary customer care and solutions for service providers within telecommunications sectors in 40+ countries.",
+        "aboutNote": "Impulse is fully committed to ensuring the proper management and use of all personal data it collects and handles it in compliance with applicable privacy laws, including GDPR, UK DPA, and the EU-U.S. Data Privacy Framework.",
+        "contactTitle": "Contact the Privacy Officer",
+        "contactSubtitle": "For any questions about this policy or to exercise your rights",
+        "sendEmail": "Send Email",
+        "alsoRead": "Also read",
+        "termsConditions": "Terms & Conditions"
+    },
+    "termsPage": {
+        "badge": "Legal Document",
+        "title": "Terms of Service",
+        "subtitle": "Please read these terms carefully before using our services.",
+        "lastUpdated": "Last updated: July 2023",
+        "readTime": "8 min read",
+        "contents": "Contents",
+        "questions": "Questions?",
+        "contactSupport": "Contact our Support Team",
+        "introTitle": "Terms of Service",
+        "introText": "These Terms of Service (or \"TOS\") are part of the Contract between you and Impulse.",
+        "introNote": "These TOS incorporate any additional terms contained in any paper or online order form for any Service(s), as well as any brochure, user guides, and any other materials incorporated by reference.",
+        "contactTitle": "Contact Us",
+        "contactSubtitle": "Get in touch with our team",
+        "sendEmail": "Send Email",
+        "alsoRead": "Also read",
+        "privacyPolicy": "Privacy Policy",
+        "sections": {
+            "acceptance": {
+                "title": "Acceptance, Commencement & Changes",
+                "q1": "How do I accept the Contract with Impulse and when does the Contract commence?",
+                "a1": "The Contract commences and becomes effective once both parties have signed the contract. By accepting the Contract, you are also agreeing to the terms and conditions contained in any Orders/Materials. Your continued use of a Service will be your acceptance of such terms and conditions and these TOS.",
+                "q2": "Who can make changes to the Contract and how?",
+                "a2": "Only Impulse can make changes to the Contract. Impulse may change the Contract after any Fixed Service Period by giving you at least 30 days advance notice of the change via mail, fax, e-mail or made available electronically. You will be bound by revised versions of this Contract that we send to you. Your continued use of a Service will be your acceptance of such change(s).",
+                "q3": "How long is my Contract with Impulse? How does it renew?",
+                "a3": "The term of any Service will begin on the Commencement Date, and will expire at the end of the Fixed Service Period. Upon expiration of an Initial Service Period, the Service will continue on a Month-to-Month Service Period at Impulse then-applicable rates unless you cancel the applicable Service or unless Impulse or you terminate this Contract.",
+                "q4": "How does the Contract or any Service get terminated?",
+                "a4": "You can terminate the Contract by e-mailing support@impulse.ky",
+                "highlightTitle": "Early Termination Fees",
+                "highlightText": "You must pay an early termination fee for any Service(s) you terminate prior to the end of any Fixed Service Period. The fees are equal to 50% of the total monthly charges for each early terminated Service, multiplied by the number of months left in the Fixed Service Period."
+            },
+            "fees": {
+                "title": "Fees, Payments & Penalties",
+                "q1": "How does Impulse invoice me? When are payments due?",
+                "a1": "You must pay all amounts due by the due date stated on the invoice (\"Due Date\")."
+            },
+            "requirements": {
+                "title": "Requirements",
+                "q1": "Can Impulse require a credit check, credit reference or a security deposit?",
+                "a1": "Yes. Impulse may require a credit check, credit references and/or a security deposit prior to project kick off. You agree that Impulse is permitted to use your personally identifiable information in connection with such credit checks and references."
+            },
+            "indemnification": {
+                "title": "Indemnification",
+                "q1": "Under what circumstances do I have to make Impulse whole?",
+                "a1": "You agree to indemnify, defend and hold harmless Impulse from any and all claims, demands, actions, costs, expenses, damages and liabilities (including reasonable legal fees and expenses) that arise in any way from your use and/or receipt of the Services and/or Equipment, including but not limited to claims of slander and intellectual property infringement. Your obligation extends to Impulse and its affiliated companies, and their shareholders, directors, officers, employees, agents, and contractors."
+            },
+            "liability": {
+                "title": "Impulse's Liability",
+                "text": "Impulse is not responsible for any damages suffered in connection with this Contract, including damages that are direct, indirect, consequential, incidental, economic, exemplary or punitive. These include, but aren't limited to, damages such as loss of business opportunity or loss of data. Impulse is not responsible for any failure of the Service(s) or Equipment due to any cause beyond its reasonable control (e.g. acts of war, terrorism, civil unrest, sabotage, labour difficulties, natural disasters, power outage, flood, embargo, unavoidable catastrophe, explosion, act or omission of a governmental authority, or act or omissions of a service provider)."
+            },
+            "general": {
+                "title": "General",
+                "q1": "What laws apply to the Contract?",
+                "a1": "The laws of the Cayman Islands govern.",
+                "q2": "Can you and/or Impulse transfer this Contract?",
+                "a2": "You may not transfer or assign this Contract, your account, the Services without Impulse's prior written consent. Impulse may transfer or assign all or part of this Contract at any time without notice or consent.",
+                "q3": "What if parts of this Contract become unenforceable or Impulse does not enforce a right?",
+                "a3": "If any part of this Contract becomes outdated, prohibited or unenforceable, the remaining terms will continue to apply. Even if Impulse decides not to enforce any part of this Contract for any period of time, the term still remains valid and Impulse can enforce it in the future."
+            }
+        }
+    }
 }

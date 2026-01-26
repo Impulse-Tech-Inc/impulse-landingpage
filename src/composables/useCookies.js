@@ -5,12 +5,8 @@ const allowCookies = ref();
 
 export default function useCookies(gtag) {
   const cookie = useCookie();
-  if (cookie.isCookieAvailable('cookies_consent')) { 
-    allowCookies.value = cookie.getCookie('cookies_consent') === 'true';
-    gtag.optIn();
-  } else {
-    allowCookies.value = undefined;
-  }
+  // Always show banner on page load
+  allowCookies.value = undefined;
 
   watch(allowCookies, () => {
     if (allowCookies.value != undefined) {

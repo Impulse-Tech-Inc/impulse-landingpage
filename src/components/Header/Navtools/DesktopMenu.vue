@@ -146,7 +146,7 @@ export default {
     > li {
       @apply inline-block relative;
       > .menu-link {
-        @apply relative flex capitalize items-start text-sm font-medium leading-6 text-slate-600 dark:text-slate-300 2xl:px-6 xl:px-5 py-6 transition-all duration-150;
+        @apply relative flex capitalize items-start text-sm font-medium leading-6 text-slate-600 dark:text-slate-300 2xl:px-6 xl:px-5 lg:px-3 py-6 transition-all duration-150;
         .icon-box {
           @apply text-slate-600 dark:text-slate-300 transition-all duration-150 text-lg;
         }

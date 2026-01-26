@@ -54,16 +54,35 @@
       </div>
   
     </div>
-    <!-- end page content --> 
-    
-      <!-- <div v-if="showBanner" :class="['banner','space-y-3', bannerClasses]">
-        <p class="flex-col">{{ $t('banner-1') }}
-        </p>
-        <div class="flex-col space-x-4 items-center">
-          <button @click="okBannerClicked" class="btn-success p-2">{{ $t('banner-2') }}</button>
-        <button @click="cancelBannerClicked" class="btn-warning p-2">{{ $t('banner-3') }}</button>
+    <!-- end page content -->
+
+    <!-- Cookie Banner - COMENTADO TEMPORALMENTE
+    <Transition name="cookie-slide">
+      <div v-if="showBanner" class="cookie-banner-wrapper">
+        <div class="cookie-overlay" @click="cancelBannerClicked"></div>
+        <div class="cookie-banner-content">
+          <div class="max-w-4xl mx-auto px-6 h-full flex flex-col justify-center items-center text-center gap-3">
+            <h3 class="text-base font-semibold text-gray-800">{{ $t('cookieBanner.title') }}</h3>
+            <p class="text-gray-600 text-xs leading-relaxed max-w-2xl">
+              {{ $t('cookieBanner.description') }}
+              <router-link to="/impulse-privacy" class="text-blue-600 hover:text-blue-700 hover:underline ml-1">
+                {{ $t('cookieBanner.privacyPolicy') }}
+              </router-link>
+            </p>
+            <div class="flex items-center gap-3">
+              <button @click="cancelBannerClicked" class="px-5 py-2 text-xs font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 hover:border-gray-400 transition-all">
+                {{ $t('cookieBanner.reject') }}
+              </button>
+              <button @click="okBannerClicked" class="px-5 py-2 text-xs font-medium text-white bg-[#2563eb] rounded-lg hover:bg-[#1d4ed8] transition-all">
+                {{ $t('cookieBanner.accept') }}
+              </button>
+            </div>
+          </div>
         </div>
-      </div>  -->
+      </div>
+    </Transition>
+    -->
+
     <Footer 
     />
   </main>
@@ -189,5 +208,59 @@ export default {
   text-align: center;
   border-radius: 1rem;
   transition: all 0.2s ease-in-out;
+}
+
+/* Cookie Banner Styles */
+.cookie-banner-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.cookie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+}
+
+.cookie-banner-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: white;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Cookie Banner Animations */
+.cookie-slide-enter-active,
+.cookie-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.cookie-slide-enter-active .cookie-overlay,
+.cookie-slide-leave-active .cookie-overlay {
+  transition: opacity 0.3s ease;
+}
+
+.cookie-slide-enter-active .cookie-banner-content,
+.cookie-slide-leave-active .cookie-banner-content {
+  transition: transform 0.3s ease;
+}
+
+.cookie-slide-enter-from .cookie-overlay,
+.cookie-slide-leave-to .cookie-overlay {
+  opacity: 0;
+}
+
+.cookie-slide-enter-from .cookie-banner-content,
+.cookie-slide-leave-to .cookie-banner-content {
+  transform: translateY(100%);
 }
 </style>

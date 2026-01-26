@@ -2,8 +2,7 @@
   <div class="w-full flex justify-center md:justify-end">
     <div class="w-full">
       <div
-        class="sl-embed"
-        style="position:relative;padding-bottom:calc(64.18% + 25px);width:100%;height:0;transform:scale(1)"
+        class="sl-embed storylane-container"
       >
         <iframe
           loading="lazy"
@@ -34,3 +33,32 @@ onMounted(() => {
   document.body.appendChild(script)
 })
 </script>
+
+<style scoped>
+.storylane-container {
+  position: relative;
+  padding-bottom: calc(64.18% + 25px);
+  width: 100%;
+  height: 0;
+  transform: scale(1);
+}
+
+/* Reducir aspect ratio en pantallas con poca altura */
+@media (max-height: 750px) {
+  .storylane-container {
+    padding-bottom: calc(55% + 25px);
+  }
+}
+
+@media (max-height: 650px) {
+  .storylane-container {
+    padding-bottom: calc(50% + 20px);
+  }
+}
+
+@media (max-height: 550px) {
+  .storylane-container {
+    padding-bottom: calc(45% + 15px);
+  }
+}
+</style>

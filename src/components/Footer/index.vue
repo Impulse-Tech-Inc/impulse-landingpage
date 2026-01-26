@@ -15,27 +15,19 @@
         <p class="text-white/90 text-xs text-center">
           Copyright © 2025 Impulse. All rights reserved.
         </p>
-        <a
-          href="https://www.linkedin.com/company/impulseltd/"
-          target="_blank"
-          class="linkedin-btn w-7 h-7 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300 bg-white"
-          aria-label="LinkedIn"
-        >
-          <img :src="linkedinIcon" alt="LinkedIn" class="w-3.5 h-3.5" />
-        </a>
       </div>
 
       <!-- Enlaces en grid -->
-      <div class="grid grid-cols-3 gap-4 text-center">
+      <div class="grid grid-cols-3 gap-4 text-center mb-6">
         <!-- Legal -->
         <div class="flex flex-col space-y-2">
           <h4 class="text-white font-semibold text-sm">Legal</h4>
-          <a href="/impulse-privacy" target="_blank" class="text-white/80 hover:text-white text-xs transition-colors">
+          <router-link to="/impulse-privacy" class="text-white/80 hover:text-white text-xs transition-colors">
             Privacy Policy
-          </a>
-          <a href="/impulse-terms" target="_blank" class="text-white/80 hover:text-white text-xs transition-colors">
+          </router-link>
+          <router-link to="/impulse-terms" class="text-white/80 hover:text-white text-xs transition-colors">
             Terms
-          </a>
+          </router-link>
         </div>
 
         <!-- Resources -->
@@ -52,13 +44,26 @@
         <!-- About Company -->
         <div class="flex flex-col space-y-2">
           <h4 class="text-white font-semibold text-sm">About</h4>
-          <a href="/aboutus" class="text-white/80 hover:text-white text-xs transition-colors">
+          <router-link to="/aboutus" class="text-white/80 hover:text-white text-xs transition-colors">
             About Us
-          </a>
-          <a href="/contactus" class="text-white/80 hover:text-white text-xs transition-colors">
+          </router-link>
+          <router-link to="/contactus" class="text-white/80 hover:text-white text-xs transition-colors">
             Contact Us
-          </a>
+          </router-link>
         </div>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="flex justify-center">
+        <a
+          href="https://www.linkedin.com/company/impulseltd/"
+          target="_blank"
+          class="w-9 h-9 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
+          style="background-color: rgba(0, 188, 212, 1);"
+          aria-label="LinkedIn"
+        >
+          <img :src="linkedinIcon" alt="LinkedIn" class="w-4 h-4 linkedin-white" />
+        </a>
       </div>
     </div>
 
@@ -66,18 +71,21 @@
     <div class="hidden md:block min-h-[200px]">
       <!-- Logo, Copyright y LinkedIn - posicionado sobre el área azul -->
       <div class="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start space-y-3 max-w-[280px]">
-        <img :src="impulseLogo" alt="impulse logo" class="w-32" />
+        <div class="flex items-center gap-1.5">
+          <img :src="impulseLogo" alt="impulse logo" class="w-32" />
+          <a
+            href="https://www.linkedin.com/company/impulseltd/"
+            target="_blank"
+            class="w-6 h-6 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
+            style="background-color: rgba(0, 188, 212, 1);"
+            aria-label="LinkedIn"
+          >
+            <img :src="linkedinIcon" alt="LinkedIn" class="w-3 h-3 linkedin-white" />
+          </a>
+        </div>
         <p class="text-white/90 text-xs">
           Copyright © 2025 Impulse. All rights reserved.
         </p>
-        <a
-          href="https://www.linkedin.com/company/impulseltd/"
-          target="_blank"
-          class="linkedin-btn w-7 h-7 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300 bg-white"
-          aria-label="LinkedIn"
-        >
-          <img :src="linkedinIcon" alt="LinkedIn" class="w-3.5 h-3.5" />
-        </a>
       </div>
 
       <!-- Contenido derecho -->
@@ -86,12 +94,12 @@
           <!-- Legal -->
           <div class="flex flex-col space-y-3">
             <h4 class="text-white font-semibold text-base">Legal</h4>
-            <a href="/impulse-privacy" target="_blank" class="text-white/80 hover:text-white text-sm transition-colors">
+            <router-link to="/impulse-privacy" class="text-white/80 hover:text-white text-sm transition-colors">
               Privacy Policy
-            </a>
-            <a href="/impulse-terms" target="_blank" class="text-white/80 hover:text-white text-sm transition-colors">
+            </router-link>
+            <router-link to="/impulse-terms" class="text-white/80 hover:text-white text-sm transition-colors">
               Terms
-            </a>
+            </router-link>
           </div>
 
           <!-- Resources -->
@@ -108,12 +116,12 @@
           <!-- About Company -->
           <div class="flex flex-col space-y-3">
             <h4 class="text-white font-semibold text-base">About Company</h4>
-            <a href="/aboutus" class="text-white/80 hover:text-white text-sm transition-colors">
+            <router-link to="/aboutus" class="text-white/80 hover:text-white text-sm transition-colors">
               About Us
-            </a>
-            <a href="/contactus" class="text-white/80 hover:text-white text-sm transition-colors">
+            </router-link>
+            <router-link to="/contactus" class="text-white/80 hover:text-white text-sm transition-colors">
               Contact Us
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -139,8 +147,8 @@ export default {
 </script>
 
 <style scoped>
-/* Cambiar el icono de LinkedIn de blanco a azul LinkedIn */
-.linkedin-btn img {
-  filter: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(1500%) hue-rotate(190deg) brightness(95%) contrast(95%);
+/* Icono de LinkedIn blanco */
+.linkedin-white {
+  filter: brightness(0) invert(1);
 }
 </style>

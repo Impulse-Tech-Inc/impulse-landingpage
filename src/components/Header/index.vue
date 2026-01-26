@@ -47,14 +47,14 @@
           <MobileLogo v-else :isTransparent="shouldBeTransparent" />
         </div>
         <Mainnav
-          class="xl:ml-auto lg:ml-0 lg:flex md:hidden hidden"
+          class="flex-1 lg:flex hidden justify-end"
           :class="shouldBeTransparent ? 'text-white' : ''"
           v-if="
-            this.$store.themeSettingsStore.menuLayout === 'horizontal' && window.width > 1024
+            this.$store.themeSettingsStore.menuLayout === 'horizontal' && window.width >= 1024
           "
         />
-        <LanguageVue class="pr-3 pl-2 hidden lg:block" />
-        <div v-if="window.width > 1024">
+        <div class="hidden lg:flex items-center gap-4">
+          <LanguageVue />
           <Button
             :text="$t('indexContactUs')"
             :btnClass="shouldBeTransparent ? 'btn-outline-white' : 'btn-primary'"
@@ -63,11 +63,11 @@
           />
         </div>
         <div
-          class="nav-tools flex items-center lg:space-x-6 space-x-3 rtl:space-x-reverse"
+          class="nav-tools flex items-center space-x-3 rtl:space-x-reverse lg:hidden"
         >
-          <LanguageVue class="lg:hidden" />
+          <LanguageVue />
           <handle-mobile-menu
-            v-if="window.width <= 1024"
+            v-if="window.width < 1024"
             :class="shouldBeTransparent ? 'text-white' : ''"
           />
         </div>
