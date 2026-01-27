@@ -35,6 +35,7 @@
           </form>
           <div class="flex flex-col space-y-4 h-full">
             <div class="flex gap-6 xl:gap-10 flex-wrap">
+              <!-- Email comentado
               <div class="flex flex-col">
                 <div class="flex items-center gap-x-1">
                   <img src="../assets/images/email-icon.svg" class="h-4 xl:h-6" alt="">
@@ -42,6 +43,7 @@
                 </div>
                 <span class="text-[#3D0075] text-base xl:text-lg">bmolina@impulse.ky</span>
               </div>
+              -->
               <div class="flex flex-col">
                 <div class="flex items-center gap-x-1">
                   <img src="../assets/images/office1-icon.svg" class="h-4 xl:h-6" alt="">
