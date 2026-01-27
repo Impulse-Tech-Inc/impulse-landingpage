@@ -69,20 +69,9 @@
 
     <!-- Layout desktop -->
     <div class="hidden md:block min-h-[200px]">
-      <!-- Logo, Copyright y LinkedIn - posicionado sobre el área azul -->
+      <!-- Logo y Copyright - posicionado sobre el área azul -->
       <div class="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start space-y-3 max-w-[280px]">
-        <div class="flex items-center gap-1.5">
-          <img :src="impulseLogo" alt="impulse logo" class="w-32" />
-          <a
-            href="https://www.linkedin.com/company/impulseltd/"
-            target="_blank"
-            class="w-6 h-6 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-            style="background-color: rgba(0, 188, 212, 1);"
-            aria-label="LinkedIn"
-          >
-            <img :src="linkedinIcon" alt="LinkedIn" class="w-3 h-3 linkedin-white" />
-          </a>
-        </div>
+        <img :src="impulseLogo" alt="impulse logo" class="w-32" />
         <p class="text-white/90 text-xs">
           Copyright © 2025 Impulse. All rights reserved.
         </p>
@@ -122,6 +111,20 @@
             <router-link to="/contactus" class="text-white/80 hover:text-white text-sm transition-colors">
               Contact Us
             </router-link>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="flex flex-col space-y-3">
+            <h4 class="text-white font-semibold text-base">Follow Us</h4>
+            <a
+              href="https://www.linkedin.com/company/impulseltd/"
+              target="_blank"
+              class="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
+              style="background-color: rgba(0, 188, 212, 1);"
+              aria-label="LinkedIn"
+            >
+              <img :src="linkedinIcon" alt="LinkedIn" class="w-4 h-4 linkedin-white" />
+            </a>
           </div>
         </div>
       </div>
