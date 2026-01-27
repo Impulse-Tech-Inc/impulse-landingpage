@@ -54,7 +54,7 @@ const teams = computed(() => [{
     linkedin: `https://www.linkedin.com/in/robmcnabb/`
 }, {
     name: 'Tim Bergmann',
-    position: t('aboutUsExecutiveTeamCOFounderTitle'),
+    position: t('aboutUsExecutiveTeamCOFounderOnlyTitle'),
     description: t('aboutUsExecutiveTeamTimDescription'),
     img: Tim,
     linkedin: `https://www.linkedin.com/in/tim-bergmann-9a528b12b/`
