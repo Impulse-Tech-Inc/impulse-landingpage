@@ -15,7 +15,7 @@
                     <div class="flex justify-center md:justify-start">
 
                         <ButtonProgress :isAnchor="true"
-                            :href="`https://meetings.hubspot.com/brian-molina/impulse-introduction`"
+                            :href="`https://crm.impulse.ky/book/brian-molina/discovery-call-impulse-platform-overview`"
                             :target="'_blank'"
                             :class="'normal-case px-4 md:px-5 py-2 text-sm md:text-base bg-[#7F39E9] before:bg-[#662ebb] text-white !border-none'">
                             {{ $t('bookDemo') }}

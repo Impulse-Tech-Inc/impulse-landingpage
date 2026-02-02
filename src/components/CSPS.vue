@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="flex justify-center py-10">
-            <a href="https://meetings.hubspot.com/brian-molina/impulse-introduction" target="_blank" class="text-white hover:text-white/80 font-bold text-base md:text-lg xl:text-2xl cursor-pointer
+            <a href="https://crm.impulse.ky/book/brian-molina/discovery-call-impulse-platform-overview" target="_blank" class="text-white hover:text-white/80 font-bold text-base md:text-lg xl:text-2xl cursor-pointer
                 font-Monda mt-5">{{ $t('cspsDetails') }} ></a>
         </div>
     </section>
