@@ -4,10 +4,7 @@
       <template v-slot:videol>
         <div class="absolute top-0 bottom-0 w-full">
           <div class="video-container">
-            <!-- Video only on desktop (hidden on mobile for performance) -->
-            <video ref="videoRef" class="videoStyle hidden md:block" :src="isDesktop ? videoSrc : ''" :poster="videoPoster" autoplay muted loop playsinline preload="metadata"></video>
-            <!-- Static image on mobile -->
-            <img :src="videoPoster" alt="Impulse" class="videoStyle block md:hidden object-cover" />
+            <video ref="videoRef" class="videoStyle" :src="videoSrc" :poster="videoPoster" autoplay muted loop playsinline preload="metadata"></video>
           </div>
         </div>
       </template>
@@ -68,9 +65,6 @@ export default {
     }
   },
   computed: {
-    isDesktop() {
-      return this.window.width >= 768;
-    },
     servicesCards() {
       return [
         {
