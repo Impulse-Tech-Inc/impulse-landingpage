@@ -52,17 +52,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-vue': ['vue', 'vue-router', 'pinia'],
-          'vendor-ui': ['swiper', '@headlessui/vue', 'vue-toastification'],
-          'vendor-forms': ['vee-validate', 'yup', 'vue-tel-input'],
-          'vendor-utils': ['axios', 'dayjs', 'gsap'],
-        }
-      }
-    },
-    chunkSizeWarningLimit: 500,
-  }
 });
