@@ -109,10 +109,10 @@ import carousel1Img from "../assets/images/design1.webp";
 import carousel2Img from "../assets/images/design2.webp";
 import carousel3Img from "../assets/images/design3.webp";
 import carousel4Img from "../assets/images/design4.webp";
-import carousel1Imgfull from "../assets/images/design1full.png";
-import carousel2Imgfull from "../assets/images/design2full.png";
-import carousel3Imgfull from "../assets/images/design3full.png";
-import carousel4Imgfull from "../assets/images/design4full.jpg";
+import carousel1Imgfull from "../assets/images/design1full.webp";
+import carousel2Imgfull from "../assets/images/design2full.webp";
+import carousel3Imgfull from "../assets/images/design3full.webp";
+import carousel4Imgfull from "../assets/images/design4full.webp";
 import useIntersectionObserver from '@/composables/useIntersectionObserver';
 
 export default {
