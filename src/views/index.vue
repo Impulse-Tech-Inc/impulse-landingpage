@@ -4,7 +4,7 @@
       <template v-slot:videol>
         <div class="absolute top-0 bottom-0 w-full">
           <div class="video-container">
-            <video ref="videoRef" class="videoStyle" :src="videoSrc" autoplay muted loop></video>
+            <video ref="videoRef" class="videoStyle" :src="videoSrc" :poster="videoPoster" autoplay muted loop playsinline preload="metadata"></video>
           </div>
         </div>
       </template>
@@ -28,6 +28,7 @@ import bpo from "@/assets/images/ads.png"
 import whoarewe from "@/assets/images/whoarewe.webp"
 import consult from "@/assets/images/svgs/consult.svg"
 import videoSrc from "@/assets/images/Video.mp4"
+import videoPoster from "@/assets/images/video-poster.webp"
 import Button from "@/components/Button";
 import Card from "@/components/Card"
 import CardCustomAll from "@/components/CardCustomAll.vue"
@@ -60,7 +61,7 @@ export default {
   },
   data() {
     return {
-      img, bi, dev, bpo, consult, whoarewe, videoSrc
+      img, bi, dev, bpo, consult, whoarewe, videoSrc, videoPoster
     }
   },
   computed: {
