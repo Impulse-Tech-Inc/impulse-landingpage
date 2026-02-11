@@ -7,7 +7,7 @@
                 }}</span>
                 <div class="grid xl:grid-cols-2 mt-10 pb-8 md:pb-0 md:mt-16 gap-5">
                     <article
-                        class="bg-[#F6F6F6] shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden md:h-[240px]"
+                        class="bg-[#F6F6F6] shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden"
                         v-for="(team, i) in teams" :key="i">
                         <div class="flex flex-col md:flex-row h-full">
                             <img :src="team.img" alt="" class="w-full md:w-56 lg:w-64 h-48 md:h-full rounded-t-xl md:rounded-l-xl md:rounded-tr-none object-cover flex-shrink-0" />
