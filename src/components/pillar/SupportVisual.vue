@@ -19,6 +19,13 @@
             </defs>
           </svg>
 
+          <!-- Connection Lines -->
+          <div v-for="(node, i) in channelNodes" :key="'line-'+i" class="absolute connection-line" :style="getLineStyle(i, 3, 100)">
+            <div class="w-px h-full bg-gradient-to-b from-[#7F39E9]/30 to-transparent relative">
+              <div class="absolute w-1.5 h-1.5 rounded-full bg-[#7F39E9] -left-[2.5px] connection-pulse" :style="{ animationDelay: `${i * 0.8}s` }" />
+            </div>
+          </div>
+
           <!-- Central Core -->
           <div class="relative w-32 h-32 rounded-full flex flex-col items-center justify-center overflow-hidden animate-glow" style="background: linear-gradient(135deg, #a446f4, #4138f3)">
             <div class="absolute inset-0.5 rounded-full border border-white/20" />
@@ -96,6 +103,17 @@ export default {
       const x = Math.cos((angle * Math.PI) / 180) * radius
       const y = Math.sin((angle * Math.PI) / 180) * radius
       return { transform: `translate(${x}px, ${y}px)` }
+    },
+    getLineStyle(i, total, radius) {
+      const angle = (i * (360 / total)) - 90
+      return {
+        height: `${radius}px`,
+        transformOrigin: 'top center',
+        transform: `rotate(${angle + 90}deg)`,
+        top: '50%',
+        left: '50%',
+        marginLeft: '-0.5px'
+      }
     }
   }
 }
@@ -111,5 +129,19 @@ export default {
 @keyframes glow {
   0%, 100% { box-shadow: 0 0 30px rgba(127,57,233,0.3); }
   50% { box-shadow: 0 0 60px rgba(127,57,233,0.5), 0 0 100px rgba(127,57,233,0.15); }
+}
+
+.connection-line {
+  position: absolute;
+  pointer-events: none;
+}
+
+.connection-pulse {
+  animation: connPulse 2s ease-in-out infinite;
+}
+
+@keyframes connPulse {
+  0% { top: 0%; opacity: 1; }
+  100% { top: 85%; opacity: 0; }
 }
 </style>

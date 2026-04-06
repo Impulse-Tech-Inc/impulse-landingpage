@@ -20,7 +20,7 @@
         <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1.5">
           <div class="flex justify-between text-[7px] font-black text-slate-400 uppercase tracking-widest">Data Usage <span class="text-slate-900">420GB / 1TB</span></div>
           <div class="h-1 w-full bg-slate-200 rounded-full overflow-hidden">
-            <div class="h-full bg-[#7F39E9] w-[42%]" />
+            <div class="h-full bg-[#7F39E9] crm-bar-fill" />
           </div>
           <div class="flex justify-between text-[6px] font-bold text-slate-500">Signal Strength <span class="text-teal-500">-62 dBm</span></div>
         </div>
@@ -50,3 +50,14 @@
 import Icon from "@/components/Icon"
 export default { components: { Icon } }
 </script>
+
+<style scoped>
+.crm-bar-fill {
+  animation: barGrow 1.5s ease-out forwards;
+  width: 0;
+}
+@keyframes barGrow {
+  from { width: 0; }
+  to { width: 42%; }
+}
+</style>

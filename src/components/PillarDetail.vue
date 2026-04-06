@@ -183,6 +183,22 @@
           </div>
         </div>
 
+        <!-- BRIDGE TO ENGAGE -->
+        <div v-reveal class="p-1 rounded-[3rem]" style="background: linear-gradient(90deg, #a446f4, #4138f3)">
+          <div class="rounded-[2.9rem] p-12 md:p-20 relative overflow-hidden" style="background: linear-gradient(224.95deg, #1a0a2e, #0f0720)">
+            <div class="relative z-10 flex flex-col items-center text-center space-y-10 max-w-4xl mx-auto">
+              <h3 class="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-tight">
+                {{ $t('pillarNetworkBridge1') }}<br />
+                <span style="background: linear-gradient(90deg, #a446f4, #4138f3); -webkit-background-clip: text; -webkit-text-fill-color: transparent">{{ $t('pillarNetworkBridge2') }}</span>
+              </h3>
+              <p class="text-lg text-white/40 font-light leading-relaxed">{{ $t('pillarNetworkBridgeDesc') }}</p>
+              <button class="px-10 py-5 bg-white rounded-xl text-slate-900 text-sm font-black uppercase tracking-widest hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] transition-all" @click="$emit('navigate', 'crm')">
+                {{ $t('pillarNetworkBridgeBtn') }}
+              </button>
+            </div>
+          </div>
+        </div>
+
         <!-- SECTION 5: CLOSING CTA -->
         <PillarCTA @request="$emit('back')" />
       </div>
@@ -570,13 +586,13 @@
                 <div class="text-[10px] font-black uppercase tracking-widest text-slate-400">Live Session · ID: 8821-X</div>
               </div>
               <!-- Customer Message -->
-              <div class="flex justify-end">
+              <div class="flex justify-end animate-fade-up" style="opacity: 0; animation-delay: 0.5s; animation-fill-mode: forwards">
                 <div class="max-w-[80%] p-5 bg-slate-200 rounded-2xl rounded-tr-none text-slate-900 font-medium text-sm">
                   {{ $t('pillarSupportCopilotCustomer') }}
                 </div>
               </div>
               <!-- AI Suggestion -->
-              <div class="flex justify-start">
+              <div class="flex justify-start animate-fade-up" style="opacity: 0; animation-delay: 1.5s; animation-fill-mode: forwards">
                 <div class="max-w-[85%] p-5 bg-[#7F39E9]/10 border border-[#7F39E9]/20 rounded-2xl rounded-tl-none space-y-3">
                   <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#7F39E9]">
                     <Icon icon="heroicons-outline:lightning-bolt" class="text-xs" /> AI Suggestion
@@ -588,7 +604,7 @@
                   </div>
                 </div>
               </div>
-              <div class="text-[10px] font-black uppercase tracking-widest text-rose-500">🛡️ {{ $t('pillarSupportCopilotRescue') }}</div>
+              <div class="text-[10px] font-black uppercase tracking-widest text-rose-500 animate-fade-up" style="opacity: 0; animation-delay: 2.5s; animation-fill-mode: forwards">🛡️ {{ $t('pillarSupportCopilotRescue') }}</div>
             </div>
 
             <!-- Right: Network Context Panel -->

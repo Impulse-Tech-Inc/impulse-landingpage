@@ -17,7 +17,10 @@
               class="h-full w-full object-cover"
             />
           </span>
-          <span class="text-sm font-semibold text-[#3D0075] dark:text-slate-300 uppercase">
+          <span
+            class="text-sm font-semibold uppercase transition-colors"
+            :class="isTransparent ? 'text-white' : 'text-[#3D0075] dark:text-slate-300'"
+          >
             {{ selectLanguage.name }}
           </span>
         </ListboxButton>
@@ -85,6 +88,13 @@ import {
   ListboxOption,
 } from "@headlessui/vue";
 import { useI18n } from 'vue-i18n'
+
+const props = defineProps({
+  isTransparent: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const { locale } = useI18n()
 
