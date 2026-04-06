@@ -152,32 +152,16 @@ export default {
 </script>
 <style lang="scss">
 .router-animation-enter-active {
-  animation: coming 0.2s;
-  animation-delay: 0.1s;
-  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 .router-animation-leave-active {
-  animation: going 0.2s;
+  transition: opacity 0.15s ease;
 }
-
-@keyframes going {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(0, 4%, 0) scale(0.93);
-    opacity: 0;
-  }
+.router-animation-enter-from {
+  opacity: 0;
 }
-@keyframes coming {
-  from {
-    transform: translate3d(0, 4%, 0) scale(0.93);
-    opacity: 0;
-  }
-  to {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-  }
+.router-animation-leave-to {
+  opacity: 0;
 }
 @keyframes slideLeftTransition {
   0% {
