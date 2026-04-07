@@ -92,12 +92,11 @@
           />
         </div>
         <button
-          class="relative group w-full sm:w-auto px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl hover:opacity-90 transition-all whitespace-nowrap overflow-hidden"
+          class="relative group w-full sm:w-auto px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl hover:opacity-90 transition-all whitespace-nowrap"
           style="box-shadow: 0 0 20px rgba(255,255,255,0.1)"
           @click="handleRequestAccess"
         >
-          <span class="relative z-10">{{ $t('heroRequestAccess') }}</span>
-          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent skew-x-12 hero-shimmer" />
+          {{ $t('heroRequestAccess') }}
         </button>
       </div>
 
