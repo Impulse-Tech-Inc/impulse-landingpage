@@ -1,11 +1,57 @@
 <template>
-  <section class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 bg-[#0a0418]">
+  <section class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 bg-[#030305]">
     <!-- Video Background (slot) -->
     <slot name="videol"></slot>
 
-    <!-- Overlay for dark effect on video -->
-    <div class="absolute inset-0 z-10 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+    <!-- Premium Atmospheric Background -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <!-- Deep Atmospheric Base -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#1a1a2e_0%,#030305_100%)]" />
+
+      <!-- Neural Core -->
+      <div class="absolute top-[-15%] left-1/2 -translate-x-1/2 w-full max-w-[1600px] aspect-square">
+        <!-- Primary Radiant Glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(127,57,233,0.08)_0%,transparent_70%)] hero-glow" />
+
+        <!-- Rotating Rings -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="relative w-[90%] h-[90%]">
+            <!-- Outer Ring -->
+            <div class="absolute inset-0 border border-white/[0.03] rounded-full hero-ring-outer" />
+            <!-- Middle Ring -->
+            <div class="absolute inset-[15%] border border-white/[0.05] rounded-full border-dashed hero-ring-middle" />
+            <!-- Inner Ring -->
+            <div class="absolute inset-[30%] border-2 border-[#7F39E9]/20 rounded-full hero-ring-inner" style="box-shadow: 0 0 30px rgba(127,57,233,0.1)" />
+
+            <!-- Orbital Data Nodes -->
+            <div v-for="n in 6" :key="'node-'+n" class="absolute inset-0 hero-orbit" :style="{ animationDuration: `${20 + n * 5}s` }">
+              <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#7F39E9] rounded-full hero-node-pulse"
+                :style="{ transform: `translateY(${15 + n * 5}%)`, animationDelay: `${n * 0.5}s`, boxShadow: '0 0 15px #7F39E9' }"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signal Beams -->
+      <div
+        v-for="n in 3"
+        :key="'beam-'+n"
+        class="absolute h-px bg-gradient-to-r from-transparent via-[#7F39E9]/30 to-transparent blur-[1px] z-10 hero-beam"
+        :style="{
+          left: `${20 + (n - 1) * 30}%`,
+          width: '40%',
+          animationDuration: `${3 + n}s`,
+          animationDelay: `${n}s`
+        }"
+      />
+
+      <!-- Grid Floor -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-1/2 opacity-[0.03]"
+        style="background-image: linear-gradient(to right, #7F39E9 1px, transparent 1px), linear-gradient(to bottom, #7F39E9 1px, transparent 1px); background-size: 120px 120px; transform: perspective(1000px) rotateX(75deg) scale(2.5); mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent)"
+      />
     </div>
 
     <!-- Content -->
@@ -26,7 +72,7 @@
 
       <!-- Subtitle -->
       <p
-        class="max-w-2xl mx-auto text-lg md:text-xl text-white/90 mb-12 font-medium leading-relaxed"
+        class="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-12 font-medium leading-relaxed"
         :class="{ 'animate-fade-up': mounted }"
       >
         {{ $t('subtitleLanding') }}
@@ -42,27 +88,29 @@
             v-model="email"
             type="email"
             :placeholder="$t('heroEmailPlaceholder')"
-            class="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white placeholder:text-white/60 shadow-sm backdrop-blur-md"
+            class="w-full px-6 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#7F39E9] transition-all text-white placeholder:text-white/30 shadow-2xl"
           />
         </div>
         <button
-          class="w-full sm:w-auto px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl hover:opacity-90 transition-all whitespace-nowrap shadow-xl"
+          class="relative group w-full sm:w-auto px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl hover:opacity-90 transition-all whitespace-nowrap overflow-hidden"
+          style="box-shadow: 0 0 20px rgba(255,255,255,0.1)"
           @click="handleRequestAccess"
         >
-          {{ $t('heroRequestAccess') }}
+          <span class="relative z-10">{{ $t('heroRequestAccess') }}</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent skew-x-12 hero-shimmer" />
         </button>
       </div>
 
       <!-- Compatible with -->
-      <div class="mt-16 pt-8 border-t border-white/10">
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-white/80 mb-6">
+      <div class="mt-16 pt-8 border-t border-white/5">
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-6">
           {{ $t('heroCompatible') }}
         </p>
         <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
           <span
             v-for="vendor in vendors"
             :key="vendor"
-            class="text-sm font-black tracking-tighter text-white hover:text-white transition-colors cursor-default"
+            class="text-sm font-black tracking-tighter text-white/70 hover:text-white transition-colors cursor-default"
           >
             {{ vendor }}
           </span>
@@ -70,14 +118,6 @@
       </div>
     </div>
 
-    <!-- Scroll Hint (comentado por ahora)
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-20">
-      <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">
-        {{ $t('heroScroll') }}
-      </span>
-      <div class="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
-    </div>
-    -->
   </section>
 </template>
 
@@ -128,20 +168,84 @@ onBeforeUnmount(() => {
 .animate-fade-up {
   animation: fadeUp 1s ease-out both;
 }
-
 .animate-fade-up:nth-child(1) { animation-delay: 0.2s; }
 .animate-fade-up:nth-child(2) { animation-delay: 0.3s; }
 .animate-fade-up:nth-child(3) { animation-delay: 0.4s; }
 .animate-fade-up:nth-child(4) { animation-delay: 0.5s; }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Neural Core Animations */
+.hero-glow {
+  animation: heroGlow 10s ease-in-out infinite;
+}
+@keyframes heroGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.hero-ring-outer {
+  animation: heroRingOuter 80s linear infinite;
+}
+@keyframes heroRingOuter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-ring-middle {
+  animation: heroRingMiddle 60s linear infinite;
+}
+@keyframes heroRingMiddle {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(-180deg) scale(0.95); }
+  100% { transform: rotate(-360deg) scale(1); }
+}
+
+.hero-ring-inner {
+  animation: heroRingInner 40s linear infinite;
+}
+@keyframes heroRingInner {
+  0% { transform: rotate(0deg); opacity: 0.05; }
+  50% { transform: rotate(180deg); opacity: 0.15; }
+  100% { transform: rotate(360deg); opacity: 0.05; }
+}
+
+.hero-orbit {
+  animation: heroOrbit linear infinite;
+}
+@keyframes heroOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-node-pulse {
+  animation: heroNodePulse 3s ease-in-out infinite;
+}
+@keyframes heroNodePulse {
+  0%, 100% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+/* Signal Beams */
+.hero-beam {
+  animation: heroBeam ease-in-out infinite;
+}
+@keyframes heroBeam {
+  0% { top: -10%; opacity: 0; }
+  30% { opacity: 0.4; }
+  70% { opacity: 0.4; }
+  100% { top: 110%; opacity: 0; }
+}
+
+/* Button Shimmer */
+.hero-shimmer {
+  animation: heroShimmer 3s linear infinite;
+}
+@keyframes heroShimmer {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(100%) skewX(-12deg); }
 }
 </style>
