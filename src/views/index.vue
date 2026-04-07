@@ -1,13 +1,13 @@
 <template>
   <div>
     <HomePage>
-      <template v-slot:videol>
+      <!-- <template v-slot:videol>
         <div class="absolute top-0 bottom-0 w-full">
           <div class="video-container">
             <video ref="videoRef" class="videoStyle" :src="videoSrc" :poster="videoPoster" autoplay muted loop playsinline preload="metadata"></video>
           </div>
         </div>
-      </template>
+      </template> -->
     </HomePage>
     <Solutions ref="solutions" @explore="handleExplore" />
     <!-- <LeadingGlobal/> -->
