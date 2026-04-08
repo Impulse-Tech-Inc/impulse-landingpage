@@ -42,12 +42,6 @@
             <p :class="['text-sm leading-relaxed', card.descriptionColor]">
               {{ card.description }}
             </p>
-            <a
-              :href="card.link"
-              :class="['mt-6 inline-flex items-center text-sm font-semibold transition-colors', card.linkColor, card.linkHoverColor]"
-            >
-              Learn more →
-            </a>
           </div>
 
           <div
@@ -68,12 +62,6 @@
             <p :class="['text-sm leading-relaxed', card.descriptionColor]">
               {{ card.description }}
             </p>
-            <a
-              :href="card.link"
-              :class="['mt-6 inline-flex items-center text-sm font-semibold transition-colors', card.linkColor, card.linkHoverColor]"
-            >
-              Learn more →
-            </a>
           </div>
         </div>
       </div>
