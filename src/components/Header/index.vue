@@ -122,7 +122,7 @@ export default {
       return this.$route.name === 'home' || this.$route.path === '/';
     },
     isDarkPage() {
-      const darkPages = ['home', 'aboutus', 'pillardetails', 'contactus'];
+      const darkPages = ['home', 'aboutus', 'pillardetails', 'contactus', 'impulseprivady', 'impulseterms', 'whatwedoservices', 'whatwedotelco', 'impulsebot', 'websitedevelopment', 'blog', 'product'];
       return darkPages.includes(this.$route.name);
     },
     shouldBeTransparent() {

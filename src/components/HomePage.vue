@@ -80,24 +80,33 @@
 
       <!-- Email + Request Access -->
       <div
-        class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto"
+        class="flex flex-col items-center justify-center gap-3 max-w-md mx-auto"
         :class="{ 'animate-fade-up': mounted }"
       >
-        <div class="relative w-full">
-          <input
-            v-model="email"
-            type="email"
-            :placeholder="$t('heroEmailPlaceholder')"
-            class="w-full px-6 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#7F39E9] transition-all text-white placeholder:text-white/30 shadow-2xl"
-          />
+        <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+          <div class="relative w-full">
+            <input
+              v-model="email"
+              type="email"
+              :placeholder="$t('heroEmailPlaceholder')"
+              class="w-full px-6 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#7F39E9] transition-all text-white placeholder:text-white/30 shadow-2xl"
+              :disabled="sending"
+            />
+          </div>
+          <button
+            class="relative group w-full sm:w-auto min-w-[180px] px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl transition-all whitespace-nowrap flex items-center justify-center gap-2"
+            :class="!isValidEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+            style="box-shadow: 0 0 20px rgba(255,255,255,0.1)"
+            :disabled="!isValidEmail || sending"
+            @click="handleRequestAccess"
+          >
+            <svg v-if="sending" class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" />
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            <span :class="sending ? 'invisible' : ''">{{ $t('heroRequestAccess') }}</span>
+          </button>
         </div>
-        <button
-          class="relative group w-full sm:w-auto px-8 py-4 bg-white text-gray-950 text-sm font-extrabold rounded-xl hover:opacity-90 transition-all whitespace-nowrap"
-          style="box-shadow: 0 0 20px rgba(255,255,255,0.1)"
-          @click="handleRequestAccess"
-        >
-          {{ $t('heroRequestAccess') }}
-        </button>
       </div>
 
       <!-- Compatible with -->
@@ -117,14 +126,22 @@
       </div>
     </div>
 
+    <ToastNotification
+      :visible="toast.visible"
+      :type="toast.type"
+      :title="toast.title"
+      :message="toast.message"
+      @close="toast.visible = false"
+    />
   </section>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ToastNotification from '@/components/ToastNotification.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const titleWords = computed(() => {
   const line1 = t('titleLanding').split(' ').map(w => ({ text: w }))
@@ -133,6 +150,7 @@ const titleWords = computed(() => {
 })
 
 const email = ref('')
+const isValidEmail = computed(() => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value))
 const mounted = ref(false)
 const contentOpacity = ref(1)
 const contentY = ref(0)
@@ -145,18 +163,48 @@ const handleScroll = () => {
   contentY.value = -(scrollY * 0.08)
 }
 
-const handleRequestAccess = () => {
-  if (email.value) {
-    globalThis.window.open(
-      `https://crm.impulse.ky/book/brian-molina/discovery-call-impulse-platform-overview?email=${encodeURIComponent(email.value)}`,
-      '_blank'
-    )
-  } else {
-    globalThis.window.open(
-      'https://crm.impulse.ky/book/brian-molina/discovery-call-impulse-platform-overview',
-      '_blank'
-    )
+const sending = ref(false)
+const toast = reactive({ visible: false, type: 'success', title: '', message: '' })
+
+const showToast = (type, title, message) => {
+  toast.visible = false
+  setTimeout(() => {
+    toast.type = type
+    toast.title = title
+    toast.message = message
+    toast.visible = true
+  }, 50)
+  setTimeout(() => { toast.visible = false }, 4000)
+}
+
+const handleRequestAccess = async () => {
+  if (!email.value) return
+
+  sending.value = true
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Guest (Request Access)',
+        email: email.value,
+        phone: `Language: ${locale.value}`,
+        message: `New Request Access from homepage.\nEmail: ${email.value}\nLanguage: ${locale.value}`,
+        pillar: 'General'
+      })
+    })
+    if (res.ok) {
+      showToast('success', t('heroRequestSentTitle') || 'Request Sent!', t('heroRequestSentMsg') || 'We will contact you soon.')
+      email.value = ''
+    } else {
+      showToast('error', t('heroRequestErrorTitle') || 'Error', t('heroRequestErrorMsg') || 'Something went wrong. Please try again.')
+    }
+  } catch {
+    showToast('error', t('heroRequestErrorTitle') || 'Error', t('heroRequestErrorMsg') || 'Something went wrong. Please try again.')
   }
+
+  sending.value = false
 }
 
 onMounted(() => {

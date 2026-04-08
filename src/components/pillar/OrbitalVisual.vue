@@ -6,7 +6,7 @@
     </div>
 
     <!-- Rotating Rings -->
-    <div v-for="i in 3" :key="'ring-'+i" class="absolute inset-0 border border-[#7F39E9]/20 rounded-full border-dashed" :class="i % 2 === 0 ? 'animate-spin-cw' : 'animate-spin-ccw'" :style="{ transform: `scale(${1 + i * 0.2})` }" />
+    <div v-for="i in 3" :key="'ring-'+i" class="absolute inset-0 border border-blue-500/20 rounded-full border-dashed" :class="i % 2 === 0 ? 'animate-spin-cw' : 'animate-spin-ccw'" :style="{ transform: `scale(${1 + i * 0.2})` }" />
 
     <!-- Signal Dots -->
     <div v-for="(brand, i) in vendors" :key="'signal-'+brand" class="absolute signal-dot-wrapper" :style="getSignalStyle(i, vendors.length)">
@@ -14,13 +14,13 @@
     </div>
 
     <!-- Core -->
-    <div class="relative w-48 h-48 bg-white rounded-full flex flex-col items-center justify-center border border-slate-200 overflow-hidden z-10" style="box-shadow: 0 0 120px rgba(127,57,233,0.3)">
-      <div class="absolute inset-0 bg-gradient-to-br from-[#7F39E9]/5 to-transparent" />
+    <div class="relative w-48 h-48 bg-white rounded-full flex flex-col items-center justify-center border border-slate-200 overflow-hidden z-10" style="box-shadow: 0 0 120px rgba(59,130,246,0.3)">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent" />
       <div class="flex items-center gap-1 h-12 mb-4">
-        <div v-for="i in 8" :key="i" class="w-1.5 bg-[#7F39E9]/40 rounded-full animate-wave" :style="{ animationDelay: `${i * 0.1}s`, height: '20px' }" />
+        <div v-for="i in 8" :key="i" class="w-1.5 bg-blue-500/40 rounded-full animate-wave" :style="{ animationDelay: `${i * 0.1}s`, height: '20px' }" />
       </div>
       <div class="text-center relative z-10">
-        <div class="text-[9px] font-black uppercase tracking-[0.4em] text-[#7F39E9] mb-1">Telemetrics_Core</div>
+        <div class="text-[9px] font-black uppercase tracking-[0.4em] text-blue-500 mb-1">Telemetrics_Core</div>
         <div class="flex items-center gap-2 justify-center">
           <div class="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
           <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">2M_SIG/SEC</span>
@@ -31,15 +31,15 @@
     <!-- Vendor Nodes -->
     <div v-for="(brand, i) in vendors" :key="brand" class="absolute" :style="getNodeStyle(i, vendors.length)">
       <div class="px-3 py-1.5 border rounded-lg bg-white/95 border-slate-200 text-slate-900 shadow-xl flex items-center gap-2 whitespace-nowrap">
-        <div class="w-1.5 h-1.5 rounded-full bg-[#7F39E9] animate-pulse shrink-0" />
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shrink-0" />
         <span class="text-[9px] font-black tracking-[0.2em] uppercase">{{ brand }}</span>
       </div>
     </div>
 
     <!-- AND MANY MORE Node -->
     <div class="absolute" :style="getNodeStyle(vendors.length, vendors.length + 1)">
-      <div class="px-3 py-1.5 border rounded-lg border-[#7F39E9]/40 text-[#7F39E9] shadow-xl flex items-center gap-2 whitespace-nowrap cursor-pointer hover:bg-[#7F39E9]/10 transition-all" style="background: linear-gradient(135deg, rgba(164,70,244,0.08), rgba(65,56,243,0.08))" @click="showManyMore = true">
-        <div class="w-1.5 h-1.5 rounded-full bg-[#7F39E9] animate-pulse shrink-0" />
+      <div class="px-3 py-1.5 border rounded-lg border-blue-500/40 text-blue-500 shadow-xl flex items-center gap-2 whitespace-nowrap cursor-pointer hover:bg-blue-500/10 transition-all" style="background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(20,184,166,0.08))" @click="showManyMore = true">
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shrink-0" />
         <span class="text-[9px] font-black tracking-[0.2em] uppercase">AND MANY MORE...</span>
       </div>
     </div>
@@ -96,7 +96,6 @@ export default {
     },
     getSignalStyle(i, total) {
       const angle = (i * (360 / total)) - 90
-      const rad = (angle * Math.PI) / 180
       return {
         top: '50%',
         left: '50%',

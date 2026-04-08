@@ -1,15 +1,15 @@
 <template>
   <div class="grid grid-cols-1 gap-4 w-full max-w-lg relative">
     <!-- CRM Card -->
-    <div class="bg-white border-2 border-[#7F39E9]/30 rounded-[2rem] p-5 relative overflow-hidden flex flex-col h-[220px] z-20" style="box-shadow: 0 20px 50px rgba(127,57,233,0.2)">
+    <div class="bg-white border-2 border-blue-500/30 rounded-[2rem] p-5 relative overflow-hidden flex flex-col h-[220px] z-20" style="box-shadow: 0 20px 50px rgba(59,130,246,0.2)">
       <div class="flex justify-between items-start mb-3">
-        <div class="text-[10px] font-black text-[#7F39E9] uppercase tracking-widest">Agentic CRM</div>
-        <Icon icon="heroicons-outline:user-circle" class="text-[#7F39E9] text-lg" />
+        <div class="text-[10px] font-black text-blue-500 uppercase tracking-widest">Agentic CRM</div>
+        <Icon icon="heroicons-outline:user-circle" class="text-blue-500 text-lg" />
       </div>
       <div class="flex-1 space-y-2">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full flex items-center justify-center text-[7px] text-white font-black" style="background: linear-gradient(135deg, #a446f4, #4138f3)">JD</div>
+            <div class="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center text-[7px] text-white font-black">JD</div>
             <div>
               <div class="text-[9px] font-bold text-slate-900">Jane Doe</div>
               <div class="text-[7px] font-black text-slate-400 uppercase tracking-tighter">Acc: #8804-X</div>
@@ -20,7 +20,7 @@
         <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 space-y-1.5">
           <div class="flex justify-between text-[7px] font-black text-slate-400 uppercase tracking-widest">Data Usage <span class="text-slate-900">420GB / 1TB</span></div>
           <div class="h-1 w-full bg-slate-200 rounded-full overflow-hidden">
-            <div class="h-full bg-[#7F39E9] crm-bar-fill" />
+            <div class="h-full bg-blue-500 crm-bar-fill" />
           </div>
           <div class="flex justify-between text-[6px] font-bold text-slate-500">Signal Strength <span class="text-teal-500">-62 dBm</span></div>
         </div>

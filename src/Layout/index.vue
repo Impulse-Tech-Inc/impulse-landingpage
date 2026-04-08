@@ -56,24 +56,28 @@
     </div>
     <!-- end page content -->
 
-    <!-- Cookie Banner - COMENTADO TEMPORALMENTE
-    <Transition name="cookie-slide">
-      <div v-if="showBanner" class="cookie-banner-wrapper">
-        <div class="cookie-overlay" @click="cancelBannerClicked"></div>
-        <div class="cookie-banner-content">
-          <div class="max-w-4xl mx-auto px-6 h-full flex flex-col justify-center items-center text-center gap-3">
-            <h3 class="text-base font-semibold text-gray-800">{{ $t('cookieBanner.title') }}</h3>
-            <p class="text-gray-600 text-xs leading-relaxed max-w-2xl">
+    <!-- Cookie Banner -->
+    <Transition name="cookie-toast">
+      <div v-if="showBanner" class="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:max-w-md z-[9999]">
+        <div class="bg-[#0d1117]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-lg bg-[#7F39E9]/10 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-[#a446f4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              </div>
+              <h3 class="text-sm font-bold text-white">{{ $t('cookieBanner.title') }}</h3>
+            </div>
+            <p class="text-xs text-white/40 leading-relaxed">
               {{ $t('cookieBanner.description') }}
-              <router-link to="/impulse-privacy" class="text-blue-600 hover:text-blue-700 hover:underline ml-1">
+              <router-link to="/impulse-privacy" class="text-[#a446f4] hover:text-white transition-colors ml-0.5">
                 {{ $t('cookieBanner.privacyPolicy') }}
               </router-link>
             </p>
-            <div class="flex items-center gap-3">
-              <button @click="cancelBannerClicked" class="px-5 py-2 text-xs font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 hover:border-gray-400 transition-all">
+            <div class="flex items-center gap-2 pt-1">
+              <button @click="cancelBannerClicked" class="flex-1 px-4 py-2.5 text-[10px] font-black uppercase tracking-widest text-white/50 border border-white/10 rounded-xl hover:bg-white/5 hover:text-white transition-all">
                 {{ $t('cookieBanner.reject') }}
               </button>
-              <button @click="okBannerClicked" class="px-5 py-2 text-xs font-medium text-white bg-[#2563eb] rounded-lg hover:bg-[#1d4ed8] transition-all">
+              <button @click="okBannerClicked" class="flex-1 px-4 py-2.5 text-[10px] font-black uppercase tracking-widest text-white bg-[#7F39E9] rounded-xl hover:bg-[#6d2fd0] transition-all">
                 {{ $t('cookieBanner.accept') }}
               </button>
             </div>
@@ -81,7 +85,6 @@
         </div>
       </div>
     </Transition>
-    -->
 
     <Footer 
     />
@@ -206,57 +209,20 @@ export default {
   transition: all 0.2s ease-in-out;
 }
 
-/* Cookie Banner Styles */
-.cookie-banner-wrapper {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
+/* Cookie Toast Animation */
+.cookie-toast-enter-active {
+  animation: cookieIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cookie-toast-leave-active {
+  animation: cookieOut 0.3s cubic-bezier(0.7, 0, 0.84, 0) forwards;
 }
 
-.cookie-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 70%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-  cursor: pointer;
+@keyframes cookieIn {
+  from { opacity: 0; transform: translateY(100%) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-.cookie-banner-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: white;
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Cookie Banner Animations */
-.cookie-slide-enter-active,
-.cookie-slide-leave-active {
-  transition: all 0.3s ease;
-}
-
-.cookie-slide-enter-active .cookie-overlay,
-.cookie-slide-leave-active .cookie-overlay {
-  transition: opacity 0.3s ease;
-}
-
-.cookie-slide-enter-active .cookie-banner-content,
-.cookie-slide-leave-active .cookie-banner-content {
-  transition: transform 0.3s ease;
-}
-
-.cookie-slide-enter-from .cookie-overlay,
-.cookie-slide-leave-to .cookie-overlay {
-  opacity: 0;
-}
-
-.cookie-slide-enter-from .cookie-banner-content,
-.cookie-slide-leave-to .cookie-banner-content {
-  transform: translateY(100%);
+@keyframes cookieOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(100%) scale(0.95); }
 }
 </style>

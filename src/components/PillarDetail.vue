@@ -19,8 +19,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-8">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-px" style="background: linear-gradient(90deg, #a446f4, #4138f3)" />
-              <span class="text-[12px] font-black uppercase tracking-[0.5em] text-[#7F39E9]">Infrastructure & Automation</span>
+              <div class="w-12 h-px bg-blue-500" />
+              <span class="text-[12px] font-black uppercase tracking-[0.5em] text-blue-500">Infrastructure & Automation</span>
             </div>
             <h1 class="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-tight md:leading-[0.85] tracking-tighter">
               Telemetrics<br />Intelligence.
@@ -36,11 +36,11 @@
         </div>
 
         <!-- SECTION 2: MODULE DEEP-DIVE -->
-        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-16 shadow-[0_20px_60px_rgba(127,57,233,0.08)]">
+        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-16 shadow-[0_20px_60px_rgba(59,130,246,0.08)]">
 
           <!-- Module Header -->
           <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg" style="background: linear-gradient(135deg, #a446f4, #4138f3)">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-lg bg-blue-500">
               <Icon icon="heroicons-outline:chip" class="text-xl" />
             </div>
             <div class="flex items-center gap-3 flex-wrap">
@@ -52,7 +52,7 @@
           </div>
 
           <!-- Quote -->
-          <p class="text-xl md:text-2xl text-white/50 italic font-light leading-relaxed max-w-4xl border-l-4 border-[#7F39E9]/30 pl-6">
+          <p class="text-xl md:text-2xl text-white/50 italic font-light leading-relaxed max-w-4xl border-l-4 border-blue-500/30 pl-6">
             {{ $t('pillarNetworkQuote') }}
           </p>
 
@@ -69,8 +69,8 @@
                 <div class="text-[10px] font-bold text-white/40 uppercase tracking-widest">{{ $t('pillarNetworkAlarms') }}</div>
               </div>
               <div class="relative w-28 h-28 flex items-center justify-center">
-                <div class="absolute inset-0 border border-[#7F39E9]/20 rounded-full border-dashed animate-spin-very-slow" />
-                <div class="w-16 h-16 rounded-2xl bg-[#7F39E9]/10 border border-[#7F39E9]/30 flex items-center justify-center text-[#7F39E9]">
+                <div class="absolute inset-0 border border-blue-500/20 rounded-full border-dashed animate-spin-very-slow" />
+                <div class="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-500">
                   <Icon icon="heroicons-outline:filter" class="text-3xl" />
                 </div>
               </div>
@@ -95,14 +95,14 @@
             <template v-for="(step, i) in networkProcessSteps" :key="i">
               <!-- Step Node -->
               <div class="relative z-10 flex flex-col items-center gap-4">
-                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#7F39E9] shadow-xl hover:border-[#7F39E9] transition-all">
+                <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-500 shadow-xl hover:border-blue-500 transition-all">
                   <Icon :icon="step.icon" class="text-2xl" />
                 </div>
                 <div class="text-[10px] font-black uppercase tracking-[0.3em] text-white">{{ step.label }}</div>
               </div>
               <!-- Connecting Line with Pulse -->
               <div v-if="i < networkProcessSteps.length - 1" class="hidden md:block flex-1 h-px bg-white/10 relative mx-2">
-                <div class="process-pulse absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#7F39E9] shadow-[0_0_10px_#7F39E9]" :style="{ animationDelay: `${i * 0.5}s` }" />
+                <div class="process-pulse absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]" :style="{ animationDelay: `${i * 0.5}s` }" />
               </div>
               <!-- Mobile Arrow -->
               <div v-if="i < networkProcessSteps.length - 1" class="md:hidden text-white/30">
@@ -129,10 +129,10 @@
           <!-- Killer Feature Callout -->
           <div class="p-6 md:p-12 lg:p-16 bg-white/5 border border-white/10 rounded-[2rem] relative overflow-hidden group">
             <div class="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-              <Icon icon="heroicons-outline:user-group" class="text-[#7F39E9] text-[200px]" />
+              <Icon icon="heroicons-outline:user-group" class="text-blue-500 text-[200px]" />
             </div>
             <div class="relative z-10 space-y-8">
-              <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#7F39E9]/20 border border-[#7F39E9]/30 text-[#7F39E9] text-xs font-black uppercase tracking-widest">
+              <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-500 text-xs font-black uppercase tracking-widest">
                 <Icon icon="heroicons-outline:lightning-bolt" class="text-sm" />
                 {{ $t('pillarNetworkAdvantageLabel') }}
               </div>
@@ -151,7 +151,7 @@
               <div class="relative z-10 flex flex-col items-center text-center space-y-10 max-w-4xl mx-auto">
                 <h3 class="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-tight">
                   {{ $t('pillarNetworkBridge1') }}<br />
-                  <span class="text-[#a446f4]">{{ $t('pillarNetworkBridge2') }}</span>
+                  <span class="text-blue-400">{{ $t('pillarNetworkBridge2') }}</span>
                 </h3>
                 <p class="text-lg text-white/40 font-light leading-relaxed">{{ $t('pillarNetworkBridgeDesc') }}</p>
                 <button class="px-10 py-5 bg-white rounded-xl text-slate-900 text-sm font-black uppercase tracking-widest hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] transition-all" @click="$emit('navigate', 'crm')">
@@ -185,15 +185,15 @@
                 <!-- Outer ring -->
                 <div class="absolute w-[80%] h-[80%] border border-white/10 rounded-full border-dashed sov-ring-outer" />
                 <!-- Inner ring with particles -->
-                <div class="absolute w-[60%] h-[60%] border-2 border-[#7F39E9]/20 rounded-full sov-ring-inner">
-                  <div v-for="n in 6" :key="'sov-'+n" class="absolute w-2 h-2 bg-[#7F39E9] rounded-full sov-particle" :style="{ top: '50%', left: '50%', transform: `rotate(${n * 60}deg) translateX(100px)`, animationDelay: `${n * 0.3}s` }" />
+                <div class="absolute w-[60%] h-[60%] border-2 border-blue-500/20 rounded-full sov-ring-inner">
+                  <div v-for="n in 6" :key="'sov-'+n" class="absolute w-2 h-2 bg-blue-500 rounded-full sov-particle shadow-[0_0_15px_#3b82f6]" :style="{ top: '50%', left: '50%', transform: `rotate(${n * 60}deg) translateX(100px)`, animationDelay: `${n * 0.3}s` }" />
                 </div>
                 <!-- Central shield -->
-                <div class="relative z-10 w-40 h-40 bg-white rounded-[2.5rem] flex items-center justify-center shadow-[0_0_60px_rgba(127,57,233,0.3)] sov-core-glow">
-                  <Icon icon="heroicons-outline:shield-check" class="text-[#7F39E9] text-7xl" />
+                <div class="relative z-10 w-40 h-40 bg-white rounded-[2.5rem] flex items-center justify-center shadow-[0_0_60px_rgba(59,130,246,0.3)] sov-core-glow">
+                  <Icon icon="heroicons-outline:shield-check" class="text-blue-500 text-7xl" />
                 </div>
                 <!-- Scanning blur -->
-                <div class="absolute w-72 h-72 bg-[#7F39E9]/10 blur-[80px] rounded-full sov-scan" />
+                <div class="absolute w-72 h-72 bg-blue-500/10 blur-[80px] rounded-full sov-scan" />
               </div>
             </div>
           </div>
@@ -203,7 +203,7 @@
         <div v-reveal class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-10">
             <div class="space-y-6">
-              <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#7F39E9]/10 border border-[#7F39E9]/20 text-[#7F39E9] text-[10px] font-black uppercase tracking-widest">
+              <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-[10px] font-black uppercase tracking-widest">
                 <Icon icon="heroicons-outline:cube" class="text-sm" />
                 {{ $t('pillarNetworkEcoLabel') }}
               </div>
@@ -216,19 +216,19 @@
                 :key="vendor"
                 class="px-5 py-2.5 rounded-2xl border border-white/10 bg-white/[0.03] text-sm font-bold text-white/70"
               >{{ vendor }}</span>
-              <span class="px-5 py-2.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white cursor-pointer hover:opacity-90 transition-all" style="background: linear-gradient(135deg, #a446f4, #4138f3)">{{ $t('pillarNetworkEcoMore') }}</span>
+              <span class="px-5 py-2.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white cursor-pointer hover:bg-blue-600 transition-all bg-blue-500">{{ $t('pillarNetworkEcoMore') }}</span>
             </div>
           </div>
           <!-- Integration Visual -->
           <div class="relative aspect-video bg-white/5 rounded-[3rem] border border-white/10 overflow-hidden shadow-2xl">
-            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(127,57,233,0.3),transparent_70%)]" />
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.3),transparent_70%)]" />
             <div class="absolute inset-0 flex items-center justify-center p-12">
               <div class="relative w-full h-full border border-white/5 rounded-2xl flex items-center justify-center">
                 <div class="grid grid-cols-3 gap-10">
                   <div v-for="n in 6" :key="n" class="w-16 h-16 rounded-xl bg-white/[0.03] border border-white/10 eco-node-pulse" :style="{ animationDelay: `${n * 0.5}s` }" />
                 </div>
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-24 h-24 rounded-3xl flex items-center justify-center text-white shadow-[0_0_50px_rgba(127,57,233,0.4)]" style="background: linear-gradient(135deg, #a446f4, #4138f3)">
+                  <div class="w-24 h-24 rounded-3xl flex items-center justify-center text-white bg-blue-500 shadow-[0_0_50px_rgba(59,130,246,0.4)]">
                     <Icon icon="heroicons-outline:link" class="text-5xl" />
                   </div>
                 </div>
@@ -242,7 +242,7 @@
         </div>
 
         <!-- SECTION 5: CLOSING CTA -->
-        <PillarCTA @request="$emit('back')" />
+        <PillarCTA :sending="sending" @request="(e) => submitRequest(e)" @goback="$emit('back')" />
       </div>
 
       <!-- CRM PILLAR -->
@@ -252,8 +252,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div class="space-y-8">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-px" style="background: linear-gradient(90deg, #a446f4, #4138f3)" />
-              <span class="text-[12px] font-black uppercase tracking-[0.5em] text-[#7F39E9]">Intelligence & Action</span>
+              <div class="w-12 h-px bg-blue-500" />
+              <span class="text-[12px] font-black uppercase tracking-[0.5em] text-blue-500">Intelligence & Action</span>
             </div>
             <h1 class="text-4xl sm:text-6xl md:text-8xl font-black text-white leading-tight md:leading-[0.85] tracking-tighter">Agentic<br />CRM.</h1>
             <h2 class="text-2xl md:text-3xl font-bold text-white/70 tracking-tight leading-tight max-w-md">{{ $t('pillarCrmHeroSubtitle') }}</h2>
@@ -266,11 +266,11 @@
         </div>
 
         <!-- SECTION 2: ENGAGE - NETWORK-AWARE CRM -->
-        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-10 shadow-[0_20px_60px_rgba(127,57,233,0.08)]">
+        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-10 shadow-[0_20px_60px_rgba(59,130,246,0.08)]">
           <!-- Header -->
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg" style="background: linear-gradient(135deg, #a446f4, #4138f3)">
+              <div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-lg">
                 <Icon icon="heroicons-outline:user-group" class="text-xl" />
               </div>
               <span class="text-[11px] font-black uppercase tracking-[0.3em] text-white/50">{{ $t('pillarCrmEngageLabel') }}</span>
@@ -284,7 +284,7 @@
           <!-- 3 Capabilities -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div v-for="(cap, i) in crmCaps" :key="i" class="p-8 bg-white/5 border border-white/10 rounded-[2rem] space-y-4 hover:bg-white/10 transition-all">
-              <div class="w-12 h-12 rounded-xl bg-[#7F39E9]/10 flex items-center justify-center text-[#7F39E9]">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
                 <Icon :icon="cap.icon" class="text-xl" />
               </div>
               <h4 class="text-xl font-black text-white tracking-tight">{{ $t(cap.titleKey) }}</h4>
@@ -296,7 +296,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/5">
             <div v-for="(stat, i) in crmStats" :key="i">
               <div class="text-4xl md:text-5xl font-black text-white tracking-tighter">{{ stat.val }}</div>
-              <div class="text-[10px] font-black uppercase tracking-[0.3em] text-[#7F39E9] mt-2">{{ stat.label }}</div>
+              <div class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 mt-2">{{ stat.label }}</div>
             </div>
           </div>
         </div>
@@ -351,7 +351,7 @@
                     <div class="ml-4 text-[10px] font-black text-white/40 uppercase tracking-widest">Live Demo · Agentic Resolution</div>
                   </div>
                   <!-- Content Area -->
-                  <div class="relative aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#4138f3]/30 to-[#a446f4]/30">
+                  <div class="relative aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-blue-500/30 to-blue-400/30">
                     <!-- Idle State: Play Button -->
                     <template v-if="!demoRunning">
                       <div class="absolute inset-0 flex items-center justify-center">
@@ -406,11 +406,11 @@
         </div>
 
         <!-- SECTION 4: GROW - REVENUE INTELLIGENCE -->
-        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-10 shadow-[0_20px_60px_rgba(127,57,233,0.08)]">
+        <div v-reveal class="p-6 md:p-10 lg:p-16 bg-white/5 border border-white/10 rounded-[3rem] space-y-10 shadow-[0_20px_60px_rgba(59,130,246,0.08)]">
           <!-- Header -->
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg" style="background: linear-gradient(135deg, #a446f4, #4138f3)">
+              <div class="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-lg">
                 <Icon icon="heroicons-outline:trending-up" class="text-xl" />
               </div>
               <span class="text-[11px] font-black uppercase tracking-[0.3em] text-white/50">{{ $t('pillarCrmGrowLabel') }}</span>
@@ -424,7 +424,7 @@
           <!-- 3 Capabilities -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div v-for="(cap, i) in crmGrowCaps" :key="i" class="p-8 bg-white/5 border border-white/10 rounded-[2rem] space-y-4 hover:bg-white/10 transition-all">
-              <div class="w-12 h-12 rounded-xl bg-[#7F39E9]/10 flex items-center justify-center text-[#7F39E9]">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
                 <Icon :icon="cap.icon" class="text-xl" />
               </div>
               <h4 class="text-xl font-black text-white tracking-tight">{{ $t(cap.titleKey) }}</h4>
@@ -435,24 +435,35 @@
           <!-- Big Stat -->
           <div class="pt-8 border-t border-white/5 text-center">
             <div class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">+$12.40</div>
-            <div class="text-[11px] font-black uppercase tracking-[0.4em] text-[#7F39E9] mt-3">{{ $t('pillarCrmGrowStat') }}</div>
+            <div class="text-[11px] font-black uppercase tracking-[0.4em] text-blue-500 mt-3">{{ $t('pillarCrmGrowStat') }}</div>
           </div>
         </div>
 
         <!-- SECTION 5: CLOSING CARD -->
         <div v-reveal class="p-6 md:p-12 lg:p-20 rounded-[3rem] text-center space-y-8 relative overflow-hidden bg-white/5 border border-white/10">
           <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter leading-tight max-w-4xl mx-auto">{{ $t('pillarCrmCloseLine1') }}</h2>
-          <h2 class="text-3xl md:text-5xl font-black text-[#a446f4] tracking-tighter leading-tight max-w-4xl mx-auto">{{ $t('pillarCrmCloseLine2') }}</h2>
+          <h2 class="text-3xl md:text-5xl font-black text-blue-400 tracking-tighter leading-tight max-w-4xl mx-auto">{{ $t('pillarCrmCloseLine2') }}</h2>
           <p class="text-lg text-white/60 font-light leading-relaxed max-w-2xl mx-auto">{{ $t('pillarCrmCloseDesc') }}</p>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div class="flex flex-col items-center gap-4 pt-4 max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <input
+                v-model="pillarEmail"
+                type="email"
+                :placeholder="$t('heroEmailPlaceholder')"
+                class="w-full px-6 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white placeholder:text-white/30"
+              />
+              <button
+                class="w-full sm:w-auto min-w-[200px] px-10 py-4 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-xl transition-all shadow-2xl whitespace-nowrap flex items-center justify-center gap-2 relative"
+                :class="!isValidPillarEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+                :disabled="!isValidPillarEmail || sending"
+                @click="submitRequest(pillarEmail)"
+              >
+                <svg v-if="sending" class="w-4 h-4 animate-spin absolute" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <span :class="sending ? 'invisible' : ''">{{ $t('pillarRequestAccess') }}</span>
+              </button>
+            </div>
             <button
-              class="px-10 py-5 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-full hover:opacity-90 transition-all shadow-2xl"
-              @click="$emit('back')"
-            >
-              {{ $t('pillarRequestAccess') }}
-            </button>
-            <button
-              class="px-10 py-5 bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] rounded-full hover:bg-white/20 transition-all"
+              class="text-white/40 hover:text-white font-bold border-b border-white/20 hover:border-white pb-1 transition-all text-sm"
               @click="$emit('back')"
             >
               {{ $t('pillarBack') }}
@@ -683,15 +694,26 @@
               <div class="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mt-2">{{ $t(stat.labelKey) }}</div>
             </div>
           </div>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div class="flex flex-col items-center gap-4 pt-4 max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <input
+                v-model="pillarEmail"
+                type="email"
+                :placeholder="$t('heroEmailPlaceholder')"
+                class="w-full px-6 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#7F39E9] transition-all text-white placeholder:text-white/30"
+              />
+              <button
+                class="w-full sm:w-auto min-w-[200px] px-10 py-4 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-xl transition-all shadow-2xl whitespace-nowrap flex items-center justify-center gap-2 relative"
+                :class="!isValidPillarEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+                :disabled="!isValidPillarEmail || sending"
+                @click="submitRequest(pillarEmail)"
+              >
+                <svg v-if="sending" class="w-4 h-4 animate-spin absolute" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <span :class="sending ? 'invisible' : ''">{{ $t('pillarRequestAccess') }}</span>
+              </button>
+            </div>
             <button
-              class="px-10 py-5 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-full hover:opacity-90 transition-all shadow-2xl"
-              @click="$emit('back')"
-            >
-              {{ $t('pillarRequestAccess') }}
-            </button>
-            <button
-              class="px-10 py-5 bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] rounded-full hover:bg-white/20 transition-all"
+              class="text-white/40 hover:text-white font-bold border-b border-white/20 hover:border-white pb-1 transition-all text-sm"
               @click="$emit('back')"
             >
               {{ $t('pillarBack') }}
@@ -873,15 +895,26 @@
               {{ stat }}
             </span>
           </div>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div class="flex flex-col items-center gap-4 pt-4 max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <input
+                v-model="pillarEmail"
+                type="email"
+                :placeholder="$t('heroEmailPlaceholder')"
+                class="w-full px-6 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 transition-all text-white placeholder:text-white/40"
+              />
+              <button
+                class="w-full sm:w-auto min-w-[200px] px-10 py-4 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-xl transition-all shadow-2xl whitespace-nowrap flex items-center justify-center gap-2 relative"
+                :class="!isValidPillarEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+                :disabled="!isValidPillarEmail || sending"
+                @click="submitRequest(pillarEmail)"
+              >
+                <svg v-if="sending" class="w-4 h-4 animate-spin absolute" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <span :class="sending ? 'invisible' : ''">{{ $t('pillarRequestAccess') }}</span>
+              </button>
+            </div>
             <button
-              class="px-10 py-5 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-full hover:opacity-90 transition-all shadow-2xl"
-              @click="$emit('back')"
-            >
-              {{ $t('pillarRequestAccess') }}
-            </button>
-            <button
-              class="px-10 py-5 bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] rounded-full hover:bg-white/20 transition-all"
+              class="text-white/40 hover:text-white font-bold border-b border-white/20 hover:border-white pb-1 transition-all text-sm"
               @click="$emit('back')"
             >
               {{ $t('pillarBack') }}
@@ -1001,12 +1034,23 @@
             {{ $t('pillarAdvisoryCtaDesc') }}
           </p>
           <p class="text-xl text-amber-300 italic font-light max-w-xl mx-auto">"{{ $t('pillarAdvisoryCtaQuote') }}"</p>
-          <button
-            class="px-10 py-5 bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-[0.3em] rounded-full hover:opacity-90 transition-all shadow-2xl"
-            @click="$emit('back')"
-          >
-            {{ $t('pillarAdvisoryCtaButton') }}
-          </button>
+          <div class="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto w-full">
+            <input
+              v-model="pillarEmail"
+              type="email"
+              :placeholder="$t('heroEmailPlaceholder')"
+              class="w-full px-6 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all text-white placeholder:text-white/40"
+            />
+            <button
+              class="w-full sm:w-auto min-w-[200px] px-10 py-4 bg-amber-500 text-slate-950 text-xs font-black uppercase tracking-[0.3em] rounded-xl transition-all shadow-2xl whitespace-nowrap flex items-center justify-center gap-2 relative"
+              :class="!isValidPillarEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+              :disabled="!isValidPillarEmail || sending"
+              @click="submitRequest(pillarEmail)"
+            >
+              <svg v-if="sending" class="w-4 h-4 animate-spin absolute" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+              <span :class="sending ? 'invisible' : ''">{{ $t('pillarAdvisoryCtaButton') }}</span>
+            </button>
+          </div>
         </div>
 
         <!-- SECTION 6: CLOSING CARD -->
@@ -1019,15 +1063,26 @@
               {{ stat }}
             </span>
           </div>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div class="flex flex-col items-center gap-4 pt-4 max-w-md mx-auto">
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <input
+                v-model="pillarEmail"
+                type="email"
+                :placeholder="$t('heroEmailPlaceholder')"
+                class="w-full px-6 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 transition-all text-white placeholder:text-white/40"
+              />
+              <button
+                class="w-full sm:w-auto min-w-[200px] px-10 py-4 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-xl transition-all shadow-2xl whitespace-nowrap flex items-center justify-center gap-2 relative"
+                :class="!isValidPillarEmail || sending ? 'opacity-40 cursor-not-allowed' : 'hover:opacity-90'"
+                :disabled="!isValidPillarEmail || sending"
+                @click="submitRequest(pillarEmail)"
+              >
+                <svg v-if="sending" class="w-4 h-4 animate-spin absolute" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" /><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <span :class="sending ? 'invisible' : ''">{{ $t('pillarAdvisorySchedule') }}</span>
+              </button>
+            </div>
             <button
-              class="px-10 py-5 bg-white text-slate-900 text-xs font-black uppercase tracking-[0.3em] rounded-full hover:opacity-90 transition-all shadow-2xl"
-              @click="$emit('back')"
-            >
-              {{ $t('pillarAdvisorySchedule') }}
-            </button>
-            <button
-              class="px-10 py-5 bg-white/10 border border-white/20 text-white text-xs font-black uppercase tracking-[0.3em] rounded-full hover:bg-white/20 transition-all"
+              class="text-white/40 hover:text-white font-bold border-b border-white/20 hover:border-white pb-1 transition-all text-sm"
               @click="$emit('back')"
             >
               {{ $t('pillarBack') }}
@@ -1037,6 +1092,14 @@
 
       </div>
     </div>
+
+    <ToastNotification
+      :visible="toast.visible"
+      :type="toast.type"
+      :title="toast.title"
+      :message="toast.message"
+      @close="toast.visible = false"
+    />
   </section>
 </template>
 
@@ -1051,17 +1114,23 @@ import BillingVisual from "@/components/pillar/BillingVisual.vue"
 import AdvisoryVisual from "@/components/pillar/AdvisoryVisual.vue"
 import CapabilityCard from "@/components/pillar/CapabilityCard.vue"
 import StoryLaneEmbed from "@/components/StoryLaneEmbed.vue"
+import ToastNotification from "@/components/ToastNotification.vue"
 import reveal from "@/directives/reveal"
+
+const pillarNames = { network: 'Network', crm: 'CRM', support: 'Support', billing: 'Billing', advisory: 'Advisory' }
 
 export default {
   directives: { reveal },
-  components: { Icon, PillarBadges, PillarCTA, OrbitalVisual, CrmVisual, SupportVisual, BillingVisual, AdvisoryVisual, CapabilityCard, StoryLaneEmbed },
+  components: { Icon, PillarBadges, PillarCTA, OrbitalVisual, CrmVisual, SupportVisual, BillingVisual, AdvisoryVisual, CapabilityCard, StoryLaneEmbed, ToastNotification },
   props: {
     pillarId: { type: String, required: true }
   },
   emits: ['back', 'navigate'],
   data() {
     return {
+      pillarEmail: '',
+      sending: false,
+      toast: { visible: false, type: 'success', title: '', message: '' },
       networkCaps: [
         { title: 'pillarNetworkCap1', icon: 'heroicons-outline:shield-check' },
         { title: 'pillarNetworkCap2', icon: 'heroicons-outline:currency-dollar' },
@@ -1199,12 +1268,51 @@ export default {
   beforeUnmount() {
     if (this.demoTimer) clearInterval(this.demoTimer)
   },
+  computed: {
+    isValidPillarEmail() {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.pillarEmail)
+    }
+  },
   methods: {
     getOmniNodePos(i, total, radius) {
       const angle = (i * (360 / total)) - 90
       const x = Math.cos((angle * Math.PI) / 180) * radius
       const y = Math.sin((angle * Math.PI) / 180) * radius
       return { transform: `translate(${x}px, ${y}px)` }
+    },
+    showToast(type, title, message) {
+      this.toast.visible = false
+      setTimeout(() => {
+        this.toast = { visible: true, type, title, message }
+      }, 50)
+      setTimeout(() => { this.toast.visible = false }, 4000)
+    },
+    async submitRequest(email) {
+      if (!email || this.sending) return
+      this.sending = true
+      const pillar = pillarNames[this.pillarId] || this.pillarId
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Guest (Request Access)',
+            email,
+            phone: `Language: ${this.$i18n?.locale || 'en'}`,
+            message: `New Request Access from ${pillar} pillar.\nEmail: ${email}`,
+            pillar
+          })
+        })
+        if (res.ok) {
+          this.showToast('success', this.$t('heroRequestSentTitle') || 'Request Sent!', this.$t('heroRequestSentMsg') || 'We will contact you soon.')
+          this.pillarEmail = ''
+        } else {
+          this.showToast('error', this.$t('heroRequestErrorTitle') || 'Error', this.$t('heroRequestErrorMsg') || 'Something went wrong. Please try again.')
+        }
+      } catch {
+        this.showToast('error', this.$t('heroRequestErrorTitle') || 'Error', this.$t('heroRequestErrorMsg') || 'Something went wrong. Please try again.')
+      }
+      this.sending = false
     },
     startDemo() {
       if (this.demoRunning) return

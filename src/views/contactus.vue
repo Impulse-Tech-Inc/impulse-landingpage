@@ -119,7 +119,8 @@ import Button from "@/components/Button";
 import Textarea from "@/components/Textarea";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 import axios from "axios"
 import { useToast } from "vue-toastification"
@@ -131,7 +132,9 @@ export default {
   },
   setup() {
     const toast = useToast()
+    const route = useRoute()
     const form = ref(null);
+    const pillar = computed(() => route.query.pillar || 'General')
 
     const schema = yup.object({
       email: yup.string().required('Please fill the empty field').email("Please fill the field with a valid email address"),
@@ -162,6 +165,9 @@ export default {
 
     onMounted(async () => {
       await bringCurrent()
+      if (route.query.email) {
+        email.value = route.query.email
+      }
     })
 
     const onSubmit = handleSubmit(async () => {
@@ -174,6 +180,7 @@ export default {
             email: email.value,
             phone: phone.value,
             message: text.value,
+            pillar: pillar.value,
           }),
         });
         if (response.ok) {
