@@ -130,8 +130,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import useIntersectionObserver from '@/composables/useIntersectionObserver'
+
+const { t } = useI18n()
 
 const headingRef = ref(null)
 const timelineItemRefs = ref([])
@@ -164,48 +167,36 @@ const beforeCollapse = (el) => { el.style.height = el.scrollHeight + 'px' }
 const doCollapse = (el) => { el.style.height = '0' }
 const afterCollapse = (el) => { el.style.height = null }
 
-const timeline = [
+const timeline = computed(() => [
   {
     id: 'briefing',
-    title: 'Exec. Briefing',
-    subtitle: 'Strategic Alignment',
-    duration: '2–3 Hours',
-    detail:
-      'Meet with our executive team to align on business priorities, surface quick wins, and map the value you want to unlock with AI.',
-    image:
-      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80'
+    title: t('timelineBriefingTitle'),
+    duration: t('timelineBriefingDuration'),
+    detail: t('timelineBriefingDetail'),
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'assessment',
-    title: 'Technology Assessment',
-    subtitle: 'Capability Deep Dive',
-    duration: '2–3 Days',
-    detail:
-      'Gain a rich view into the platform stack, architecture best practices, and the highest-impact use cases tailored to your data.',
-    image:
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80'
+    title: t('timelineAssessmentTitle'),
+    duration: t('timelineAssessmentDuration'),
+    detail: t('timelineAssessmentDetail'),
+    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'trial',
-    title: 'Production Trial',
-    subtitle: 'AI Sprint',
-    duration: '8–12 Weeks',
-    detail:
-      'Prototype the solution with your real data, validate models alongside our experts, and define the playbook for go-live.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
+    title: t('timelineTrialTitle'),
+    duration: t('timelineTrialDuration'),
+    detail: t('timelineTrialDetail'),
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'deployment',
-    title: 'AI Application Deployment in Production',
-    subtitle: 'Deployment in Production',
-    duration: '3–6 Months',
-    detail:
-      'Scale the proven use case, operationalize monitoring and feedback loops, and optimize impact across your organization.',
-    image:
-      'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80'
+    title: t('timelineDeployTitle'),
+    duration: t('timelineDeployDuration'),
+    detail: t('timelineDeployDetail'),
+    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80'
   }
-]
+])
 </script>
 
 <style scoped>
