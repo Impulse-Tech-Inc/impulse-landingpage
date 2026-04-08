@@ -1,5 +1,6 @@
 <template>
   <section ref="containerRef" class="relative transition-colors duration-500 sol-container" style="background: #030305; background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #030305 100%)">
+
     <!-- Anchor IDs for navigation -->
     <div id="network" class="absolute top-0 w-full h-[20%] pointer-events-none" />
     <div id="crm" class="absolute top-[20%] w-full h-[20%] pointer-events-none" />
@@ -698,18 +699,13 @@ export default {
   50%, 100% { width: 72%; }
 }
 
-/* Responsive container height */
+/* Sticky scroll container */
 .sol-container {
-  height: 200vh;
-}
-@media (min-width: 768px) {
-  .sol-container {
-    height: 250vh;
-  }
+  height: 400vh;
 }
 @media (min-width: 1024px) {
   .sol-container {
-    height: 350vh;
+    height: 450vh;
   }
 }
 </style>
