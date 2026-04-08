@@ -261,7 +261,7 @@
                         <Icon :icon="s.icon" class="text-lg" />
                       </div>
                       <div class="text-center">
-                        <div class="text-[8px] font-black text-white/30 uppercase tracking-widest">{{ $t(s.labelKey) }}</div>
+                        <div class="text-[8px] font-black text-white/30 uppercase tracking-widest">{{ s.label }}</div>
                         <div class="text-[10px] font-black text-white">{{ s.value }}</div>
                       </div>
                     </div>
