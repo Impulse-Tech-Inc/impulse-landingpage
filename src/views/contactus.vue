@@ -17,7 +17,7 @@
       <div class="text-center mb-16">
         <div class="text-[10px] font-black uppercase tracking-[0.4em] text-[#a446f4] mb-4">{{ $t('contactLabel') || 'Contact Us' }}</div>
         <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4">
-          Get in <span class="text-[#a446f4]">Touch</span>
+          {{ $t('getInTouch1') }} <span class="text-[#a446f4]">{{ $t('getInTouch2') }}</span>
         </h1>
         <p class="text-lg text-white/50 font-light max-w-2xl mx-auto">{{ $t('contactTitle') }}</p>
       </div>
@@ -90,7 +90,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               </div>
               <div>
-                <div class="text-[10px] font-black uppercase tracking-widest text-white/40">HQ Address</div>
+                <div class="text-[10px] font-black uppercase tracking-widest text-white/40">{{ $t('hqAddress') }}</div>
                 <div class="text-sm font-bold text-white">1150 Nw 72nd Ave Tower | Miami, Florida 33126</div>
               </div>
             </div>
