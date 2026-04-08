@@ -1,27 +1,16 @@
 <template>
   <div
-    :class="`mobile-sidebar bg-white  ${
-      this.$store.themeSettingsStore.theme === 'bordered'
-        ? 'border border-slate-200'
-        : 'shadow-lg'
-    }   `"
+    class="mobile-sidebar bg-[#0e0e18] border-l border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]"
   >
     <div class="logo-segment flex justify-between items-center px-4 py-6">
       <router-link :to="{ name: 'home' }">
         <img
-          src="@/assets/images/logo/logo.svg"
-          alt=""
-          v-if="!this.$store.themeSettingsStore.isDark"
-        />
-
-        <img
           src="@/assets/images/logo/impulse.svg"
           alt=""
-          v-if="this.$store.themeSettingsStore.isDark"
         />
       </router-link>
       <span
-        class="cursor-pointer text-slate-900 dark:text-white text-2xl"
+        class="cursor-pointer text-white text-2xl"
         @click="toggleMsidebar"
         ><Icon icon="heroicons:x-mark"
       /></span>

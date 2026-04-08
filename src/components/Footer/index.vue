@@ -1,131 +1,98 @@
 <template>
-  <footer class="relative overflow-hidden bg-[#9333EA]">
-    <!-- Forma azul curva - solo visible en desktop -->
-    <img
-      :src="bgFooter"
-      alt=""
-      class="hidden md:block absolute left-0 top-0 bottom-0 h-full w-auto max-w-[40%] object-contain object-left"
-    />
-
-    <!-- Layout móvil -->
-    <div class="md:hidden px-6 py-8">
-      <!-- Logo y Copyright -->
-      <div class="flex flex-col items-center space-y-3 mb-8">
-        <img :src="impulseLogo" alt="impulse logo" class="w-28" />
-        <p class="text-white/90 text-xs text-center">
-          Copyright © 2025 Impulse. All rights reserved.
-        </p>
-      </div>
-
-      <!-- Enlaces en grid -->
-      <div class="grid grid-cols-3 gap-4 text-center mb-6">
-        <!-- Legal -->
-        <div class="flex flex-col space-y-2">
-          <h4 class="text-white font-semibold text-sm">Legal</h4>
-          <router-link to="/impulse-privacy" class="text-white/80 hover:text-white text-xs transition-colors">
-            Privacy Policy
-          </router-link>
-          <router-link to="/impulse-terms" class="text-white/80 hover:text-white text-xs transition-colors">
-            Terms
-          </router-link>
-        </div>
-
-        <!-- Resources -->
-        <div class="flex flex-col space-y-2">
-          <h4 class="text-white font-semibold text-sm">Resources</h4>
-          <a href="https://impulse.ky/blog/" target="_blank" class="text-white/80 hover:text-white text-xs transition-colors">
-            Blog
-          </a>
-          <a href="https://impulse.ky/blog/" target="_blank" class="text-white/80 hover:text-white text-xs transition-colors">
-            Podcast
-          </a>
-        </div>
-
-        <!-- About Company -->
-        <div class="flex flex-col space-y-2">
-          <h4 class="text-white font-semibold text-sm">About</h4>
-          <router-link to="/aboutus" class="text-white/80 hover:text-white text-xs transition-colors">
-            About Us
-          </router-link>
-          <router-link to="/contactus" class="text-white/80 hover:text-white text-xs transition-colors">
-            Contact Us
-          </router-link>
-        </div>
-      </div>
-
-      <!-- LinkedIn -->
-      <div class="flex justify-center">
-        <a
-          href="https://www.linkedin.com/company/impulseltd/"
-          target="_blank"
-          class="w-9 h-9 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-          style="background-color: rgba(0, 188, 212, 1);"
-          aria-label="LinkedIn"
-        >
-          <img :src="linkedinIcon" alt="LinkedIn" class="w-4 h-4 linkedin-white" />
-        </a>
-      </div>
-    </div>
-
-    <!-- Layout desktop -->
-    <div class="hidden md:block min-h-[200px]">
-      <!-- Logo y Copyright - posicionado sobre el área azul -->
-      <div class="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 z-20 flex flex-col items-start space-y-3 max-w-[280px]">
-        <img :src="impulseLogo" alt="impulse logo" class="w-32" />
-        <p class="text-white/90 text-xs">
-          Copyright © 2025 Impulse. All rights reserved.
-        </p>
-      </div>
-
-      <!-- Contenido derecho -->
-      <div class="relative z-10 px-12 lg:px-20 py-8 ml-auto">
-        <div class="flex flex-wrap gap-x-12 lg:gap-x-16 gap-y-6 justify-end items-start">
-          <!-- Legal -->
-          <div class="flex flex-col space-y-3">
-            <h4 class="text-white font-semibold text-base">Legal</h4>
-            <router-link to="/impulse-privacy" class="text-white/80 hover:text-white text-sm transition-colors">
-              Privacy Policy
-            </router-link>
-            <router-link to="/impulse-terms" class="text-white/80 hover:text-white text-sm transition-colors">
-              Terms
-            </router-link>
+  <footer class="border-t border-white/5 py-16 md:py-20 px-6 bg-[#0a0a12]">
+    <div class="max-w-7xl mx-auto">
+      <!-- Main Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
+        <!-- Brand Column -->
+        <div class="md:col-span-2 text-center md:text-left">
+          <div class="flex items-center gap-3 mb-6 justify-center md:justify-start">
+            <img :src="impulseLogo" alt="impulse logo" class="w-32" />
           </div>
-
-          <!-- Resources -->
-          <div class="flex flex-col space-y-3">
-            <h4 class="text-white font-semibold text-base">Resources</h4>
-            <a href="https://impulse.ky/blog/" target="_blank" class="text-white/80 hover:text-white text-sm transition-colors">
-              Blog
-            </a>
-            <a href="https://impulse.ky/blog/" target="_blank" class="text-white/80 hover:text-white text-sm transition-colors">
-              Podcast
-            </a>
-          </div>
-
-          <!-- About Company -->
-          <div class="flex flex-col space-y-3">
-            <h4 class="text-white font-semibold text-base">About Company</h4>
-            <router-link to="/aboutus" class="text-white/80 hover:text-white text-sm transition-colors">
-              About Us
-            </router-link>
-            <router-link to="/contactus" class="text-white/80 hover:text-white text-sm transition-colors">
-              Contact Us
-            </router-link>
-          </div>
-
-          <!-- LinkedIn -->
-          <div class="flex flex-col space-y-3">
-            <h4 class="text-white font-semibold text-base">Follow Us</h4>
+          <p class="text-white/40 max-w-sm leading-relaxed mb-6 font-medium text-sm mx-auto md:mx-0">
+            {{ $t('footerDesc') }}
+          </p>
+          <div class="flex gap-3 justify-center md:justify-start">
             <a
               href="https://www.linkedin.com/company/impulseltd/"
               target="_blank"
-              class="w-8 h-8 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg transition-all duration-300"
-              style="background-color: rgba(0, 188, 212, 1);"
+              class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
               aria-label="LinkedIn"
             >
               <img :src="linkedinIcon" alt="LinkedIn" class="w-4 h-4 linkedin-white" />
             </a>
           </div>
+        </div>
+
+        <!-- 3 Link Columns - responsive grid -->
+        <div class="grid grid-cols-3 gap-6 md:contents">
+          <!-- Platform -->
+          <div>
+            <h4 class="font-black text-white mb-4 md:mb-6 uppercase tracking-widest text-[10px] md:text-xs">{{ $t('footerPlatform') }}</h4>
+            <ul class="space-y-3 md:space-y-4 text-white/50 text-xs md:text-sm font-medium">
+              <li>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors" @click="handlePillarLink('network')">
+                  Telemetrics
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors" @click="handlePillarLink('crm')">
+                  Agentic CRM
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors" @click="handlePillarLink('support')">
+                  Support AI
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="hover:text-white transition-colors" @click="handlePillarLink('billing')">
+                  Billing
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div>
+            <h4 class="font-black text-white mb-4 md:mb-6 uppercase tracking-widest text-[10px] md:text-xs">{{ $t('footerCompany') }}</h4>
+            <ul class="space-y-3 md:space-y-4 text-white/50 text-xs md:text-sm font-medium">
+              <li>
+                <router-link to="/aboutus" class="hover:text-white transition-colors">{{ $t('footerAbout') }}</router-link>
+              </li>
+              <li>
+                <router-link to="/contactus" class="hover:text-white transition-colors">{{ $t('footerContact') }}</router-link>
+              </li>
+              <li>
+                <a href="https://impulse.ky/blog/" target="_blank" class="hover:text-white transition-colors">{{ $t('footerBlog') }}</a>
+              </li>
+              <li>
+                <router-link to="/pillar/advisory" class="hover:text-white transition-colors">{{ $t('footerAdvisory') }}</router-link>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Legal -->
+          <div>
+            <h4 class="font-black text-white mb-4 md:mb-6 uppercase tracking-widest text-[10px] md:text-xs">{{ $t('footerLegal') }}</h4>
+            <ul class="space-y-3 md:space-y-4 text-white/50 text-xs md:text-sm font-medium">
+              <li>
+                <router-link to="/impulse-privacy" class="hover:text-white transition-colors">{{ $t('footerPrivacy') }}</router-link>
+              </li>
+              <li>
+                <router-link to="/impulse-terms" class="hover:text-white transition-colors">{{ $t('footerTerms') }}</router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="mt-16 md:mt-20 pt-8 md:pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6 text-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">
+        <span class="text-center">© {{ currentYear }} Impulse Intelligence OS. All Rights Reserved.</span>
+        <div class="flex gap-4 md:gap-8 flex-wrap justify-center">
+          <span>Infrastructure First</span>
+          <span>Privacy by Design</span>
+          <span>Global Operations</span>
         </div>
       </div>
     </div>
@@ -133,7 +100,6 @@
 </template>
 
 <script>
-import bgFooter from '@/assets/images/bgfooter.svg'
 import impulseLogo from '@/assets/images/logo/impulse.svg'
 import linkedinIcon from '@/assets/images/social-linkedin.svg'
 
@@ -141,16 +107,24 @@ export default {
   name: 'Footer',
   data() {
     return {
-      bgFooter,
       impulseLogo,
       linkedinIcon
+    }
+  },
+  computed: {
+    currentYear() {
+      return new Date().getFullYear()
+    }
+  },
+  methods: {
+    handlePillarLink(pillarId) {
+      this.$router.push({ name: 'pillardetails', params: { id: pillarId } })
     }
   }
 };
 </script>
 
 <style scoped>
-/* Icono de LinkedIn blanco */
 .linkedin-white {
   filter: brightness(0) invert(1);
 }

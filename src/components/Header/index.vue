@@ -1,120 +1,145 @@
 <template>
-  <header :class="[
-    navbarTypeClass(),
-    shouldBeTransparent ? 'header-transparent' : 'header-scrolled',
-    isHeaderVisible ? 'header-visible' : 'header-hidden'
-  ]">
-    <div
-      :class="`app-header md:px-6 px-[15px] transition-all duration-300 ${
-        shouldBeTransparent
-          ? 'text-white bg-transparent shadow-none border-transparent'
-          : 'text-slate-900 dark:text-white dark:bg-black-800 shadow-base dark:shadow-base3 bg-white ' + borderSwicthClass() + ' ' + this.$store.themeSettingsStore.navbarColor
-      }
-      ${
-        this.$store.themeSettingsStore.menuLayout === 'horizontal' && window.width > 1023
-          ? 'h-20'
-          : 'md:py-2 h-14 '
-      }
-      `"
+  <header
+    :class="[
+      'fixed top-0 left-0 right-0 z-[999] transition-all duration-500',
+      isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+    ]"
+  >
+    <nav
+      :class="[
+        'transition-all duration-500 px-8',
+        !isScrolled
+          ? 'h-20 bg-transparent'
+          : isDarkPage
+            ? 'h-16 bg-black/50 backdrop-blur-xl'
+            : 'h-16 bg-white/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
+      ]"
     >
-      <div class="flex justify-between items-center h-full">
-        <div
-          v-if="this.$store.themeSettingsStore.menuLayout === 'vertical'"
-          class="flex items-center md:space-x-4 space-x-2 rtl:space-x-reverse"
+      <div class="max-w-[1200px] h-full mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <router-link
+          :to="{ name: 'home' }"
+          class="flex items-center gap-2 group"
         >
-          <button
-            class="ltr:mr-5 rtl:ml-5 text-xl text-slate-900 dark:text-white"
-            v-if="this.$store.themeSettingsStore.sidebarCollasp && window.width > 1023"
-            @click="this.$store.themeSettingsStore.sidebarCollasp = false"
-          >
-            <Icon
-              icon="akar-icons:arrow-right"
-              v-if="!this.$store.themeSettingsStore.direction"
-            />
-            <Icon
-              icon="akar-icons:arrow-left"
-              v-if="this.$store.themeSettingsStore.direction"
-            />
-          </button>
-          <MobileLogo v-if="window.width < 1024" :isTransparent="shouldBeTransparent" />
+          <img
+            :src="logoSrc"
+            alt="impulse logo"
+            class="w-auto h-8 transition-transform group-hover:scale-105"
+          />
+        </router-link>
 
+        <!-- Nav Links (desktop) -->
+        <div class="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+          <router-link
+            v-for="item in navLinks"
+            :key="item.id"
+            :to="item.to"
+            class="relative text-sm font-semibold tracking-wide transition-colors group/link"
+            :class="useWhiteStyle ? 'text-white hover:text-white' : 'text-slate-700 hover:text-slate-900'"
+          >
+            <span class="flex items-center gap-1.5">
+              <Icon :icon="item.icon" class="text-base" />
+              {{ $t(item.label) }}
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover/link:w-full"
+              :class="useWhiteStyle ? 'bg-white' : 'bg-slate-900'"
+            />
+          </router-link>
+          <a
+            href="https://impulse.ky/blog/"
+            target="_blank"
+            class="relative text-sm font-semibold tracking-wide transition-colors group/link"
+            :class="useWhiteStyle ? 'text-white hover:text-white' : 'text-slate-700 hover:text-slate-900'"
+          >
+            <span class="flex items-center gap-1.5">
+              <Icon icon="fluent-mdl2:blog" class="text-base" />
+              {{ $t('menu-4') }}
+            </span>
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover/link:w-full"
+              :class="useWhiteStyle ? 'bg-white' : 'bg-slate-900'"
+            />
+          </a>
         </div>
-        <div
-          v-if="this.$store.themeSettingsStore.menuLayout === 'horizontal'"
-          class="flex items-center space-x-4 rtl:space-x-reverse"
-        >
-          <Logo v-if="window.width > 1023" :isTransparent="shouldBeTransparent" />
-          <MobileLogo v-else :isTransparent="shouldBeTransparent" />
+
+        <!-- Actions (desktop) -->
+        <div class="hidden lg:flex items-center gap-6">
+          <LanguageVue :isTransparent="useWhiteStyle" />
+          <button
+            class="px-7 py-2.5 text-white text-sm font-bold rounded-full hover:opacity-90 transition-all shadow-lg"
+            :style="useWhiteStyle
+              ? 'border: 2px solid white; color: white; background: transparent;'
+              : 'background: linear-gradient(224.95deg, #a446f4 -1.95%, #4138f3 104.5%);'"
+            @click="$router.push({ name: 'contactus' })"
+          >
+            {{ $t('indexContactUs') }}
+          </button>
         </div>
-        <Mainnav
-          class="flex-1 lg:flex hidden justify-end"
-          :class="shouldBeTransparent ? 'text-white' : ''"
-          v-if="
-            this.$store.themeSettingsStore.menuLayout === 'horizontal' && window.width >= 1024
-          "
-        />
-        <div class="hidden lg:flex items-center gap-4">
-          <LanguageVue />
-          <Button
-            :text="$t('indexContactUs')"
-            :btnClass="shouldBeTransparent ? 'btn-outline-white' : 'btn-primary'"
-            :style="shouldBeTransparent ? 'border: 2px solid white; color: white; background: transparent' : 'background:linear-gradient(224.95deg, #a446f4 -1.95%, #4138f3 104.5%)'"
-            @click="btnContackUs"
-          />
-        </div>
-        <div
-          class="nav-tools flex items-center space-x-3 rtl:space-x-reverse lg:hidden"
-        >
-          <LanguageVue />
-          <handle-mobile-menu
-            v-if="window.width < 1024"
-            :class="shouldBeTransparent ? 'text-white' : ''"
-          />
+
+        <!-- Mobile: Language + Hamburger -->
+        <div class="flex items-center gap-3 lg:hidden">
+          <LanguageVue :isTransparent="useWhiteStyle" />
+          <button
+            class="text-2xl transition-colors"
+            :class="useWhiteStyle ? 'text-white' : 'text-slate-900'"
+            @click="toggleMobileSidebar"
+          >
+            <Icon icon="material-symbols:menu-rounded" />
+          </button>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 </template>
+
 <script>
-import Mainnav from "./horizental-nav.vue";
 import Icon from "../Icon";
 import LanguageVue from "./Navtools/Language.vue";
-import Logo from "./Navtools/Logo.vue";
-import MobileLogo from "./Navtools/MobileLogo.vue";
-import window from "@/mixins/window";
-import HandleMobileMenu from "./Navtools/HandleMobileMenu.vue";
-import Button from "@/components/Button";
-export default {
-  mixins: [window],
-  components: {
+import impulseLogoWhite from '@/assets/images/logo/impulse.svg'
+import impulseLogoColor from '@/assets/images/logo/logo.svg'
+import { useThemeSettingsStore } from "@/store/themeSettings";
 
-    Mainnav,
+export default {
+  components: {
     Icon,
     LanguageVue,
-    Logo,
-    MobileLogo,
-    HandleMobileMenu,
-    Button
   },
   data() {
     return {
       isScrolled: false,
+      isPastHero: false,
       lastScrollPosition: 0,
-      isHeaderVisible: true
+      isHeaderVisible: true,
+      navLinks: [
+        { id: 'home', label: 'menu-1', to: '/', icon: 'heroicons-outline:home' },
+        { id: 'about', label: 'menu-2', to: '/aboutus', icon: 'heroicons-outline:user-group' },
+      ],
     };
   },
   computed: {
     isHomePage() {
       return this.$route.name === 'home' || this.$route.path === '/';
     },
+    isDarkPage() {
+      const darkPages = ['home', 'aboutus', 'pillardetails', 'contactus', 'impulseprivady', 'impulseterms', 'whatwedoservices', 'whatwedotelco', 'impulsebot', 'websitedevelopment', 'blog', 'product'];
+      return darkPages.includes(this.$route.name);
+    },
     shouldBeTransparent() {
-      // Solo transparente en la página de inicio y sin scroll
       return this.isHomePage && !this.isScrolled;
-    }
+    },
+    isInHero() {
+      return this.isHomePage && !this.isPastHero;
+    },
+    useWhiteStyle() {
+      return this.shouldBeTransparent || this.isInHero || this.isDarkPage;
+    },
+    logoSrc() {
+      return this.useWhiteStyle ? impulseLogoWhite : impulseLogoColor;
+    },
   },
   mounted() {
     globalThis.window.addEventListener('scroll', this.handleScroll);
-    // Verificar scroll inicial
     this.handleScroll();
   },
   beforeUnmount() {
@@ -123,142 +148,32 @@ export default {
   methods: {
     handleScroll() {
       const currentScrollPosition = globalThis.window.scrollY;
-
-      // Actualizar si ha hecho scroll
+      const heroHeight = globalThis.window.innerHeight;
       this.isScrolled = currentScrollPosition > 50;
+      this.isPastHero = currentScrollPosition > heroHeight - 80;
 
-      // Si está en la parte superior, siempre mostrar
+      const delta = currentScrollPosition - this.lastScrollPosition;
+
       if (currentScrollPosition < 50) {
         this.isHeaderVisible = true;
-      } else {
-        // Detectar dirección del scroll
-        if (currentScrollPosition < this.lastScrollPosition) {
-          // Scrolling hacia arriba - mostrar header
-          this.isHeaderVisible = true;
-        } else if (currentScrollPosition > this.lastScrollPosition) {
-          // Scrolling hacia abajo - ocultar header
-          this.isHeaderVisible = false;
-        }
+      } else if (delta < -5) {
+        this.isHeaderVisible = true;
+      } else if (delta > 10) {
+        this.isHeaderVisible = false;
       }
 
       this.lastScrollPosition = currentScrollPosition;
     },
-    btnContackUs(){
-      this.$router.push({name:"contactus"})
-    },
-    navbarTypeClass() {
-      // Siempre usar fixed para que esté sobre el hero
-      return "fixed top-0 left-0 right-0 z-[999]";
-    },
-    borderSwicthClass() {
-      if (
-        this.$store.themeSettingsStore.skin === "bordered" &&
-        this.$store.themeSettingsStore.navbarType !== "floating"
-      ) {
-        return "border-b border-gray-5002 dark:border-slate-700";
-      } else if (
-        this.$store.themeSettingsStore.skin === "bordered" &&
-        this.$store.themeSettingsStore.navbarType === "floating"
-      ) {
-        return "border border-gray-5002 dark:border-slate-700";
-      } else {
-        return "dark:border-b dark:border-slate-700 dark:border-opacity-60";
-      }
+    toggleMobileSidebar() {
+      const themeSettingsStore = useThemeSettingsStore();
+      themeSettingsStore.toggleMsidebar();
     },
   },
 };
 </script>
-<style lang="scss" scoped>
-.floating .app-header {
-  @apply md:mx-6 md:my-8 mx-[15px] my-[15px] rounded-md;
-}
 
+<style scoped>
 header {
-  width: 100%;
   transition: transform 0.3s ease-in-out;
-}
-
-.header-visible {
-  transform: translateY(0);
-}
-
-.header-hidden {
-  transform: translateY(-100%);
-}
-
-.header-transparent {
-  background-color: transparent !important;
-}
-
-.header-transparent .app-header {
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border-color: transparent !important;
-  border: none !important;
-}
-
-.header-transparent :deep(svg),
-.header-transparent :deep(.iconify),
-.header-transparent :deep(button) {
-  color: white !important;
-}
-
-.header-transparent :deep(a):not(.menu-link) {
-  color: white !important;
-  font-weight: 700 !important;
-}
-
-.header-transparent :deep(a.menu-link),
-.header-transparent :deep(a.menu-link .text-box),
-.header-transparent :deep(a.menu-link .icon-box) {
-  color: white !important;
-  font-weight: 500 !important;
-}
-
-.header-transparent :deep(li:hover > a.menu-link),
-.header-transparent :deep(li:hover > a.menu-link .text-box),
-.header-transparent :deep(li:hover > a.menu-link .icon-box),
-.header-transparent :deep(li:hover > a.menu-link .icon-box svg),
-.header-transparent :deep(li:hover > a.menu-link .icon-box .iconify) {
-  color: #6366f1 !important;
-}
-
-.header-transparent :deep(button.btn-outline-white:hover) {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
-}
-
-.header-transparent :deep(span):not(.lang-option-text),
-.header-transparent :deep(p),
-.header-transparent :deep(.nav-link) {
-  color: white !important;
-  font-weight: 700 !important;
-}
-
-.header-transparent :deep(.lang-option-text) {
-  color: #000000 !important;
-  font-weight: 500 !important;
-}
-
-.header-transparent :deep(li:hover .lang-option-text) {
-  color: #ffffff !important;
-}
-
-.header-scrolled .app-header {
-  background-color: white !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
-}
-
-.header-scrolled :deep(.menu-link) {
-  font-weight: 500 !important;
-}
-
-.header-scrolled :deep(a.menu-link .text-box),
-.header-scrolled :deep(a.menu-link .icon-box) {
-  color: #475569 !important;
-}
-
-.header-scrolled :deep(li:hover > a.menu-link .text-box),
-.header-scrolled :deep(li:hover > a.menu-link .icon-box) {
-  color: #6366f1 !important;
 }
 </style>

@@ -8,13 +8,8 @@ body {
     display: block;
     position: absolute;
     inset: 0;
-    background: #ffffff;
-    --loader-accent: #0f172a;
-}
-
-html[data-theme="dark"] #loading-bg {
-    background: #000000;
-    --loader-accent: #94a3b8;
+    background: #0a0a12;
+    --loader-accent: #7F39E9;
 }
 
 .loader-logo {
@@ -22,11 +17,7 @@ html[data-theme="dark"] #loading-bg {
     max-width: 160px;
 }
 
-html[data-theme="light"] #loading-bg .loader-logo--light {
-    display: inline;
-}
-
-html[data-theme="dark"] #loading-bg .loader-logo--dark {
+#loading-bg .loader-logo--dark {
     display: inline;
 }
 

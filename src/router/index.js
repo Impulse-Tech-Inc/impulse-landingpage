@@ -8,11 +8,10 @@ const router = createRouter({
   base: import.meta.BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
+    if (to.query.pillar) {
+      return false;
     }
+    return { top: 0 };
   },
 });
 router.beforeEach((to, from, next) => {

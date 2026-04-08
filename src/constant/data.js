@@ -54,8 +54,11 @@ export const menuItems = [
     title: "menu-4",
     icon: "fluent-mdl2:blog",
     link: "https://impulse.ky/blog/",
-
-
+  },
+  {
+    title: "menu-5",
+    icon: "heroicons-outline:mail",
+    link: "/contactus",
   },
 ]
 // menuseetins

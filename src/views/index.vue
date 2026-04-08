@@ -1,19 +1,20 @@
 <template>
   <div>
     <HomePage>
-      <template v-slot:videol>
+      <!-- <template v-slot:videol>
         <div class="absolute top-0 bottom-0 w-full">
           <div class="video-container">
             <video ref="videoRef" class="videoStyle" :src="videoSrc" :poster="videoPoster" autoplay muted loop playsinline preload="metadata"></video>
           </div>
         </div>
-      </template>
+      </template> -->
     </HomePage>
-    <LeadingGlobal/>
-    <CapabilitiesTabs  />
+    <Solutions ref="solutions" @explore="handleExplore" />
+    <!-- <LeadingGlobal/> -->
+    <!-- <CapabilitiesTabs /> -->
     <TimelineShowcase />
     <RolesMarquee />
-    <CSPs />
+    <!-- <CSPs /> -->
     <!-- <div class="bg-white">
       <RevenuePotencial />
     </div> -->
@@ -50,6 +51,7 @@ import HomePage from "@/components/HomePage.vue"
 import CSPs from "@/components/CSPS.vue"
 import BlogPosts from "@/components/BlogPosts.vue"
 import LeadingGlobal from "@/components/LeadingGlobal.vue"
+import Solutions from "@/components/Solutions.vue"
 import RevenuePotencial from "@/components/RevenuePotencial.vue"
 
 export default {
@@ -57,7 +59,7 @@ export default {
   components: {
     SwipperCardHome, HomePage, CardCustomAll, SwipperCard, Card, Button, CardCustomWhoAre, ModalNewsletter,
     SwipperCard2, SolveProblems, StoryLaneEmbed, CapabilitiesTabs, ServicesOverview, PartnersShowcase, RolesMarquee, TimelineShowcase, CSPs, BlogPosts,
-    LeadingGlobal, RevenuePotencial
+    LeadingGlobal, RevenuePotencial, Solutions
   },
   data() {
     return {
@@ -92,6 +94,25 @@ export default {
     btnLink(link) {
       this.$router.push({ name: link })
     },
+    handleExplore(pillarId) {
+      this.$router.push({ name: 'pillardetails', params: { id: pillarId } })
+    },
+    scrollToPillar(pillarId) {
+      this.$nextTick(() => {
+        setTimeout(() => {
+          if (this.$refs.solutions && this.$refs.solutions.scrollToPillarById) {
+            this.$refs.solutions.scrollToPillarById(pillarId)
+          }
+        }, 400)
+      })
+    }
+  },
+  mounted() {
+    const pillar = this.$route.query.pillar
+    if (pillar) {
+      this.$router.replace({ query: {} })
+      this.scrollToPillar(pillar)
+    }
   },
   setup() {
     const { t } = useI18n()

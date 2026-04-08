@@ -68,6 +68,12 @@ const routes = [
       },
     
       {
+        path: "/pillar/:id",
+        name: "pillardetails",
+        props: true,
+        component: () => import("@/views/pillardetails.vue"),
+      },
+      {
         path: "/blog",
         name: "blog",
         component: () => import("@/views/newsandblog.vue"),

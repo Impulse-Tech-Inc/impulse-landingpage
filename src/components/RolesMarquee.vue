@@ -1,16 +1,27 @@
 <template>
-  <section class="bg-white py-20">
-    <div class="mx-auto flex max-w-5xl flex-col items-center text-center px-6 opacity-0" ref="headerRef">
-      <h2 class="text-3xl font-extrabold text-[#32125c] md:text-[42px] md:leading-tight">
+  <section class="relative bg-[#030305] py-20 overflow-hidden">
+    <!-- Premium Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#1a1a2e_0%,#030305_100%)]" />
+      <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-full max-w-[1400px] aspect-square">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(127,57,233,0.05)_0%,transparent_70%)]" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="absolute inset-[15%] border border-white/[0.02] rounded-full" style="animation: rmSpin 90s linear infinite" />
+          <div class="absolute inset-[30%] border border-white/[0.03] rounded-full border-dashed" style="animation: rmSpin 50s linear infinite reverse" />
+        </div>
+      </div>
+    </div>
+    <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center px-6 opacity-0" ref="headerRef">
+      <h2 class="text-3xl font-extrabold text-white md:text-[42px] md:leading-tight">
         Everyone wins with Impulse
       </h2>
-      <p class="mt-5 max-w-2xl text-base font-medium text-[#4c4a67] md:text-lg">
+      <p class="mt-5 max-w-2xl text-base font-medium text-white/60 md:text-lg">
         From executives to field teams, bring your entire organization together to work smarter, move faster,
         and unlock sustained growth.
       </p>
     </div>
 
-    <div class="mt-16 overflow-hidden opacity-0" ref="marqueeRef">
+    <div class="relative z-10 mt-16 overflow-hidden opacity-0" ref="marqueeRef">
       <div class="group relative py-4">
         <div class="marquee-track flex w-max gap-8 px-6 group-hover:[animation-play-state:paused]">
           <div
@@ -18,7 +29,7 @@
             :key="card.id"
             :class="[
               'relative w-[360px] shrink-0 rounded-[32px] p-8 transition-all duration-300',
-              'hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)]',
+              'hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(127,57,233,0.15)]',
               card.bgColor
             ]"
           >
@@ -31,12 +42,6 @@
             <p :class="['text-sm leading-relaxed', card.descriptionColor]">
               {{ card.description }}
             </p>
-            <a
-              :href="card.link"
-              :class="['mt-6 inline-flex items-center text-sm font-semibold transition-colors', card.linkColor, card.linkHoverColor]"
-            >
-              Learn more →
-            </a>
           </div>
 
           <div
@@ -44,7 +49,7 @@
             :key="`${card.id}-duplicate`"
             :class="[
               'relative w-[360px] shrink-0 rounded-[32px] p-8 transition-all duration-300',
-              'hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)]',
+              'hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(127,57,233,0.15)]',
               card.bgColor
             ]"
           >
@@ -57,12 +62,6 @@
             <p :class="['text-sm leading-relaxed', card.descriptionColor]">
               {{ card.description }}
             </p>
-            <a
-              :href="card.link"
-              :class="['mt-6 inline-flex items-center text-sm font-semibold transition-colors', card.linkColor, card.linkHoverColor]"
-            >
-              Learn more →
-            </a>
           </div>
         </div>
       </div>
@@ -100,12 +99,12 @@ const cards = [
     description:
       "Lead with confidence, forecast with precision, and unlock your team's full potential - with complete visibility across the business.",
     link: '#',
-    bgColor: 'bg-[#D4E8F5]',
-    textColor: 'text-[#1E5A7D]',
+    bgColor: 'bg-[#15202b]',
+    textColor: 'text-white',
     badgeColor: 'bg-[#4A90B8] text-white',
-    descriptionColor: 'text-[#2C6B8F]',
-    linkColor: 'text-[#1E5A7D]',
-    linkHoverColor: 'hover:text-[#4A90B8]'
+    descriptionColor: 'text-white/60',
+    linkColor: 'text-[#4A90B8]',
+    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'support',
@@ -114,12 +113,12 @@ const cards = [
     description:
       'Deliver standout customer experiences, reduce churn, and drive expansion with AI that keeps your teams in sync.',
     link: '#',
-    bgColor: 'bg-[#FFE5E5]',
-    textColor: 'text-[#8B3A3A]',
+    bgColor: 'bg-[#2a1520]',
+    textColor: 'text-white',
     badgeColor: 'bg-[#E07A7A] text-white',
-    descriptionColor: 'text-[#A04848]',
-    linkColor: 'text-[#8B3A3A]',
-    linkHoverColor: 'hover:text-[#E07A7A]'
+    descriptionColor: 'text-white/60',
+    linkColor: 'text-[#E07A7A]',
+    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'sales',
@@ -128,12 +127,12 @@ const cards = [
     description:
       'Drive scalable performance, improve pipeline conversion, and lead change that sticks with Impulse as your system of truth.',
     link: '#',
-    bgColor: 'bg-[#E8E0F5]',
-    textColor: 'text-[#5A3A7D]',
+    bgColor: 'bg-[#1e1525]',
+    textColor: 'text-white',
     badgeColor: 'bg-[#8B6DB8] text-white',
-    descriptionColor: 'text-[#6B4A8F]',
-    linkColor: 'text-[#5A3A7D]',
-    linkHoverColor: 'hover:text-[#8B6DB8]'
+    descriptionColor: 'text-white/60',
+    linkColor: 'text-[#8B6DB8]',
+    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'network',
@@ -142,12 +141,12 @@ const cards = [
     description:
       'Proactively monitor networks, detect issues instantly, and ensure uptime - connecting performance to business outcomes.',
     link: '#',
-    bgColor: 'bg-[#E5F5E8]',
-    textColor: 'text-[#2D6B3A]',
+    bgColor: 'bg-[#0f2018]',
+    textColor: 'text-white',
     badgeColor: 'bg-[#5BA86D] text-white',
-    descriptionColor: 'text-[#3A7D48]',
-    linkColor: 'text-[#2D6B3A]',
-    linkHoverColor: 'hover:text-[#5BA86D]'
+    descriptionColor: 'text-white/60',
+    linkColor: 'text-[#5BA86D]',
+    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'finance',
@@ -156,17 +155,18 @@ const cards = [
     description:
       'Eliminate revenue leakage, ensure billing accuracy, and track collections - automatically connecting finance to growth.',
     link: '#',
-    bgColor: 'bg-[#FFF4E5]',
-    textColor: 'text-[#8B5A00]',
+    bgColor: 'bg-[#1a1a2e]',
+    textColor: 'text-white',
     badgeColor: 'bg-[#E0A960] text-white',
-    descriptionColor: 'text-[#A06F20]',
-    linkColor: 'text-[#8B5A00]',
-    linkHoverColor: 'hover:text-[#E0A960]'
+    descriptionColor: 'text-white/60',
+    linkColor: 'text-[#E0A960]',
+    linkHoverColor: 'hover:text-white'
   }
 ]
 </script>
 
 <style scoped>
+@keyframes rmSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes marquee-slide {
   0% {
     transform: translateX(0);
