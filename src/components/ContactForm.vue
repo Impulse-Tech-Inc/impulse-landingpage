@@ -134,7 +134,7 @@ import { useToast } from "vue-toastification"
 
     const onSubmit = handleSubmit(async () => {
       try {
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://impulse-landingpage.vercel.app/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
