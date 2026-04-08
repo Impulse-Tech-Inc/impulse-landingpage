@@ -56,11 +56,11 @@
 
     <!-- Content -->
     <div
-      class="relative z-20 max-w-[1000px] w-full px-8 text-center transition-all duration-500"
+      class="relative z-20 max-w-[1000px] w-full px-5 md:px-8 text-center transition-all duration-500"
       :style="{ opacity: contentOpacity, transform: `translateY(${contentY}px)` }"
     >
       <!-- Title (word-by-word reveal) -->
-      <h1 class="text-[clamp(2.5rem,7vw,6rem)] font-bold text-white tracking-tight leading-[1.05] mb-8 mt-16">
+      <h1 class="text-[clamp(2.5rem,7vw,6rem)] font-bold text-white tracking-tight leading-[1.05] mb-6 md:mb-8 mt-8 md:mt-16">
         <span
           v-for="(word, i) in titleWords"
           :key="i"
@@ -72,7 +72,7 @@
 
       <!-- Subtitle -->
       <p
-        class="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-12 font-medium leading-relaxed"
+        class="max-w-2xl mx-auto text-base md:text-xl text-white/60 mb-8 md:mb-12 font-medium leading-relaxed"
         :class="{ 'animate-fade-up': mounted }"
       >
         {{ $t('subtitleLanding') }}
@@ -110,11 +110,11 @@
       </div>
 
       <!-- Compatible with -->
-      <div class="mt-16 pt-8 border-t border-white/5">
+      <div class="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-white/5">
         <p class="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-6">
           {{ $t('heroCompatible') }}
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+        <div class="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-12 gap-y-4 md:gap-y-6">
           <span
             v-for="vendor in vendors"
             :key="vendor"

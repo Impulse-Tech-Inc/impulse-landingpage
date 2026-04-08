@@ -236,13 +236,13 @@ export default {
 .single-sidebar-menu {
   @apply relative;
   .menulabel {
-    @apply text-slate-800 dark:text-slate-300 text-xs font-semibold uppercase mb-4 mt-4;
+    @apply text-white/30 text-xs font-semibold uppercase mb-4 mt-4;
   }
   > .menu-link {
-    @apply flex text-slate-600 font-medium dark:text-slate-300 text-sm capitalize px-[10px] py-3 rounded-[4px] cursor-pointer transition-all duration-150;
+    @apply flex text-white/60 font-medium text-sm capitalize px-[10px] py-3 rounded-[4px] cursor-pointer transition-all duration-150;
   }
   .menu-icon {
-    @apply icon-box inline-flex items-center text-slate-600 dark:text-slate-300 text-lg ltr:mr-3 rtl:ml-3 transition-all duration-150;
+    @apply icon-box inline-flex items-center text-white/40 text-lg ltr:mr-3 rtl:ml-3 transition-all duration-150;
   }
   .text-box {
     @apply transition-all duration-150;
@@ -260,7 +260,7 @@ export default {
 // menu item has chilren
 .item-has-children {
   .menu-arrow {
-    @apply h-5 w-5 text-base text-slate-300 bg-slate-100 dark:bg-[#334155] dark:text-slate-300 rounded-full flex justify-center items-center;
+    @apply h-5 w-5 text-base text-white/30 bg-white/10 rounded-full flex justify-center items-center;
   }
 }
 
@@ -316,11 +316,11 @@ export default {
 }
 .menu-item-active {
   .menu-link {
-    @apply bg-slate-800 dark:bg-slate-700;
+    @apply bg-white/10;
     .icon-box,
     .menu-icon,
     .text-box {
-      @apply text-white dark:text-slate-300;
+      @apply text-white;
     }
   }
 }

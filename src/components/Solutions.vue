@@ -1,11 +1,11 @@
 <template>
-  <section ref="containerRef" class="relative transition-colors duration-500" style="height: 350vh; background: #030305; background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #030305 100%)">
+  <section ref="containerRef" class="relative transition-colors duration-500 sol-container" style="background: #030305; background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #030305 100%)">
     <!-- Anchor IDs for navigation -->
-    <div id="network" class="absolute top-0 w-full h-[70vh] pointer-events-none" />
-    <div id="crm" class="absolute top-[70vh] w-full h-[70vh] pointer-events-none" />
-    <div id="support" class="absolute top-[140vh] w-full h-[70vh] pointer-events-none" />
-    <div id="billing" class="absolute top-[210vh] w-full h-[70vh] pointer-events-none" />
-    <div id="advisory" class="absolute top-[280vh] w-full h-[70vh] pointer-events-none" />
+    <div id="network" class="absolute top-0 w-full h-[20%] pointer-events-none" />
+    <div id="crm" class="absolute top-[20%] w-full h-[20%] pointer-events-none" />
+    <div id="support" class="absolute top-[40%] w-full h-[20%] pointer-events-none" />
+    <div id="billing" class="absolute top-[60%] w-full h-[20%] pointer-events-none" />
+    <div id="advisory" class="absolute top-[80%] w-full h-[20%] pointer-events-none" />
 
     <div class="sticky top-0 h-screen w-full flex items-center overflow-hidden">
       <!-- Premium Background (same as hero) -->
@@ -42,14 +42,14 @@
       </div>
 
       <!-- Content -->
-      <div class="max-w-[1600px] mx-auto w-full px-8 md:px-24 relative">
+      <div class="max-w-[1600px] mx-auto w-full px-5 md:px-12 lg:px-24 relative">
         <transition name="pillar-fade" mode="out-in">
           <div
             :key="activeIndex"
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
           >
             <!-- LEFT: NARRATIVE -->
-            <div class="space-y-12">
+            <div class="space-y-8 md:space-y-12">
               <div class="space-y-4">
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-px" style="background: linear-gradient(90deg, #a446f4, #4138f3)" />
@@ -90,8 +90,8 @@
               </div>
             </div>
 
-            <!-- RIGHT: VISUALS -->
-            <div class="relative aspect-square flex items-center justify-center">
+            <!-- RIGHT: VISUALS (hidden on mobile) -->
+            <div class="relative aspect-square hidden lg:flex items-center justify-center">
               <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(127,57,233,0.08)_0%,transparent_70%)]" />
 
               <div class="relative z-10 w-full h-full flex items-center justify-center">
@@ -100,7 +100,7 @@
                 <div v-if="activeIndex === 0" class="grid grid-cols-1 gap-4 w-full max-w-lg relative animate-scale-in">
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7F39E9]/10 blur-[80px] animate-pulse rounded-full" />
 
-                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between h-[220px]">
+                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between h-auto min-h-[200px]">
                     <div class="flex justify-between items-start">
                       <div class="text-[10px] font-black text-[#7F39E9] uppercase tracking-widest">Telemetrics Telemetry</div>
                       <Icon icon="heroicons-outline:chart-bar" class="text-[#7F39E9] opacity-50 text-lg" />
@@ -116,7 +116,7 @@
                     <div class="mt-3 text-[10px] font-bold text-white/40 uppercase">CORE_UPTIME: 99.999%</div>
                   </div>
 
-                  <div class="bg-slate-950 border border-white/10 rounded-[1.5rem] p-5 shadow-2xl relative overflow-hidden h-[220px] flex flex-col">
+                  <div class="bg-slate-950 border border-white/10 rounded-[1.5rem] p-5 shadow-2xl relative overflow-hidden h-auto min-h-[200px] flex flex-col">
                     <div class="flex justify-between items-start mb-4">
                       <div class="text-[10px] font-black text-teal-500 uppercase tracking-widest">Multi-Vendor Ecosystem</div>
                       <Icon icon="heroicons-outline:view-grid" class="text-teal-500 opacity-50 text-lg" />
@@ -153,7 +153,7 @@
 
                 <!-- VISUAL 2: Agentic CRM -->
                 <div v-if="activeIndex === 1" class="grid grid-cols-1 gap-4 w-full max-w-lg relative animate-scale-in">
-                  <div class="bg-slate-950 border-2 border-[#7F39E9]/50 rounded-[2rem] p-5 shadow-[0_20px_50px_rgba(127,57,233,0.2)] relative overflow-hidden flex flex-col h-[220px] z-20">
+                  <div class="bg-slate-950 border-2 border-[#7F39E9]/50 rounded-[2rem] p-5 shadow-[0_20px_50px_rgba(127,57,233,0.2)] relative overflow-hidden flex flex-col h-auto min-h-[200px] z-20">
                     <div class="flex justify-between items-start mb-3">
                       <div class="text-[10px] font-black text-[#7F39E9] uppercase tracking-widest">Agentic CRM</div>
                       <Icon icon="heroicons-outline:user-circle" class="text-[#7F39E9] text-lg" />
@@ -183,7 +183,7 @@
                     </div>
                   </div>
 
-                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] p-6 shadow-2xl relative overflow-hidden h-[180px]">
+                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] p-6 shadow-2xl relative overflow-hidden h-auto min-h-[160px]">
                     <div class="flex justify-between items-start mb-4">
                       <div class="text-[10px] font-black text-orange-500 uppercase tracking-widest">Growth Engine</div>
                       <Icon icon="heroicons-outline:trending-up" class="text-orange-500 opacity-50 text-lg" />
@@ -237,7 +237,7 @@
                     <div class="bg-white rounded-[1.9rem] p-8 flex flex-col items-center gap-4">
                       <Icon icon="heroicons-outline:check-circle" class="text-teal-500 text-5xl" />
                       <div class="text-center space-y-1">
-                        <div class="text-3xl font-black text-white tracking-tighter">RESOLVED</div>
+                        <div class="text-3xl font-black text-slate-900 tracking-tighter">RESOLVED</div>
                         <div class="text-[9px] font-black text-white/40 uppercase tracking-[0.4em]">Signal Stable | Ticket #8042 Closed</div>
                       </div>
                     </div>
@@ -277,7 +277,7 @@
                     <div class="space-y-8">
                       <div>
                         <div class="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-3">Subscriber_Account: #TR-9004</div>
-                        <div class="text-5xl font-black text-white tracking-tighter leading-none">$142.<span class="animate-blink">85</span></div>
+                        <div class="text-3xl md:text-5xl font-black text-white tracking-tighter leading-none">$142.<span class="animate-blink">85</span></div>
                         <div class="text-[9px] font-bold text-white/40 uppercase mt-3 flex items-center gap-2">
                           <Icon icon="heroicons-outline:globe-alt" class="text-sm" /> Unified Gateway: ACH / VISA / Mobile
                         </div>
@@ -326,7 +326,7 @@
                       <div class="flex justify-between items-start">
                         <div class="space-y-1">
                           <div class="text-[8px] font-black text-[#a446f4] uppercase tracking-[0.4em]">Strategic Command</div>
-                          <h3 class="text-2xl font-black text-white tracking-tighter">Operational KPI Ownership</h3>
+                          <h3 class="text-xl md:text-2xl font-black text-white tracking-tighter">Operational KPI Ownership</h3>
                         </div>
                         <div class="p-3 rounded-xl bg-[#7F39E9]/10 border border-[#7F39E9]/20 text-[#a446f4] shadow-lg">
                           <Icon icon="heroicons-outline:map" class="text-2xl" />
@@ -399,8 +399,8 @@
       </div>
 
       <!-- Bottom Navigation (absolute bottom, centered) -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-50">
-        <div class="flex items-center gap-8 lg:gap-12 px-8 lg:px-10 py-4 bg-white/[0.03] rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
+      <div class="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <div class="flex items-center gap-3 md:gap-8 lg:gap-12 px-4 md:px-8 lg:px-10 py-3 md:py-4 bg-white/[0.03] rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
           <button
             v-for="(p, idx) in pillars"
             :key="p.id"
@@ -409,7 +409,7 @@
             @click="scrollToPillar(idx)"
           >
             <div
-              class="text-[10px] font-black uppercase tracking-[0.3em] transition-colors duration-500 whitespace-nowrap"
+              class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] transition-colors duration-500 whitespace-nowrap"
               :class="activeIndex === idx ? 'text-[#7F39E9]' : 'text-white/40'"
             >
               {{ p.name }}
@@ -696,5 +696,20 @@ export default {
 @keyframes progress72 {
   0% { width: 0; }
   50%, 100% { width: 72%; }
+}
+
+/* Responsive container height */
+.sol-container {
+  height: 200vh;
+}
+@media (min-width: 768px) {
+  .sol-container {
+    height: 250vh;
+  }
+}
+@media (min-width: 1024px) {
+  .sol-container {
+    height: 350vh;
+  }
 }
 </style>

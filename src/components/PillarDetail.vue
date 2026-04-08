@@ -30,7 +30,7 @@
             <PillarBadges />
           </div>
           <!-- Orbital Visual -->
-          <div class="relative aspect-square flex items-center justify-center">
+          <div class="relative aspect-square flex items-center justify-center max-h-[50vh] lg:max-h-none">
             <OrbitalVisual />
           </div>
         </div>
@@ -487,7 +487,7 @@
             <p class="text-xl text-white/50 font-light max-w-xl leading-relaxed">{{ $t('pillarSupportHero') }}</p>
             <PillarBadges />
           </div>
-          <div class="relative aspect-square flex items-center justify-center">
+          <div class="relative aspect-square flex items-center justify-center max-h-[50vh] lg:max-h-none">
             <SupportVisual />
           </div>
         </div>
@@ -535,7 +535,7 @@
           </div>
 
           <!-- Hub Diagram -->
-          <div class="relative h-[450px] w-full flex items-center justify-center overflow-hidden">
+          <div class="relative h-[300px] md:h-[450px] w-full flex items-center justify-center overflow-hidden">
             <!-- Ambient Glow -->
             <div class="absolute w-64 h-64 rounded-full blur-[100px] opacity-20" style="background: linear-gradient(135deg, #a446f4, #4138f3)" />
 
@@ -563,7 +563,7 @@
             <!-- Channel Nodes -->
             <div v-for="(ch, i) in supportChannels" :key="i"
               class="absolute w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shadow-xl text-[#7F39E9] hover:scale-110 hover:border-[#7F39E9]/50 transition-all cursor-default"
-              :style="getOmniNodePos(i, supportChannels.length, 150)"
+              :style="getOmniNodePos(i, supportChannels.length, 120)"
             >
               <Icon :icon="ch.icon" class="text-xl" />
             </div>
@@ -738,7 +738,7 @@
             <p class="text-xl text-white/50 font-light max-w-xl leading-relaxed">{{ $t('pillarBillingHero') }}</p>
             <PillarBadges />
           </div>
-          <div class="relative aspect-square flex items-center justify-center">
+          <div class="relative aspect-square flex items-center justify-center max-h-[50vh] lg:max-h-none">
             <BillingVisual />
           </div>
         </div>
@@ -939,7 +939,7 @@
             <p class="text-xl text-white/50 font-light max-w-xl leading-relaxed">{{ $t('pillarAdvisoryHero') }}</p>
             <PillarBadges />
           </div>
-          <div class="relative aspect-square flex items-center justify-center">
+          <div class="relative aspect-square flex items-center justify-center max-h-[50vh] lg:max-h-none">
             <AdvisoryVisual />
           </div>
         </div>
