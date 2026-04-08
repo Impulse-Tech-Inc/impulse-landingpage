@@ -15,10 +15,17 @@ module.exports = async function handler(req, res) {
 
   const pillarLabel = pillar || "General";
 
+  console.log("[contact] Request received:", { name, email, pillar: pillarLabel });
+  console.log("[contact] ENV check:", {
+    hasToken: !!process.env.POSTMARK_SERVER_TOKEN,
+    fromEmail: process.env.POSTMARK_FROM_EMAIL || "NOT SET",
+    toEmail: process.env.POSTMARK_TO_EMAIL || "NOT SET"
+  });
+
   const client = new postmark.ServerClient(process.env.POSTMARK_SERVER_TOKEN);
 
   try {
-    await client.sendEmail({
+    const result = await client.sendEmail({
       From: process.env.POSTMARK_FROM_EMAIL,
       To: process.env.POSTMARK_TO_EMAIL,
       ReplyTo: email,
@@ -44,9 +51,10 @@ ${message}
       `.trim(),
     });
 
-    return res.status(200).json({ success: true });
+    console.log("[contact] Postmark response:", result);
+    return res.status(200).json({ success: true, messageId: result.MessageID });
   } catch (error) {
-    console.error("Postmark error:", error);
-    return res.status(500).json({ error: "Failed to send email" });
+    console.error("[contact] Postmark error:", JSON.stringify(error, null, 2));
+    return res.status(500).json({ error: "Failed to send email", detail: error.message || error });
   }
 };
