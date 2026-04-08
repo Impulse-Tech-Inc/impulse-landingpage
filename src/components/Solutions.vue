@@ -84,7 +84,7 @@
 
                 <div class="flex flex-wrap gap-x-10 gap-y-8 pt-4">
                   <div v-for="(s, si) in currentPillar.stats" :key="si" class="space-y-2 min-w-[100px]">
-                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">{{ s.label }}</div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">{{ $t(s.labelKey) }}</div>
                     <div class="text-base font-bold text-white tracking-tight">{{ s.value }}</div>
                   </div>
                 </div>
@@ -261,7 +261,7 @@
                         <Icon :icon="s.icon" class="text-lg" />
                       </div>
                       <div class="text-center">
-                        <div class="text-[8px] font-black text-white/30 uppercase tracking-widest">{{ s.label }}</div>
+                        <div class="text-[8px] font-black text-white/30 uppercase tracking-widest">{{ $t(s.labelKey) }}</div>
                         <div class="text-[10px] font-black text-white">{{ s.value }}</div>
                       </div>
                     </div>
@@ -450,8 +450,8 @@ export default {
           titleKey: 'solNetworkTitle',
           descKey: 'solNetworkDesc',
           stats: [
-            { label: 'Signals', value: '20M+ / sec' },
-            { label: 'Vendors', value: '35+' }
+            { labelKey: 'solStatSignals', value: '20M+ / sec' },
+            { labelKey: 'solStatVendors', value: '35+' }
           ]
         },
         {
@@ -460,9 +460,9 @@ export default {
           titleKey: 'solCrmTitle',
           descKey: 'solCrmDesc',
           stats: [
-            { label: 'Churn Intercept', value: 'Up to 40%' },
-            { label: 'AI Autonomy', value: '85% of Tasks' },
-            { label: 'ARPU Lift', value: '+$12.40 Avg' }
+            { labelKey: 'solStatChurn', value: '40%' },
+            { labelKey: 'solStatAI', value: '85%' },
+            { labelKey: 'solStatARPU', value: '+$12.40' }
           ]
         },
         {
@@ -471,9 +471,9 @@ export default {
           titleKey: 'solSupportTitle',
           descKey: 'solSupportDesc',
           stats: [
-            { label: 'Channels', value: 'Voice / Web / App' },
-            { label: 'Autonomous', value: '82% of Issues' },
-            { label: 'SLA Fix', value: '< 120 Seconds' }
+            { labelKey: 'solStatChannels', value: 'Voice / Web / App' },
+            { labelKey: 'solStatAutonomous', value: '82%' },
+            { labelKey: 'solStatSLA', value: '< 120s' }
           ]
         },
         {
@@ -482,9 +482,9 @@ export default {
           titleKey: 'solBillingTitle',
           descKey: 'solBillingDesc',
           stats: [
-            { label: 'Methods', value: 'ACH / Cards / Mobile' },
-            { label: 'Rating', value: 'Usage-Based CDR' },
-            { label: 'Currency', value: 'Multi-Region' }
+            { labelKey: 'solStatMethods', value: 'ACH / Cards / Mobile' },
+            { labelKey: 'solStatRating', value: 'Usage-Based CDR' },
+            { labelKey: 'solStatCurrency', value: 'Multi-Region' }
           ]
         },
         {
@@ -493,9 +493,9 @@ export default {
           titleKey: 'solAdvisoryTitle',
           descKey: 'solAdvisoryDesc',
           stats: [
-            { label: 'Engagement', value: 'Standalone Revenue' },
-            { label: 'Audit Cycle', value: '14-Day Sprint' },
-            { label: 'Retainer', value: '$5k/mo Entry' }
+            { labelKey: 'solStatEngagement', value: 'Standalone Revenue' },
+            { labelKey: 'solStatAudit', value: '14-Day Sprint' },
+            { labelKey: 'solStatRetainer', value: '$5k/mo' }
           ]
         }
       ],

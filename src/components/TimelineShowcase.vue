@@ -16,10 +16,10 @@
       <!-- heading -->
       <div class="opacity-0" ref="headingRef">
         <h2 class="text-2xl md:text-3xl font-extrabold text-white md:text-[44px] md:leading-tight">
-          Proven results in weeks, not years
+          {{ $t('provenResultsTitle') }}
         </h2>
         <p class="mt-4 max-w-3xl text-sm md:text-base text-white/60 md:text-lg">
-          A clear, collaborative path that gets your teams from executive alignment to AI in production faster than ever.
+          {{ $t('provenResultsDesc') }}
         </p>
       </div>
 

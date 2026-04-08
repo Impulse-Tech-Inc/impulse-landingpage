@@ -13,11 +13,10 @@
     </div>
     <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center px-6 opacity-0" ref="headerRef">
       <h2 class="text-3xl font-extrabold text-white md:text-[42px] md:leading-tight">
-        Everyone wins with Impulse
+        {{ $t('everyoneWinsTitle') }}
       </h2>
       <p class="mt-5 max-w-2xl text-base font-medium text-white/60 md:text-lg">
-        From executives to field teams, bring your entire organization together to work smarter, move faster,
-        and unlock sustained growth.
+        {{ $t('everyoneWinsDesc') }}
       </p>
     </div>
 
