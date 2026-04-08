@@ -1,12 +1,24 @@
 <template>
-  <section class="bg-white py-20">
-    <div class="mx-auto flex max-w-6xl flex-col gap-10 px-6">
+  <section class="relative bg-[#030305] py-20 overflow-hidden">
+    <!-- Premium Background -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#1a1a2e_0%,#030305_100%)]" />
+      <div class="absolute top-[-30%] left-1/2 -translate-x-1/2 w-full max-w-[1200px] aspect-square">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(127,57,233,0.06)_0%,transparent_70%)]" />
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="absolute inset-[10%] border border-white/[0.02] rounded-full" style="animation: tsSpin 80s linear infinite" />
+          <div class="absolute inset-[25%] border border-white/[0.03] rounded-full border-dashed" style="animation: tsSpin 60s linear infinite reverse" />
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 h-1/3 opacity-[0.02]" style="background-image: linear-gradient(to right, #7F39E9 1px, transparent 1px), linear-gradient(to bottom, #7F39E9 1px, transparent 1px); background-size: 120px 120px; transform: perspective(1000px) rotateX(75deg) scale(2.5); mask-image: linear-gradient(to top, black, transparent); -webkit-mask-image: linear-gradient(to top, black, transparent)" />
+    </div>
+    <div class="relative z-10 mx-auto flex max-w-6xl flex-col gap-10 px-6">
       <!-- heading -->
       <div class="opacity-0" ref="headingRef">
-        <h2 class="text-3xl font-extrabold text-[#2f1a54] md:text-[44px] md:leading-tight">
+        <h2 class="text-3xl font-extrabold text-white md:text-[44px] md:leading-tight">
           Proven results in weeks, not years
         </h2>
-        <p class="mt-4 max-w-3xl text-base text-[#5b4e76] md:text-lg">
+        <p class="mt-4 max-w-3xl text-base text-white/60 md:text-lg">
           A clear, collaborative path that gets your teams from executive alignment to AI in production faster than ever.
         </p>
       </div>
@@ -14,7 +26,7 @@
       <!-- timeline -->
       <div class="rounded-lg overflow-visible" aria-label="Delivery timeline">
         <!-- header row -->
-        <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#e7def7]">
+        <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
           <div
             v-for="(item, index) in timeline"
             :key="item.id"
@@ -50,12 +62,12 @@
         </div>
 
         <!-- thin divider line -->
-        <div class="h-[1px] bg-white/30"></div>
+        <div class="h-[1px] bg-white/10"></div>
 
         <!-- durations row -->
-        <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#e7def7] bg-white">
+        <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-white/5">
           <div v-for="item in timeline" :key="item.id + '-duration'" class="p-5">
-            <p class="text-sm text-[#5b4e76]">{{ item.duration }}</p>
+            <p class="text-sm text-white/50">{{ item.duration }}</p>
           </div>
         </div>
       </div>
@@ -120,7 +132,7 @@ const timeline = [
     detail:
       'Prototype the solution with your real data, validate models alongside our experts, and define the playbook for go-live.',
     image:
-      'https://images.unsplash.com/photo-1537432376769-00aabc89af93?auto=format&fit=crop&w=800&q=80'
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'deployment',
@@ -136,6 +148,7 @@ const timeline = [
 </script>
 
 <style scoped>
+@keyframes tsSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @media (hover: hover) and (pointer: fine) {
   .group:hover { /* estilos extra opcionales */ }
 }

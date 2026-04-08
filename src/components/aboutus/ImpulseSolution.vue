@@ -1,23 +1,36 @@
 <template>
-    <div>
-        <section class="bg-gradient-to-b from-[#7F39E9] to-[#472083]">
-            <span
-                class="text-xl md:text-2xl xl:text-4xl text-white font-bold flex justify-center mx-5 md:mx-auto md:w-[700px] text-center pt-10 md:pt-16">{{
-                    t('aboutUsLeadingIndustryTitle') }}</span>
+  <section class="relative py-20 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header -->
+      <div class="text-center space-y-6 mb-16">
+        <div class="text-[10px] font-black uppercase tracking-[0.4em] text-[#a446f4]">{{ t('aboutUsLeadingLabel') }}</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter leading-tight max-w-3xl mx-auto">
+          {{ t('aboutUsLeadingIndustryTitle') }}
+        </h2>
+        <p class="text-lg text-white/60 font-light leading-relaxed max-w-2xl mx-auto">
+          {{ t('aboutUsLeadingIndustryDescription') }}
+        </p>
+      </div>
 
-            <div
-                class="flex flex-row flex-wrap xl:flex-nowrap items-center justify-center mx-5 xl:mx-20 pt-8 md:pt-12 pb-12 md:pb-20 gap-4">
-                <span class="text-white text-base md:text-lg md:max-w-xl"> {{ t('aboutUsLeadingIndustryDescription')
-                    }}</span>
-                <img src="@/assets/images/isimg.svg"
-                    class=" h-[260px] md:h-[200px] lg:h-[260px] xl:h-[360px] 2xl:h-[460px] rounded-lg" alt="">
-            </div>
-        </section>
+      <!-- Stats / Highlights -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div v-for="(stat, i) in stats" :key="i" class="p-6 md:p-8 bg-white/5 border border-white/10 rounded-[1.5rem] text-center space-y-3 hover:border-white/20 transition-all">
+          <div class="text-3xl md:text-4xl font-black text-white tracking-tighter">{{ stat.value }}</div>
+          <div class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{{ stat.label }}</div>
+        </div>
+      </div>
     </div>
+  </section>
 </template>
+
 <script setup>
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
-
+const stats = [
+  { value: '100+', label: 'Years Combined Experience' },
+  { value: '20+', label: 'Operators Powered' },
+  { value: '4', label: 'Continents' },
+  { value: '35+', label: 'Vendor Integrations' }
+]
 </script>

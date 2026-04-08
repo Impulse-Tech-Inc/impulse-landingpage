@@ -59,15 +59,15 @@
       class="relative z-20 max-w-[1000px] w-full px-8 text-center transition-all duration-500"
       :style="{ opacity: contentOpacity, transform: `translateY(${contentY}px)` }"
     >
-      <!-- Title -->
-      <h1
-        class="text-[clamp(2.5rem,7vw,6rem)] font-bold text-white tracking-tight leading-[1.05] mb-8 mt-16"
-        :class="{ 'animate-fade-up': mounted }"
-      >
-        {{ $t('titleLanding') }}<br />
-        <span class="text-white">
-          {{ $t('titleLanding2') }}
-        </span>
+      <!-- Title (word-by-word reveal) -->
+      <h1 class="text-[clamp(2.5rem,7vw,6rem)] font-bold text-white tracking-tight leading-[1.05] mb-8 mt-16">
+        <span
+          v-for="(word, i) in titleWords"
+          :key="i"
+          class="inline-block mr-[0.25em] last:mr-0"
+          :class="[mounted ? 'hero-word-reveal' : 'opacity-0', word.break ? 'basis-full h-0 !mr-0' : '']"
+          :style="{ animationDelay: `${0.2 + i * 0.1}s` }"
+        >{{ word.break ? '' : word.text }}</span>
       </h1>
 
       <!-- Subtitle -->
@@ -121,10 +121,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-useI18n()
+const { t } = useI18n()
+
+const titleWords = computed(() => {
+  const line1 = t('titleLanding').split(' ').map(w => ({ text: w }))
+  const line2 = t('titleLanding2').split(' ').map(w => ({ text: w }))
+  return [...line1, { break: true }, ...line2]
+})
 
 const email = ref('')
 const mounted = ref(false)
@@ -175,6 +181,23 @@ onBeforeUnmount(() => {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Word-by-word reveal */
+.hero-word-reveal {
+  animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* Neural Core Animations */

@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t border-white/5 py-16 md:py-20 px-6" style="background: linear-gradient(224.95deg, #1a0a2e -1.95%, #0f0720 50%, #0a0418 104.5%)">
+  <footer class="border-t border-white/5 py-16 md:py-20 px-6 bg-[#0a0a12]">
     <div class="max-w-7xl mx-auto">
       <!-- Main Grid -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">

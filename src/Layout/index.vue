@@ -1,5 +1,5 @@
 <template>
-  <main class="app-wrapper">
+  <main class="app-wrapper bg-[#030305]">
     <Header :class="window.width > 1024 ? switchHeaderClass() : ''" />
     <!-- end header -->
 
@@ -42,9 +42,9 @@
 
 
        
-          <router-view v-slot="{ Component }">
-            <transition name="router-animation" mode="out-in" appear>
-              <component :is="Component"></component>
+          <router-view v-slot="{ Component, route }">
+            <transition name="page-transition" mode="out-in" appear @before-enter="onBeforeEnter">
+              <component :is="Component" :key="route.path"></component>
             </transition>
           </router-view>
           
@@ -120,6 +120,9 @@ export default {
     }
   },
   methods: {
+    onBeforeEnter() {
+      globalThis.window.scrollTo(0, 0);
+    },
     switchHeaderClass() {
       if (
         this.$store.themeSettingsStore.menuLayout === "horizontal" ||
@@ -151,17 +154,26 @@ export default {
 };
 </script>
 <style lang="scss">
-.router-animation-enter-active {
-  transition: opacity 0.25s ease;
+.page-transition-enter-active {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.router-animation-leave-active {
-  transition: opacity 0.15s ease;
+.page-transition-leave-active {
+  transition: all 0.2s ease-in;
 }
-.router-animation-enter-from {
+.page-transition-enter-from {
   opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  filter: blur(4px);
 }
-.router-animation-leave-to {
+.page-transition-leave-to {
   opacity: 0;
+  transform: translateY(-8px) scale(0.99);
+}
+.page-transition-enter-to,
+.page-transition-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 @keyframes slideLeftTransition {
   0% {

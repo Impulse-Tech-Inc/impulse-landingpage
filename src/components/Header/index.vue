@@ -10,8 +10,8 @@
         'transition-all duration-500 px-8',
         !isScrolled
           ? 'h-20 bg-transparent'
-          : isInHero
-            ? 'h-16 bg-black/30 backdrop-blur-xl'
+          : isDarkPage
+            ? 'h-16 bg-black/50 backdrop-blur-xl'
             : 'h-16 bg-white/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
       ]"
     >
@@ -121,6 +121,10 @@ export default {
     isHomePage() {
       return this.$route.name === 'home' || this.$route.path === '/';
     },
+    isDarkPage() {
+      const darkPages = ['home', 'aboutus', 'pillardetails', 'contactus'];
+      return darkPages.includes(this.$route.name);
+    },
     shouldBeTransparent() {
       return this.isHomePage && !this.isScrolled;
     },
@@ -128,7 +132,7 @@ export default {
       return this.isHomePage && !this.isPastHero;
     },
     useWhiteStyle() {
-      return this.shouldBeTransparent || this.isInHero;
+      return this.shouldBeTransparent || this.isInHero || this.isDarkPage;
     },
     logoSrc() {
       return this.useWhiteStyle ? impulseLogoWhite : impulseLogoColor;

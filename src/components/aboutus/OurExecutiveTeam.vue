@@ -1,33 +1,32 @@
 <template>
     <div>
-        <section class="relative mt-24 md:mt-32 md:mb-16">
-            <div class="mx-5 md:mx-10 xl:mx-20 animate-fade-up animate-delay-300">
-                <span class="text-[#3D0075] text-2xl md:text-4xl font-bold flex justify-center">{{
+        <section class="relative pt-24 md:pt-32 md:mb-16">
+            <div class="mx-5 md:mx-10 xl:mx-20">
+                <span class="text-white text-2xl md:text-4xl font-bold flex justify-center">{{
                     $t('aboutUsExecutiveTeamTitle')
                 }}</span>
                 <div class="grid xl:grid-cols-2 mt-10 pb-8 md:pb-0 md:mt-16 gap-5">
                     <article
-                        class="bg-[#F6F6F6] shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl overflow-hidden"
+                        class="bg-white/5 border border-white/10 shadow-none hover:shadow-[0_20px_50px_rgba(127,57,233,0.15)] hover:border-white/20 transition-shadow duration-300 rounded-xl overflow-hidden"
                         v-for="(team, i) in teams" :key="i">
-                        <div class="flex flex-col md:flex-row h-full">
-                            <img :src="team.img" alt="" class="w-full md:w-56 lg:w-64 h-48 md:h-full rounded-t-xl md:rounded-l-xl md:rounded-tr-none object-cover flex-shrink-0" />
+                        <div class="flex flex-col md:flex-row">
+                            <img :src="team.img" alt="" class="w-full md:w-56 lg:w-64 h-48 md:h-64 rounded-t-xl md:rounded-l-xl md:rounded-tr-none object-cover flex-shrink-0" />
                             <div class="flex flex-col justify-start gap-1.5 items-center md:items-start px-4 py-3">
                                 <div class="flex items-center gap-1">
-                                    <span class="text-base md:text-lg font-bold text-black-500">{{ team.name }}</span>
+                                    <span class="text-base md:text-lg font-bold text-white">{{ team.name }}</span>
                                     <a :href="team.linkedin" target="_blank" class="cursor-pointer">
                                         <Icon icon="skill-icons:linkedin" class="text-base" />
                                     </a>
 
 
                                 </div>
-                                <span class="text-xs md:text-sm text-[#0079D8] font-bold">{{ team.position }}</span>
-                                <p class="text-xs md:text-sm max-w-3xl leading-relaxed">{{ team.description }}</p>
+                                <span class="text-xs md:text-sm text-[#a446f4] font-bold">{{ team.position }}</span>
+                                <p class="text-xs md:text-sm max-w-3xl leading-relaxed text-white/60">{{ team.description }}</p>
                             </div>
                         </div>
                     </article>
                 </div>
             </div>
-            <img src="@/assets/images/rectangle.svg" class="hidden md:block absolute top-0 left-0 -z-10" alt="">
         </section>
     </div>
 </template>
