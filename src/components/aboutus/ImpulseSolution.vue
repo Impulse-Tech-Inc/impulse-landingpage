@@ -29,18 +29,19 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import reveal from "@/directives/reveal"
 
 const vReveal = reveal
 const { t } = useI18n()
 
-const stats = [
-  { value: '100+', label: 'Years Combined Experience' },
-  { value: '20+', label: 'Operators Powered' },
-  { value: '4', label: 'Continents' },
-  { value: '35+', label: 'Vendor Integrations' }
-]
+const stats = computed(() => [
+  { value: '100+', label: t('statYears') },
+  { value: '20+', label: t('statOperators') },
+  { value: '4', label: t('statContinents') },
+  { value: '35+', label: t('statVendorIntegrations') }
+])
 </script>
 
 <style scoped>

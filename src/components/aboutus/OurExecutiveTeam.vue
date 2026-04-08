@@ -4,11 +4,11 @@
             <div class="max-w-6xl mx-auto px-6">
                 <!-- Header -->
                 <div v-reveal class="text-center space-y-4 mb-14">
-                    <div class="text-[10px] font-black uppercase tracking-[0.4em] text-[#a446f4]">Leadership</div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.4em] text-[#a446f4]">{{ $t('leadershipLabel') }}</div>
                     <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter">
                         {{ $t('aboutUsExecutiveTeamTitle') }}
                     </h2>
-                    <p class="text-lg text-white/40 font-light max-w-xl mx-auto">The minds behind Impulse</p>
+                    <p class="text-lg text-white/40 font-light max-w-xl mx-auto">{{ $t('leadershipSubtitle') }}</p>
                 </div>
 
                 <!-- Team Grid -->

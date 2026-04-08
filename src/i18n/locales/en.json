@@ -845,6 +845,12 @@
                 "learnMore": "Learn more in our",
                 "privacyPolicy": "Privacy Policy"
             },
+            "leadershipLabel": "Leadership",
+            "leadershipSubtitle": "The minds behind Impulse",
+            "statYears": "Years Combined Experience",
+            "statOperators": "Operators Powered",
+            "statContinents": "Continents",
+            "statVendorIntegrations": "Vendor Integrations",
             "everyoneWinsTitle": "Everyone wins with Impulse",
             "everyoneWinsDesc": "From executives to field teams, bring your entire organization together to work smarter, move faster, and unlock sustained growth.",
             "roleRevenueTitle": "Revenue Leadership",
