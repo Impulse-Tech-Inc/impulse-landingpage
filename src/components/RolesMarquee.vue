@@ -70,8 +70,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import useIntersectionObserver from '@/composables/useIntersectionObserver'
+
+const { t } = useI18n()
 
 const headerRef = ref(null)
 const marqueeRef = ref(null)
@@ -90,78 +93,58 @@ onMounted(() => {
   }
 })
 
-const cards = [
+const cards = computed(() => [
   {
     id: 'revenue',
     badge: 'RL',
-    title: 'Revenue Leadership',
-    description:
-      "Lead with confidence, forecast with precision, and unlock your team's full potential - with complete visibility across the business.",
-    link: '#',
+    title: t('roleRevenueTitle'),
+    description: t('roleRevenueDesc'),
     bgColor: 'bg-[#15202b]',
     textColor: 'text-white',
     badgeColor: 'bg-[#4A90B8] text-white',
     descriptionColor: 'text-white/60',
-    linkColor: 'text-[#4A90B8]',
-    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'support',
     badge: 'CS',
-    title: 'Customer Support',
-    description:
-      'Deliver standout customer experiences, reduce churn, and drive expansion with AI that keeps your teams in sync.',
-    link: '#',
+    title: t('roleSupportTitle'),
+    description: t('roleSupportDesc'),
     bgColor: 'bg-[#2a1520]',
     textColor: 'text-white',
     badgeColor: 'bg-[#E07A7A] text-white',
     descriptionColor: 'text-white/60',
-    linkColor: 'text-[#E07A7A]',
-    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'sales',
     badge: 'SM',
-    title: 'Sales & Marketing',
-    description:
-      'Drive scalable performance, improve pipeline conversion, and lead change that sticks with Impulse as your system of truth.',
-    link: '#',
+    title: t('roleSalesTitle'),
+    description: t('roleSalesDesc'),
     bgColor: 'bg-[#1e1525]',
     textColor: 'text-white',
     badgeColor: 'bg-[#8B6DB8] text-white',
     descriptionColor: 'text-white/60',
-    linkColor: 'text-[#8B6DB8]',
-    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'network',
     badge: 'NO',
-    title: 'Network Operations',
-    description:
-      'Proactively monitor networks, detect issues instantly, and ensure uptime - connecting performance to business outcomes.',
-    link: '#',
+    title: t('roleNetworkTitle'),
+    description: t('roleNetworkDesc'),
     bgColor: 'bg-[#0f2018]',
     textColor: 'text-white',
     badgeColor: 'bg-[#5BA86D] text-white',
     descriptionColor: 'text-white/60',
-    linkColor: 'text-[#5BA86D]',
-    linkHoverColor: 'hover:text-white'
   },
   {
     id: 'finance',
     badge: 'FB',
-    title: 'Finance & Billing',
-    description:
-      'Eliminate revenue leakage, ensure billing accuracy, and track collections - automatically connecting finance to growth.',
-    link: '#',
+    title: t('roleFinanceTitle'),
+    description: t('roleFinanceDesc'),
     bgColor: 'bg-[#1a1a2e]',
     textColor: 'text-white',
     badgeColor: 'bg-[#E0A960] text-white',
     descriptionColor: 'text-white/60',
-    linkColor: 'text-[#E0A960]',
-    linkHoverColor: 'hover:text-white'
   }
-]
+])
 </script>
 
 <style scoped>
