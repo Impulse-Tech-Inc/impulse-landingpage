@@ -965,7 +965,7 @@
                 "q3": "¿Cuánto tiempo dura mi Contrato con Impulse? ¿Cómo se renueva?",
                 "a3": "El término de cualquier Servicio comenzará en la Fecha de Inicio, y expirará al final del Período de Servicio Fijo. Al expirar un Período de Servicio Inicial, el Servicio continuará en un Período de Servicio Mensual a las tarifas entonces aplicables de Impulse a menos que cancele el Servicio aplicable o a menos que Impulse o usted rescinda este Contrato.",
                 "q4": "¿Cómo se termina el Contrato o algún Servicio?",
-                "a4": "Puede terminar el Contrato enviando un correo electrónico a support@impulse.ky",
+                "a4": "Puede terminar el Contrato enviando un correo electrónico a support{'@'}impulse.ky",
                 "highlightTitle": "Tarifas por Terminación Anticipada",
                 "highlightText": "Debe pagar una tarifa por terminación anticipada por cualquier Servicio(s) que termine antes del final de cualquier Período de Servicio Fijo. Las tarifas son iguales al 50% del total de los cargos mensuales por cada Servicio terminado anticipadamente, multiplicado por el número de meses restantes en el Período de Servicio Fijo."
             },

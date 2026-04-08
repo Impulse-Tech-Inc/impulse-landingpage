@@ -974,7 +974,7 @@
                 "q3": "How long is my Contract with Impulse? How does it renew?",
                 "a3": "The term of any Service will begin on the Commencement Date, and will expire at the end of the Fixed Service Period. Upon expiration of an Initial Service Period, the Service will continue on a Month-to-Month Service Period at Impulse then-applicable rates unless you cancel the applicable Service or unless Impulse or you terminate this Contract.",
                 "q4": "How does the Contract or any Service get terminated?",
-                "a4": "You can terminate the Contract by e-mailing support@impulse.ky",
+                "a4": "You can terminate the Contract by e-mailing support{'@'}impulse.ky",
                 "highlightTitle": "Early Termination Fees",
                 "highlightText": "You must pay an early termination fee for any Service(s) you terminate prior to the end of any Fixed Service Period. The fees are equal to 50% of the total monthly charges for each early terminated Service, multiplied by the number of months left in the Fixed Service Period."
             },
