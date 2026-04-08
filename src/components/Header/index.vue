@@ -152,11 +152,13 @@ export default {
       this.isScrolled = currentScrollPosition > 50;
       this.isPastHero = currentScrollPosition > heroHeight - 80;
 
+      const delta = currentScrollPosition - this.lastScrollPosition;
+
       if (currentScrollPosition < 50) {
         this.isHeaderVisible = true;
-      } else if (currentScrollPosition < this.lastScrollPosition) {
+      } else if (delta < -5) {
         this.isHeaderVisible = true;
-      } else if (currentScrollPosition > this.lastScrollPosition) {
+      } else if (delta > 10) {
         this.isHeaderVisible = false;
       }
 

@@ -399,31 +399,36 @@
         </transition>
       </div>
 
-      <!-- Bottom Navigation (absolute bottom, centered) -->
-      <div class="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50">
-        <div class="flex items-center gap-3 md:gap-8 lg:gap-12 px-4 md:px-8 lg:px-10 py-3 md:py-4 bg-white/[0.03] rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
-          <button
-            v-for="(p, idx) in pillars"
-            :key="p.id"
-            class="group flex flex-col items-center gap-3 transition-all duration-500"
-            :class="activeIndex === idx ? 'opacity-100 scale-110' : 'opacity-40 hover:opacity-70'"
-            @click="scrollToPillar(idx)"
-          >
-            <div
-              class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] transition-colors duration-500 whitespace-nowrap"
-              :class="activeIndex === idx ? 'text-[#7F39E9]' : 'text-white/40'"
-            >
-              {{ p.name }}
-            </div>
-            <div
-              class="w-2.5 h-2.5 rounded-full transition-all duration-500"
-              :class="activeIndex === idx ? 'scale-150' : 'bg-white/10'"
-              :style="activeIndex === idx ? { background: 'linear-gradient(135deg, #a446f4, #4138f3)', boxShadow: '0 0 15px rgba(127,57,233,0.8)' } : {}"
-            />
-          </button>
-        </div>
-      </div>
     </div>
+
+    <!-- Bottom Navigation (fixed via Teleport, visible only when section is in view) -->
+    <Teleport to="body">
+      <Transition name="sol-nav">
+        <div v-show="isInView" class="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[998]">
+          <div class="flex items-center gap-3 md:gap-8 lg:gap-12 px-4 md:px-8 lg:px-10 py-3 md:py-4 bg-black/70 rounded-full shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] border border-white/10 backdrop-blur-2xl">
+            <button
+              v-for="(p, idx) in pillars"
+              :key="p.id"
+              class="group flex flex-col items-center gap-3 transition-all duration-500"
+              :class="activeIndex === idx ? 'opacity-100 scale-110' : 'opacity-40 hover:opacity-70'"
+              @click="scrollToPillar(idx)"
+            >
+              <div
+                class="text-[7px] md:text-[10px] font-black uppercase tracking-[0.15em] md:tracking-[0.3em] transition-colors duration-500 whitespace-nowrap"
+                :class="activeIndex === idx ? 'text-[#7F39E9]' : 'text-white/40'"
+              >
+                {{ p.name }}
+              </div>
+              <div
+                class="w-2.5 h-2.5 rounded-full transition-all duration-500"
+                :class="activeIndex === idx ? 'scale-150' : 'bg-white/10'"
+                :style="activeIndex === idx ? { background: 'linear-gradient(135deg, #a446f4, #4138f3)', boxShadow: '0 0 15px rgba(127,57,233,0.8)' } : {}"
+              />
+            </button>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
@@ -437,6 +442,7 @@ export default {
     return {
       activeIndex: 0,
       progress: 0,
+      isInView: false,
       pillars: [
         {
           id: 'network',
@@ -534,6 +540,7 @@ export default {
       const end = containerTop + containerHeight - windowHeight;
       const range = end - start;
       if (range <= 0) return;
+      this.isInView = scrollPos >= containerTop && scrollPos <= end;
       let currentProgress = (scrollPos - start) / range;
       currentProgress = Math.max(0, Math.min(1, currentProgress));
       this.progress = currentProgress;
@@ -576,6 +583,16 @@ export default {
 @keyframes solNodePulse { 0%, 100% { transform: scale(1); opacity: 0.2; } 50% { transform: scale(1.5); opacity: 0.5; } }
 .sol-beam { animation: solBeam ease-in-out infinite; }
 @keyframes solBeam { 0% { top: -10%; opacity: 0; } 30% { opacity: 0.4; } 70% { opacity: 0.4; } 100% { top: 110%; opacity: 0; } }
+
+.sol-nav-enter-active,
+.sol-nav-leave-active {
+  transition: all 0.3s ease;
+}
+.sol-nav-enter-from,
+.sol-nav-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+}
 
 .pillar-fade-enter-active {
   transition: opacity 0.3s ease-out;
