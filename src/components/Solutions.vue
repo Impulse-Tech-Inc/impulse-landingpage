@@ -544,8 +544,10 @@ export default {
       let currentProgress = (scrollPos - start) / range;
       currentProgress = Math.max(0, Math.min(1, currentProgress));
       this.progress = currentProgress;
-      const newIndex = Math.min(Math.floor(currentProgress * this.pillars.length), this.pillars.length - 1);
-      if (!isNaN(newIndex) && newIndex >= 0) this.activeIndex = newIndex;
+      const targetIndex = Math.min(Math.floor(currentProgress * this.pillars.length), this.pillars.length - 1);
+      if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex !== this.activeIndex) {
+        this.activeIndex += targetIndex > this.activeIndex ? 1 : -1;
+      }
     },
     scrollToPillar(index) {
       const container = this.$refs.containerRef;
