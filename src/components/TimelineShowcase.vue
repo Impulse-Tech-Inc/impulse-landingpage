@@ -1,5 +1,5 @@
 <template>
-  <section class="relative bg-[#030305] py-20 overflow-hidden">
+  <section class="relative bg-[#030305] py-20 overflow-hidden md:overflow-visible">
     <!-- Premium Background -->
     <div class="absolute inset-0 z-0 pointer-events-none">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#1a1a2e_0%,#030305_100%)]" />
