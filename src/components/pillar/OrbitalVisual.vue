@@ -74,7 +74,7 @@ export default {
     return {
       vendors: ['CISCO', 'HUAWEI', 'ZTE', 'UBIQUITI', 'TP-LINK', 'MIKROTIK', 'CALIX'],
       showManyMore: false,
-      moreVendors: ['Adtran', 'Juniper', 'Arista', 'Calix', 'Nokia', 'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba', 'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin']
+      moreVendors: ['Adtran', 'Juniper', 'Arista', 'Calix', 'Nokia', 'GenieACS', 'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba', 'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin']
     }
   },
   computed: {

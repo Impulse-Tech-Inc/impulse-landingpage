@@ -114,7 +114,7 @@
         <p class="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-6">
           {{ $t('heroCompatible') }}
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-12 gap-y-4 md:gap-y-6">
+        <div class="flex flex-wrap justify-center items-center gap-x-5 md:gap-x-8 gap-y-4 md:gap-y-6">
           <span
             v-for="vendor in vendors"
             :key="vendor"
@@ -155,7 +155,7 @@ const mounted = ref(false)
 const contentOpacity = ref(1)
 const contentY = ref(0)
 
-const vendors = ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'Nokia', 'Ubiquiti', 'Juniper', 'MikroTik', 'Adtran']
+const vendors = ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'Nokia', 'Ubiquiti', 'Juniper', 'MikroTik', 'Adtran', 'GenieACS']
 
 const handleScroll = () => {
   const scrollY = globalThis.window.scrollY

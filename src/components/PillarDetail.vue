@@ -216,7 +216,7 @@
                 :key="vendor"
                 class="px-5 py-2.5 rounded-2xl border border-white/10 bg-white/[0.03] text-sm font-bold text-white/70"
               >{{ vendor }}</span>
-              <span class="px-5 py-2.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white cursor-pointer hover:bg-blue-600 transition-all bg-blue-500">{{ $t('pillarNetworkEcoMore') }}</span>
+              <span @click="showVendorModal = true" class="px-5 py-2.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white cursor-pointer hover:bg-blue-600 transition-all bg-blue-500">{{ $t('pillarNetworkEcoMore') }}</span>
             </div>
           </div>
           <!-- Integration Visual -->
@@ -1100,6 +1100,31 @@
       :message="toast.message"
       @close="toast.visible = false"
     />
+
+    <!-- Supported Vendors Modal -->
+    <Teleport to="body">
+      <Transition name="vendor-modal">
+        <div v-if="showVendorModal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" @click.self="showVendorModal = false">
+          <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="showVendorModal = false" />
+          <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8">
+            <div class="flex items-center justify-between mb-8">
+              <h3 class="text-xl font-black text-[#0a0a12] uppercase tracking-wide">{{ $t('pillarNetworkVendorModalTitle') }}</h3>
+              <button @click="showVendorModal = false" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all">
+                <Icon icon="heroicons-outline:x" class="text-lg" />
+              </button>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+              <div
+                v-for="vendor in allSupportedVendors"
+                :key="vendor"
+                class="px-4 py-3 rounded-xl border border-gray-200 text-center text-sm font-bold text-[#0a0a12]/70 hover:border-blue-300 hover:bg-blue-50 transition-all"
+              >{{ vendor }}</div>
+            </div>
+            <p class="text-center text-sm font-bold text-blue-500 uppercase tracking-widest mt-8">{{ $t('pillarNetworkVendorModalCustom') }}</p>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
@@ -1148,7 +1173,14 @@ export default {
         { icon: 'heroicons-outline:cube', titleKey: 'pillarNetworkSovFeat3', descKey: 'pillarNetworkSovFeat3Desc' },
         { icon: 'heroicons-outline:shield-check', titleKey: 'pillarNetworkSovFeat4', descKey: 'pillarNetworkSovFeat4Desc' }
       ],
+      showVendorModal: false,
       networkVendors: ['Cisco', 'Juniper', 'Nokia', 'Huawei', 'ZTE', 'Ubiquiti', 'MikroTik', 'Calix'],
+      allSupportedVendors: [
+        'Cisco', 'Huawei', 'ZTE', 'Ubiquiti', 'TP-Link', 'MikroTik',
+        'Calix', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
+        'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba',
+        'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin'
+      ],
       crmAgents: [
         { icon: 'heroicons-outline:chip', nameKey: 'pillarCrmAgentTech', descKey: 'pillarCrmAgentTechDesc' },
         { icon: 'heroicons-outline:currency-dollar', nameKey: 'pillarCrmAgentBilling', descKey: 'pillarCrmAgentBillingDesc' },
@@ -1408,4 +1440,9 @@ export default {
 @keyframes sovScan { 0%, 100% { opacity: 0; transform: scale(0.8); } 50% { opacity: 0.2; transform: scale(1.2); } }
 .noise-dot { animation: noisePulse ease-in-out infinite; }
 @keyframes noisePulse { 0%, 100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } }
+.vendor-modal-enter-active, .vendor-modal-leave-active { transition: opacity 0.3s ease; }
+.vendor-modal-enter-active .relative, .vendor-modal-leave-active .relative { transition: transform 0.3s ease, opacity 0.3s ease; }
+.vendor-modal-enter-from, .vendor-modal-leave-to { opacity: 0; }
+.vendor-modal-enter-from .relative { transform: scale(0.95); opacity: 0; }
+.vendor-modal-leave-to .relative { transform: scale(0.95); opacity: 0; }
 </style>

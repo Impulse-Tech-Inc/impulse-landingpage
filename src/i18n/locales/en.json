@@ -70,6 +70,8 @@
     "pillarNetworkEcoTitle2": "Your Vendors.",
     "pillarNetworkEcoDesc": "35+ native integrations across every major network vendor. One platform, every device.",
     "pillarNetworkEcoMore": "35+ More",
+    "pillarNetworkVendorModalTitle": "Supported Vendors",
+    "pillarNetworkVendorModalCustom": "+ Custom Integrations Available",
     "pillarNetworkAdvantageLabel": "The Impulse Advantage",
     "pillarNetworkAdvantageTitle": "Engage automatically flags every at-risk subscriber on that circuit.",
     "pillarNetworkAdvantageDesc": "This is where monitoring ends and operations begin. We don't just tell you the network is broken — we tell you exactly which revenue streams are in jeopardy before the first ticket is even opened.",

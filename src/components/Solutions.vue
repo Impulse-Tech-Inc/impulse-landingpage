@@ -83,9 +83,9 @@
                 </div>
 
                 <div class="flex flex-wrap gap-x-10 gap-y-8 pt-4">
-                  <div v-for="(s, si) in currentPillar.stats" :key="si" class="space-y-2 min-w-[100px]">
+                  <div v-for="(s, si) in currentPillar.stats" :key="si" class="space-y-2 min-w-[100px]" :class="{ 'cursor-pointer group/stat': s.clickable }" @click="s.clickable && (showVendorModal = true)">
                     <div class="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">{{ $t(s.labelKey) }}</div>
-                    <div class="text-base font-bold text-white tracking-tight">{{ s.value }}</div>
+                    <div class="text-base font-bold tracking-tight" :class="s.clickable ? 'text-blue-400 group-hover/stat:text-blue-300 transition-colors underline decoration-blue-400/30 underline-offset-4' : 'text-white'">{{ s.value }}</div>
                   </div>
                 </div>
               </div>
@@ -124,7 +124,7 @@
                     </div>
                     <div class="flex-1 grid grid-cols-3 gap-2">
                       <div
-                        v-for="(vendor, vidx) in ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'VSOL', 'Nokia', 'Ubiquiti']"
+                        v-for="(vendor, vidx) in ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'VSOL', 'Nokia', 'Ubiquiti', 'GenieACS']"
                         :key="vendor"
                         class="flex items-center justify-center p-2 rounded-lg bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-tighter text-white/90 animate-fade-up"
                         :style="{ animationDelay: `${0.3 + vidx * 0.05}s` }"
@@ -429,6 +429,31 @@
         </div>
       </Transition>
     </Teleport>
+
+    <!-- Supported Vendors Modal -->
+    <Teleport to="body">
+      <Transition name="vendor-modal">
+        <div v-if="showVendorModal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" @click.self="showVendorModal = false">
+          <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="showVendorModal = false" />
+          <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8">
+            <div class="flex items-center justify-between mb-8">
+              <h3 class="text-xl font-black text-[#0a0a12] uppercase tracking-wide">{{ $t('pillarNetworkVendorModalTitle') }}</h3>
+              <button @click="showVendorModal = false" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all">
+                <Icon icon="heroicons-outline:x" class="text-lg" />
+              </button>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+              <div
+                v-for="vendor in allSupportedVendors"
+                :key="vendor"
+                class="px-4 py-3 rounded-xl border border-gray-200 text-center text-sm font-bold text-[#0a0a12]/70 hover:border-blue-300 hover:bg-blue-50 transition-all"
+              >{{ vendor }}</div>
+            </div>
+            <p class="text-center text-sm font-bold text-blue-500 uppercase tracking-widest mt-8">{{ $t('pillarNetworkVendorModalCustom') }}</p>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
@@ -443,6 +468,13 @@ export default {
       activeIndex: 0,
       progress: 0,
       isInView: false,
+      showVendorModal: false,
+      allSupportedVendors: [
+        'Cisco', 'Huawei', 'ZTE', 'Ubiquiti', 'TP-Link', 'MikroTik',
+        'Calix', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
+        'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba',
+        'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin'
+      ],
       pillars: [
         {
           id: 'network',
@@ -451,7 +483,7 @@ export default {
           descKey: 'solNetworkDesc',
           stats: [
             { labelKey: 'solStatSignals', value: '20M+ / sec' },
-            { labelKey: 'solStatVendors', value: '35+' }
+            { labelKey: 'solStatVendors', value: '35+', clickable: true }
           ]
         },
         {
@@ -727,4 +759,11 @@ export default {
     height: 450vh;
   }
 }
+
+/* Vendor Modal */
+.vendor-modal-enter-active, .vendor-modal-leave-active { transition: opacity 0.3s ease; }
+.vendor-modal-enter-active .relative, .vendor-modal-leave-active .relative { transition: transform 0.3s ease, opacity 0.3s ease; }
+.vendor-modal-enter-from, .vendor-modal-leave-to { opacity: 0; }
+.vendor-modal-enter-from .relative { transform: scale(0.95); opacity: 0; }
+.vendor-modal-leave-to .relative { transform: scale(0.95); opacity: 0; }
 </style>
