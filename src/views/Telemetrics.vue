@@ -23,11 +23,14 @@
             <div
                 class="flex justify-center border rounded-2xl shadow-[0_0_2px_2px] shadow-white/50 overflow-hidden cursor-pointer
                 animated-container opacity-0">
-                <iframe class="w-full h-96"
-                    src="https://www.youtube.com/embed/NW-EZm_6JCk?si=Y_0JD3iQQkVcwUbo&autoplay=1&controls=0" title=""
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                <video
+                    class="w-full h-96 object-cover"
+                    :src="telemetricsVideo"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                ></video>
             </div>
             <div class="w-full p-5 flex items-center justify-center animated-container opacity-0">
                 <ul class="space-y-4 font-Monda">
@@ -67,6 +70,7 @@
 <script>
 import ContactForm from "@/components/ContactForm.vue"
 import Card from "@/components/Card/index.vue"
+import telemetricsVideo from "@/assets/images/telemetrics-pill.mp4"
 import { onMounted, ref } from "vue"
 import { useMotion } from "@vueuse/motion"
 import { useI18n } from 'vue-i18n'
@@ -105,7 +109,7 @@ export default {
                 observe(element);
             });
         });
-        return { target,t }
+        return { target, t, telemetricsVideo }
     }
 
 };
