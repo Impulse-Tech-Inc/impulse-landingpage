@@ -98,19 +98,57 @@
               <div class="relative z-10 w-full h-full flex items-center justify-center">
 
                 <!-- VISUAL 1: Network Intelligence -->
-                <div v-if="activeIndex === 0" class="w-full max-w-lg relative animate-scale-in">
+                <div v-if="activeIndex === 0" class="grid grid-cols-1 gap-4 w-full max-w-lg relative animate-scale-in">
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7F39E9]/10 blur-[80px] animate-pulse rounded-full" />
 
-                  <!-- Telemetrics Video -->
-                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] shadow-2xl relative overflow-hidden">
-                    <video
-                      class="w-full rounded-[2rem]"
-                      :src="telemetricsVideo"
-                      autoplay
-                      muted
-                      loop
-                      playsinline
-                    ></video>
+                  <div class="bg-slate-950 border border-white/10 rounded-[2rem] p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between h-auto min-h-[200px]">
+                    <div class="flex justify-between items-start">
+                      <div class="text-[10px] font-black text-[#7F39E9] uppercase tracking-widest">Telemetrics Telemetry</div>
+                      <Icon icon="heroicons-outline:chart-bar" class="text-[#7F39E9] opacity-50 text-lg" />
+                    </div>
+                    <div class="flex-1 flex items-end gap-1 px-2 pt-6">
+                      <div
+                        v-for="(bar, i) in 12"
+                        :key="i"
+                        class="flex-1 bg-[#7F39E9]/20 rounded-t-sm animate-bar"
+                        :style="{ animationDelay: `${i * 0.1}s`, height: `${20 + Math.random() * 60}%` }"
+                      />
+                    </div>
+                    <div class="mt-3 text-[10px] font-bold text-white/40 uppercase">CORE_UPTIME: 99.999%</div>
+                  </div>
+
+                  <div class="bg-slate-950 border border-white/10 rounded-[1.5rem] p-5 shadow-2xl relative overflow-hidden h-auto min-h-[200px] flex flex-col">
+                    <div class="flex justify-between items-start mb-4">
+                      <div class="text-[10px] font-black text-teal-500 uppercase tracking-widest">Multi-Vendor Ecosystem</div>
+                      <Icon icon="heroicons-outline:view-grid" class="text-teal-500 opacity-50 text-lg" />
+                    </div>
+                    <div class="flex-1 grid grid-cols-3 gap-2">
+                      <div
+                        v-for="(vendor, vidx) in ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'VSOL', 'Nokia', 'Ubiquiti', 'GenieACS']"
+                        :key="vendor"
+                        class="flex items-center justify-center p-2 rounded-lg bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-tighter text-white/90 animate-fade-up"
+                        :style="{ animationDelay: `${0.3 + vidx * 0.05}s` }"
+                      >
+                        {{ vendor }}
+                      </div>
+                      <div class="flex items-center justify-center p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[8px] font-black uppercase tracking-widest text-teal-500 animate-fade-up" style="animation-delay: 0.8s">
+                        + More
+                      </div>
+                    </div>
+                    <div class="mt-3 p-2 bg-white/[0.02] rounded-lg border border-white/5 flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <div class="flex -space-x-1">
+                          <div v-for="i in 4" :key="i" class="w-4 h-4 rounded-full border border-white bg-[#7F39E9]/10 flex items-center justify-center shadow-sm">
+                            <div class="w-0.5 h-0.5 rounded-full bg-[#7F39E9]/40" />
+                          </div>
+                        </div>
+                        <div class="text-[8px] font-black text-white uppercase tracking-wider">Unified Device Management</div>
+                      </div>
+                      <div class="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-teal-500/5 border border-teal-500/10">
+                        <div class="w-1 h-1 rounded-full bg-teal-500 animate-pulse" />
+                        <span class="text-[6px] font-black text-teal-500 uppercase tracking-widest">Live</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -421,7 +459,6 @@
 
 <script>
 import Icon from "@/components/Icon";
-import telemetricsVideo from "@/assets/images/telemetrics-pill.mp4";
 
 export default {
   components: { Icon },
@@ -432,7 +469,6 @@ export default {
       progress: 0,
       isInView: false,
       showVendorModal: false,
-      telemetricsVideo,
       allSupportedVendors: [
         'Cisco', 'Huawei', 'ZTE', 'Ubiquiti', 'TP-Link', 'MikroTik',
         'Calix', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
