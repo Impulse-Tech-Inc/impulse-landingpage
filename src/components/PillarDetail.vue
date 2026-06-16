@@ -39,6 +39,7 @@
                 muted
                 loop
                 playsinline
+                controls
               ></video>
             </div>
           </div>
@@ -747,8 +748,19 @@
             <p class="text-xl text-white/50 font-light max-w-xl leading-relaxed">{{ $t('pillarBillingHero') }}</p>
             <PillarBadges />
           </div>
-          <div class="relative aspect-square flex items-center justify-center max-h-[50vh] lg:max-h-none">
-            <BillingVisual />
+          <!-- Billing Video -->
+          <div class="relative flex items-center justify-center max-h-[50vh] lg:max-h-none">
+            <div class="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+              <video
+                class="w-full"
+                :src="billingVideo"
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+              ></video>
+            </div>
           </div>
         </div>
 
@@ -1140,6 +1152,7 @@
 <script>
 import Icon from "@/components/Icon"
 import telemetricsVideo from "@/assets/images/telemetrics-pill.mp4"
+import billingVideo from "@/assets/images/billing-promo.mp4"
 import PillarBadges from "@/components/pillar/PillarBadges.vue"
 import PillarCTA from "@/components/pillar/PillarCTA.vue"
 import OrbitalVisual from "@/components/pillar/OrbitalVisual.vue"
@@ -1164,6 +1177,7 @@ export default {
   data() {
     return {
       telemetricsVideo,
+      billingVideo,
       pillarEmail: '',
       sending: false,
       toast: { visible: false, type: 'success', title: '', message: '' },
