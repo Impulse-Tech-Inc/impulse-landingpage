@@ -38,7 +38,6 @@ import SwipperCard from "@/components/SwipperCard.vue"
 import SwipperCard2 from "@/components/SwipperCard2.vue"
 import SwipperCardHome from "@/components/SwipperCardHome.vue"
 import window from "@/mixins/window"
-import ModalNewsletter from "@/components/ModalNewsletter.vue"
 import SolveProblems from "@/components/SolveProblems.vue"
 import StoryLaneEmbed from "@/components/StoryLaneEmbed.vue"
 import CapabilitiesTabs from "@/components/CapabilitiesTabs.vue"
@@ -57,7 +56,7 @@ import RevenuePotencial from "@/components/RevenuePotencial.vue"
 export default {
   mixins: [window],
   components: {
-    SwipperCardHome, HomePage, CardCustomAll, SwipperCard, Card, Button, CardCustomWhoAre, ModalNewsletter,
+    SwipperCardHome, HomePage, CardCustomAll, SwipperCard, Card, Button, CardCustomWhoAre,
     SwipperCard2, SolveProblems, StoryLaneEmbed, CapabilitiesTabs, ServicesOverview, PartnersShowcase, RolesMarquee, TimelineShowcase, CSPs, BlogPosts,
     LeadingGlobal, RevenuePotencial, Solutions
   },
