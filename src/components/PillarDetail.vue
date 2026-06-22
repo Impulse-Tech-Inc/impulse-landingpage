@@ -31,15 +31,18 @@
           </div>
           <!-- Telemetrics Video -->
           <div class="relative flex items-center justify-center max-h-[50vh] lg:max-h-none">
-            <div class="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+            <div class="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+              <div v-show="!telemetricsLoaded" class="absolute inset-0 z-10 animate-pulse bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.08]"></div>
               <video
-                class="w-full"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                :class="telemetricsLoaded ? 'opacity-100' : 'opacity-0'"
                 :src="telemetricsVideo"
                 autoplay
                 muted
                 loop
                 playsinline
                 controls
+                @canplay="telemetricsLoaded = true"
               ></video>
             </div>
           </div>
@@ -750,15 +753,18 @@
           </div>
           <!-- Billing Video -->
           <div class="relative flex items-center justify-center max-h-[50vh] lg:max-h-none">
-            <div class="w-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+            <div class="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+              <div v-show="!billingLoaded" class="absolute inset-0 z-10 animate-pulse bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.08]"></div>
               <video
-                class="w-full"
+                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                :class="billingLoaded ? 'opacity-100' : 'opacity-0'"
                 :src="billingVideo"
                 autoplay
                 muted
                 loop
                 playsinline
                 controls
+                @canplay="billingLoaded = true"
               ></video>
             </div>
           </div>
@@ -1178,6 +1184,8 @@ export default {
     return {
       telemetricsVideo,
       billingVideo,
+      telemetricsLoaded: false,
+      billingLoaded: false,
       pillarEmail: '',
       sending: false,
       toast: { visible: false, type: 'success', title: '', message: '' },
