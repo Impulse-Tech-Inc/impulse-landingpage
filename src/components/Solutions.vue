@@ -545,6 +545,7 @@ export default {
   },
   mounted() {
     this._ticking = false;
+    this._metrics = null;
     this._onScroll = () => {
       if (!this._ticking) {
         this._ticking = true;
@@ -554,50 +555,77 @@ export default {
         });
       }
     };
+    this._onResize = () => {
+      this.computeMetrics();
+      this.handleScroll();
+    };
+    this.computeMetrics();
     window.addEventListener('scroll', this._onScroll, { passive: true });
-    this.handleScroll();
+    window.addEventListener('resize', this._onResize, { passive: true });
+    this.$nextTick(() => {
+      this.computeMetrics();
+      this.handleScroll();
+    });
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
   },
   methods: {
-    handleScroll() {
+    // Cache layout metrics so the scroll handler doesn't read the DOM each frame.
+    // scrollRange is the distance the user scrolls through the section
+    // (containerHeight - viewportHeight), used for both progress and targeting.
+    computeMetrics() {
       const container = this.$refs.containerRef;
-      if (!container) return;
-      const containerTop = container.offsetTop;
-      const containerHeight = container.offsetHeight;
-      const windowHeight = window.innerHeight;
+      if (!container) {
+        this._metrics = null;
+        return;
+      }
+      this._metrics = {
+        top: container.offsetTop,
+        scrollRange: container.offsetHeight - window.innerHeight,
+      };
+    },
+    handleScroll() {
+      if (!this._metrics) this.computeMetrics();
+      const m = this._metrics;
+      if (!m || m.scrollRange <= 0) return;
       const scrollPos = window.scrollY;
-      const start = containerTop;
-      const end = containerTop + containerHeight - windowHeight;
-      const range = end - start;
-      if (range <= 0) return;
-      this.isInView = scrollPos >= containerTop && scrollPos <= end;
-      let currentProgress = (scrollPos - start) / range;
+      const start = m.top;
+      const end = m.top + m.scrollRange;
+      this.isInView = scrollPos >= start && scrollPos <= end;
+      let currentProgress = (scrollPos - start) / m.scrollRange;
       currentProgress = Math.max(0, Math.min(1, currentProgress));
       this.progress = currentProgress;
       const targetIndex = Math.min(Math.floor(currentProgress * this.pillars.length), this.pillars.length - 1);
+      // Sync directly to the scroll position so fast scrolls/jumps don't lag
+      // behind (the previous += ±1 could only advance one pillar per frame).
       if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex !== this.activeIndex) {
-        this.activeIndex += targetIndex > this.activeIndex ? 1 : -1;
+        this.activeIndex = targetIndex;
       }
     },
-    scrollToPillar(index) {
-      const container = this.$refs.containerRef;
-      if (container) {
-        const containerTop = container.offsetTop;
-        const containerHeight = container.offsetHeight;
-        const windowHeight = window.innerHeight;
-        const range = containerHeight - windowHeight;
-        const sectionSize = range / this.pillars.length;
-        const targetY = containerTop + (index * sectionSize) + (sectionSize * 0.3);
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
+    scrollToPillar(index, retried) {
+      this.computeMetrics();
+      const m = this._metrics;
+      if (!m || m.scrollRange <= 0) {
+        // Layout not ready yet — retry once on the next frame.
+        if (!retried) requestAnimationFrame(() => this.scrollToPillar(index, true));
+        return;
       }
+      const sectionSize = m.scrollRange / this.pillars.length;
+      const targetY = m.top + (index * sectionSize) + (sectionSize * 0.3);
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
     },
     scrollToPillarById(pillarId) {
       const index = this.pillars.findIndex(p => p.id === pillarId);
       if (index >= 0) {
         this.scrollToPillar(index);
       }
+    },
+    // Used by the home page deep-link to know the section has laid out.
+    isReady() {
+      const container = this.$refs.containerRef;
+      return !!(container && container.offsetHeight > 0);
     }
   }
 };

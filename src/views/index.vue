@@ -97,13 +97,17 @@ export default {
       this.$router.push({ name: 'pillardetails', params: { id: pillarId } })
     },
     scrollToPillar(pillarId) {
-      this.$nextTick(() => {
-        setTimeout(() => {
-          if (this.$refs.solutions && this.$refs.solutions.scrollToPillarById) {
-            this.$refs.solutions.scrollToPillarById(pillarId)
-          }
-        }, 400)
-      })
+      // Wait for the Solutions section to lay out instead of guessing with a
+      // fixed timeout (which lands in the wrong place on slow loads).
+      const tryScroll = (attempt = 0) => {
+        const sol = this.$refs.solutions
+        if (sol && sol.scrollToPillarById && (typeof sol.isReady !== 'function' || sol.isReady())) {
+          sol.scrollToPillarById(pillarId)
+        } else if (attempt < 60) {
+          requestAnimationFrame(() => tryScroll(attempt + 1))
+        }
+      }
+      this.$nextTick(() => tryScroll())
     }
   },
   mounted() {
