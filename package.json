@@ -2,6 +2,10 @@
   "name": "impulse",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@11.8.0",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "set NODE_ENV=production && vite build",
