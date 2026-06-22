@@ -4,8 +4,8 @@ import middlewarePipeline from "@/middleware/middlewarePipeline";
 import routes from "./route";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.BASE_URL),
-  base: import.meta.BASE_URL,
+  history: createWebHistory(import.meta.env.BASE_URL),
+  base: import.meta.env.BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (to.query.pillar) {
