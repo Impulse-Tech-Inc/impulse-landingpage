@@ -1357,7 +1357,7 @@ export default {
       this.sending = true
       const pillar = pillarNames[this.pillarId] || this.pillarId
       try {
-        const res = await fetch('https://impulse-landingpage.vercel.app/api/contact', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
