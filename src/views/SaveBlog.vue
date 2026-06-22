@@ -50,8 +50,10 @@ import * as yup from "yup";
 import BlogServices from "@/services/Blog"
 import { useRouter } from 'vue-router';
 import Table from "@/components/table/advanced/Advanced.vue"
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css'
 export default defineComponent({
-    components: { Card, TextInput, FileInput, TextArea, Button, Icon, Table },
+    components: { Card, TextInput, FileInput, TextArea, Button, Icon, Table, QuillEditor },
     setup() {
         const image = ref(null)
         const editor = ref('editor')

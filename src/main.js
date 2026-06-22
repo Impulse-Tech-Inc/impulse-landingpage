@@ -6,11 +6,8 @@ import {createApp} from "vue";
 import VueSweetalert2 from "vue-sweetalert2";
 import VueTippy from "vue-tippy";
 import Toast from "vue-toastification";
-import "vue-toastification/dist/index.css"; 
-import VueClickAway from "vue3-click-away";
+import "vue-toastification/dist/index.css";
 import App from "./App.vue";
-import VueGoodTablePlugin from "vue-good-table-next";
-import "vue-good-table-next/dist/vue-good-table-next.css";
 import "./assets/scss/auth.scss";
 import "./assets/scss/tailwind.scss";
 import "./assets/scss/maz.scss";
@@ -18,15 +15,12 @@ import router from "./router";
 import {createPinia} from 'pinia'
 import VueGtag from 'vue-gtag';
 import { VueCookieNext } from 'vue-cookie-next';
-import { QuillEditor } from '@vueup/vue-quill'
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import { MotionPlugin } from "@vueuse/motion";
 import i18n from "./i18n"
 const pinia = createPinia()
 
 // vue use
 const app = createApp(App)
-    .component('QuillEditor', QuillEditor)
     .use(pinia)
     .use(i18n)
     .use(VueSweetalert2)
@@ -35,10 +29,8 @@ const app = createApp(App)
         bodyClassName: "impulse-toast-body",
     })
     .use(router)
-    .use(VueClickAway)
     .use(VueTippy)
     .use(VueCookieNext)
-    .use(VueGoodTablePlugin)
     .use(MotionPlugin)
     .use(VueGtag, {
         config: { id: 'G-SM9S0WPTRE' },

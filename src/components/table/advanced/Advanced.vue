@@ -64,6 +64,8 @@ import { MenuItem } from "@headlessui/vue";
 import Button from "@/components/Button";
 import { inject, ref } from "vue";
 import BlogServices from "@/services/Blog"
+import { VueGoodTable } from "vue-good-table-next";
+import "vue-good-table-next/dist/vue-good-table-next.css";
 
 export default {
   components: {
@@ -74,7 +76,8 @@ export default {
     Card,
     MenuItem,
     Button,
-    Tooltip
+    Tooltip,
+    VueGoodTable
   },
   props: ["info"],
   data() {
