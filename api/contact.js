@@ -14,18 +14,24 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const hasCRLF = (s) => /[\r\n]/.test(String(s || ""));
 
 module.exports = async function handler(req, res) {
-  // CORS: only reflect an allow-listed origin. Same-origin requests (the site's
-  // own forms post to a relative /api/contact) need no ACAO header, so leaving
-  // ALLOWED_ORIGIN unset is safe and does not break the forms.
+  // CORS. The production site is served from a different origin than this Vercel
+  // function, so the forms post cross-origin and DO need an ACAO header.
+  // - If ALLOWED_ORIGIN is set (comma-separated), reflect only those origins.
+  // - If it is unset, fall back to "*" so this public, cookieless lead endpoint
+  //   keeps working without extra configuration.
   const allowed = (process.env.ALLOWED_ORIGIN || "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
   const origin = req.headers.origin;
-  if (allowed.length && origin && allowed.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
+  if (allowed.length) {
+    if (origin && allowed.includes(origin)) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+    res.setHeader("Vary", "Origin");
+  } else {
+    res.setHeader("Access-Control-Allow-Origin", "*");
   }
-  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
