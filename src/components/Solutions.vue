@@ -2,11 +2,12 @@
   <section ref="containerRef" class="relative transition-colors duration-500 sol-container" style="background: #030305; background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #030305 100%)">
 
     <!-- Anchor IDs for navigation -->
-    <div id="network" class="absolute top-0 w-full h-[20%] pointer-events-none" />
-    <div id="crm" class="absolute top-[20%] w-full h-[20%] pointer-events-none" />
-    <div id="support" class="absolute top-[40%] w-full h-[20%] pointer-events-none" />
-    <div id="billing" class="absolute top-[60%] w-full h-[20%] pointer-events-none" />
-    <div id="advisory" class="absolute top-[80%] w-full h-[20%] pointer-events-none" />
+    <div id="network" class="absolute top-0 w-full h-[25%] pointer-events-none" />
+    <div id="crm" class="absolute top-[25%] w-full h-[25%] pointer-events-none" />
+    <div id="support" class="absolute top-[50%] w-full h-[25%] pointer-events-none" />
+    <!-- Billing pillar temporarily hidden until ready -->
+    <!-- <div id="billing" class="absolute top-[60%] w-full h-[20%] pointer-events-none" /> -->
+    <div id="advisory" class="absolute top-[75%] w-full h-[25%] pointer-events-none" />
 
     <div class="sticky top-0 h-screen w-full flex items-center overflow-hidden">
       <!-- Premium Background (same as hero) -->
@@ -245,7 +246,7 @@
                   </div>
                 </div>
 
-                <!-- VISUAL 4: Billing -->
+                <!-- VISUAL 4: Billing — temporarily hidden until billing is ready (uncomment to restore)
                 <div v-if="activeIndex === 3" class="relative w-full max-w-xl h-full flex flex-col justify-center gap-6 py-8 px-4 animate-scale-in">
                   <div class="flex justify-center gap-8">
                     <div
@@ -314,9 +315,10 @@
                     </div>
                   </div>
                 </div>
+                -->
 
                 <!-- VISUAL 5: Advisory -->
-                <div v-if="activeIndex === 4" class="relative w-full h-full flex items-center justify-center px-4 py-8 animate-scale-in">
+                <div v-if="activeIndex === 3" class="relative w-full h-full flex items-center justify-center px-4 py-8 animate-scale-in">
                   <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(127,57,233,0.1),transparent_70%)]" />
 
                   <div class="relative z-10 w-full max-w-md bg-slate-900 border border-white/10 rounded-[3rem] p-8 shadow-2xl overflow-hidden">
@@ -508,17 +510,18 @@ export default {
             { labelKey: 'solStatSLA', value: '< 120s' }
           ]
         },
-        {
-          id: 'billing',
-          name: 'Billing',
-          titleKey: 'solBillingTitle',
-          descKey: 'solBillingDesc',
-          stats: [
-            { labelKey: 'solStatMethods', value: 'ACH / Cards / Mobile' },
-            { labelKey: 'solStatRating', value: 'Usage-Based CDR' },
-            { labelKey: 'solStatCurrency', value: 'Multi-Region' }
-          ]
-        },
+        // Billing pillar temporarily hidden until ready — restore this entry to re-enable.
+        // {
+        //   id: 'billing',
+        //   name: 'Billing',
+        //   titleKey: 'solBillingTitle',
+        //   descKey: 'solBillingDesc',
+        //   stats: [
+        //     { labelKey: 'solStatMethods', value: 'ACH / Cards / Mobile' },
+        //     { labelKey: 'solStatRating', value: 'Usage-Based CDR' },
+        //     { labelKey: 'solStatCurrency', value: 'Multi-Region' }
+        //   ]
+        // },
         {
           id: 'advisory',
           name: 'Advisory',
@@ -780,11 +783,11 @@ export default {
 
 /* Sticky scroll container */
 .sol-container {
-  height: 400vh;
+  height: 320vh; /* 4 pillars (billing hidden); was 400vh for 5 */
 }
 @media (min-width: 1024px) {
   .sol-container {
-    height: 450vh;
+    height: 360vh; /* 4 pillars (billing hidden); was 450vh for 5 */
   }
 }
 

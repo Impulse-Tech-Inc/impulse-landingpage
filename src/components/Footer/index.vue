@@ -44,11 +44,13 @@
                   Support AI
                 </a>
               </li>
+              <!-- Billing pillar temporarily hidden until ready (uncomment to restore)
               <li>
                 <a href="javascript:void(0)" class="hover:text-white transition-colors" @click="handlePillarLink('billing')">
                   Billing
                 </a>
               </li>
+              -->
             </ul>
           </div>
 
