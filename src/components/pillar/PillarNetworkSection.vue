@@ -314,10 +314,10 @@ export default {
         { icon: 'heroicons-outline:shield-check', titleKey: 'pillarNetworkSovFeat4', descKey: 'pillarNetworkSovFeat4Desc' }
       ],
       showVendorModal: false,
-      networkVendors: ['Cisco', 'Juniper', 'Nokia', 'Huawei', 'ZTE', 'Ubiquiti', 'MikroTik', 'Calix'],
+      networkVendors: ['Cisco', 'Juniper', 'Nokia', 'Huawei', 'ZTE', 'Ubiquiti', 'MikroTik', 'Calix', 'Zhone'],
       allSupportedVendors: [
         'Cisco', 'Huawei', 'ZTE', 'Ubiquiti', 'TP-Link', 'MikroTik',
-        'Calix', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
+        'Calix', 'Zhone', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
         'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba',
         'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin'
       ],

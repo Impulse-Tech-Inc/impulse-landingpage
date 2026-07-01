@@ -125,7 +125,7 @@
                     </div>
                     <div class="flex-1 grid grid-cols-3 gap-2">
                       <div
-                        v-for="(vendor, vidx) in ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'VSOL', 'Nokia', 'Ubiquiti', 'GenieACS']"
+                        v-for="(vendor, vidx) in ['Cisco', 'TP-Link', 'Calix', 'Zhone', 'Huawei', 'ZTE', 'VSOL', 'Nokia', 'Ubiquiti', 'GenieACS']"
                         :key="vendor"
                         class="flex items-center justify-center p-2 rounded-lg bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-tighter text-white/90 animate-fade-up"
                         :style="{ animationDelay: `${0.3 + vidx * 0.05}s` }"
@@ -473,7 +473,7 @@ export default {
       showVendorModal: false,
       allSupportedVendors: [
         'Cisco', 'Huawei', 'ZTE', 'Ubiquiti', 'TP-Link', 'MikroTik',
-        'Calix', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
+        'Calix', 'Zhone', 'Adtran', 'Juniper', 'Arista', 'Nokia', 'GenieACS',
         'VSOL', 'Ericsson', 'Extreme Networks', 'Fortinet', 'Palo Alto', 'Aruba',
         'Ruckus', 'Cambium', 'Mimosa', 'Siklu', 'Radwin'
       ],

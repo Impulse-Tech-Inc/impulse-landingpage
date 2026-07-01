@@ -155,7 +155,7 @@ const mounted = ref(false)
 const contentOpacity = ref(1)
 const contentY = ref(0)
 
-const vendors = ['Cisco', 'TP-Link', 'Calix', 'Huawei', 'ZTE', 'Nokia', 'Ubiquiti', 'Juniper', 'MikroTik', 'Adtran', 'GenieACS']
+const vendors = ['Cisco', 'TP-Link', 'Calix', 'Zhone', 'Huawei', 'ZTE', 'Nokia', 'Ubiquiti', 'Juniper', 'MikroTik', 'Adtran', 'GenieACS']
 
 const handleScroll = () => {
   const scrollY = globalThis.window.scrollY
