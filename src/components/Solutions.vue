@@ -132,7 +132,7 @@
                       >
                         {{ vendor }}
                       </div>
-                      <div class="flex items-center justify-center p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[8px] font-black uppercase tracking-widest text-teal-500 animate-fade-up" style="animation-delay: 0.8s">
+                      <div @click="showVendorModal = true" class="flex items-center justify-center p-2 rounded-lg bg-teal-500/10 border border-teal-500/20 text-[8px] font-black uppercase tracking-widest text-teal-500 animate-fade-up cursor-pointer hover:bg-teal-500/20 transition-all" style="animation-delay: 0.8s">
                         + More
                       </div>
                     </div>
@@ -437,10 +437,10 @@
       <Transition name="vendor-modal">
         <div v-if="showVendorModal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" @click.self="showVendorModal = false">
           <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" @click="showVendorModal = false" />
-          <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8">
+          <div class="relative bg-[#0a0a12] border border-white/10 rounded-3xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-8">
             <div class="flex items-center justify-between mb-8">
-              <h3 class="text-xl font-black text-[#0a0a12] uppercase tracking-wide">{{ $t('pillarNetworkVendorModalTitle') }}</h3>
-              <button @click="showVendorModal = false" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 hover:border-gray-300 transition-all">
+              <h3 class="text-xl font-black text-white uppercase tracking-wide">{{ $t('pillarNetworkVendorModalTitle') }}</h3>
+              <button @click="showVendorModal = false" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all">
                 <Icon icon="heroicons-outline:x" class="text-lg" />
               </button>
             </div>
@@ -448,7 +448,7 @@
               <div
                 v-for="vendor in allSupportedVendors"
                 :key="vendor"
-                class="px-4 py-3 rounded-xl border border-gray-200 text-center text-sm font-bold text-[#0a0a12]/70 hover:border-blue-300 hover:bg-blue-50 transition-all"
+                class="px-4 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-center text-sm font-bold text-white/70 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all"
               >{{ vendor }}</div>
             </div>
             <p class="text-center text-sm font-bold text-blue-500 uppercase tracking-widest mt-8">{{ $t('pillarNetworkVendorModalCustom') }}</p>

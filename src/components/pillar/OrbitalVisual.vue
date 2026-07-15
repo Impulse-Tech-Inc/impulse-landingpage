@@ -50,19 +50,19 @@
     <!-- Many More Modal -->
     <div v-if="showManyMore" class="fixed inset-0 z-50 flex items-center justify-center p-6" @click.self="showManyMore = false">
       <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="showManyMore = false" />
-      <div class="relative z-10 bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full space-y-6">
+      <div class="relative z-10 bg-[#0a0a12] border border-white/10 rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full space-y-6">
         <div class="flex items-center justify-between">
-          <h3 class="text-lg font-black text-slate-900 uppercase tracking-wider">Supported Vendors</h3>
-          <button class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:border-slate-400 transition-all" @click="showManyMore = false">
+          <h3 class="text-lg font-black text-white uppercase tracking-wider">Supported Vendors</h3>
+          <button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all" @click="showManyMore = false">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <div v-for="v in allVendors" :key="v" class="px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-center">
-            <span class="text-[10px] font-black uppercase tracking-widest text-slate-700">{{ v }}</span>
+          <div v-for="v in allVendors" :key="v" class="px-4 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-center hover:border-blue-400/50 hover:bg-blue-500/10 transition-all">
+            <span class="text-[10px] font-black uppercase tracking-widest text-white/70">{{ v }}</span>
           </div>
         </div>
-        <p class="text-center text-xs text-slate-400 font-bold uppercase tracking-widest">+ Custom integrations available</p>
+        <p class="text-center text-xs text-white/40 font-bold uppercase tracking-widest">+ Custom integrations available</p>
       </div>
     </div>
   </div>
